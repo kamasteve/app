@@ -1,0 +1,120 @@
+/* reset styles*/
+
+ol, ul {
+	list-style: none;
+}
+
+/* Box Style */
+
+
+ .success, .warning, .errormsgbox, .validation {
+	border: 1px solid;
+	margin: 0 auto;
+	padding:10px 5px 10px 60px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+     font-weight:bold;
+     width:450px;
+	 margin-top:100px;
+     
+}
+
+.success {
+   
+	color: #4F8A10;
+	background-color: #DFF2BF;
+	background-image:url('images/success.png');
+}
+.warning {
+
+	color: #9F6000;
+	background-color: #FEEFB3;
+	background-image: url('images/warning.png');
+}
+.errormsgbox {
+ 
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('images/error.png');
+	
+}
+.validation {
+ 
+	color: #D63301;
+	background-color: #FFCCBA;
+	background-image: url('images/error.png');
+}
+
+
+
+
+
+
+
+
+
+#login_out{
+	
+	
+  
+   
+	}
+
+.login_box{
+	
+}
+.formtitle{
+padding:10px;
+line-height:16px;
+border-bottom:4px solid #F95316;
+width:430px;
+background-color:#7CB021;
+font-weight:bold;
+}
+.input{
+	width: 380px;
+	margin: 30px;
+	color: #90C;
+}
+.buttons{
+	background: #7CB021;
+	border-top: 4px solid #F95316;
+	height: 50px;
+	color: #FFF;
+
+}
+.login{
+background:#7CB021;
+border:1px solid #7CB021;
+border-radius:1px;
+float:right;
+margin-top:10px;
+color:ffffff;
+font-weight:bold;
+font-size:16px;
+}
+.back_login{
+	float: left;
+	font-weight: bold;
+	font-size: 16px;
+	font-style: italic;
+	margin-bottom: 5px;
+	color: #F95316;
+		}
+.cancel{
+background:#7CB021;
+border:1px solid #7CB021;
+border-radius:1px;
+float:right;
+margin-right:20px;
+margin-top:10px;
+color:ffffff;
+font-weight:bold;
+font-size:12px;
+
+}
+.type{
+width:200px;
+height:30px;
+float:center;
+}

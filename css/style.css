@@ -1,0 +1,196 @@
+@import url(bootstrap.min.css);
+@import url(bootstrap-cerulean.min.css);
+.navbar{
+	
+  background: #B6EE65;
+  
+  border-bottom: 2px solid #FD860E;
+  box-shadow: 0 1px 1px rgba(20, 20, 20, 0.2);
+  
+  background-image: linear-gradient(#37A000, #37A000 60%, #37A000);
+  font-weight: bold;
+  color: #fff;
+
+ font-weight:bold;   border-bottom: 2px solid #FD860E; }
+ .form-control{
+
+ margin:25px;
+ width: 90%;
+  display: block;
+  border: 1px solid #999;
+  height: 40px;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+ }
+ 
+ 
+ .footer1{
+	 border-top:2px solid #FD860E ;
+	  position: absolute;
+	  overflow:hidden;
+	  clear:both;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+ 
+	
+	 
+ }
+ .image-responsive{
+	 
+      background: url(realestate1.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+} 
+       
+  
+ 
+ .input-group{
+	 margin:10px;
+	 background:#FFCC99;
+	 height:30px;
+ }
+ .alert-info{
+	 background-color:#fff;
+	 color:EC1414;
+border-color:#fff;
+ }
+ .panel-default{
+	 Margin-top:100px;
+	 margin-bottom:100px;
+	border-width: 1px;
+	
+ }
+ .remember{
+	 margin-left:10px;
+ }
+ .glyphicon{
+	 
+ }
+ .red{
+	 color: #FD860E;
+ }
+.navbar ul {
+ color: #fff;
+
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+.navbar li:hover > a { color: #7180a0; background: #d9e2ee; }
+
+
+}
+.navbar shadow {
+    background: url('images/head-top-shadow.png') repeat-x scroll 0px 0px transparent;
+    height: 17px;
+    position: absolute;
+    top: 66px;
+    width: 100%;
+    z-index: 1000;
+}
+	
+.landing{
+background:#fff;
+float:center;
+margin-top:10%;
+}
+.btn{
+    background: -moz-linear-gradient(center top , #68B12F, #50911E) repeat scroll 0% 0% transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #509111 #509111 #5B992B;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    border-radius: 3px;
+    box-shadow: 0px 1px 0px 0px #9FD574 inset;
+    color: #FFF;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0px -1px 0px #396715;
+
+}
+button, input.form-submit, input[type="button"], input[type="submit"], input[type="reset"] {
+    margin: 0px 0px 10px 5px;
+}
+button, input.form-submit, input[type="button"], input[type="submit"], input[type="reset"] {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    color: #333;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.75);
+    background-color: #660099;
+    background-image: linear-gradient(to bottom, #FFF, #E6E6E6);
+    background-repeat: repeat-x;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #CCC #CCC #B3B3B3;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    border-radius: 4px;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2) inset, 0px 1px 2px rgba(0, 0, 0, 0.05);
+}
+input, button, select, textarea {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+label, input, button, select, textarea {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+}
+label, select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
+    cursor: pointer;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+button, input {
+    line-height: normal;
+}
+button, input, select, textarea {
+    margin: 0px;
+    font-size: 100%;
+    vertical-align: middle;
+}
+body, .block_login input[type="submit"] {
+    font-family: "PT Sans",Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #3D3D3D;
+}
+html {
+
+}
+.login-panel{
+
+height
+
+}
+.button1{
+float:right;
+}
+.button{
+float:left;
+}

@@ -1,0 +1,112 @@
+.tentant_cls input.error { border: 1px solid #FF9641; }
+.tentant_cls  textarea.error { border: 1px solid #FF9641; }
+.tentant_cls  select.error { border: 1px solid #FF9641; }
+.tentant_cls input.error { border: 1px solid #FF9641; }
+label.error {
+	clear: both;
+	color: #EF6969;
+	font-size: 12px;
+	font-weight: bold;
+	float:left;
+	padding-top: 3px;
+}
+.tentant_cls label.error {
+    color: #ef6969;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 3px;
+    width: 70%;
+}
+
+
+.ajax_load{
+	position: fixed;
+	display:none;
+	height:13px;
+	width:208px;
+	z-index:103;
+	top: 50%;
+	left: 50%;
+	margin: -6px 0 0 -104px; /* -height/2 0 0 -width/2 */
+}
+* html .ajax_load { /* ie6 hack */
+	position: absolute;
+	margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px');
+}
+
+
+.ajax_overlay {
+  position: fixed;
+  z-index:100;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  background-color:gray;
+  filter:alpha(opacity=90	);
+  -moz-opacity: 0.90;
+  opacity: 0.60;
+}
+
+* html .ajax_overlay { /* ie6 hack */
+     position: absolute;
+     height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+
+
+#alert_msg {
+	background: none repeat scroll 0 0 hsl(0, 0%, 95%);
+	border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 5px 5px 5px 5px;
+    color: red;
+    display: block;
+    font-size: 14px;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    text-indent: 40px;
+	font-weight:bold;
+	
+}
+
+.alert_msg {
+	background: none repeat scroll 0 0 hsl(0, 0%, 95%);
+	border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 5px 5px 5px 5px;
+    color: red;
+    display: block;
+    font-size: 14px;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    text-indent: 40px;
+	font-weight:bold;
+	
+}
+#alert_msg1 {
+	background: none repeat scroll 0 0 hsl(0, 0%, 95%);
+	border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 5px 5px 5px 5px;
+    color: red;
+    display: block;
+    font-size: 14px;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    text-indent: 40px;
+	font-weight:bold;
+	
+}
+
+.box-inner{
+	padding:10px !important;
+}
+.tn_cls{
+font-weight:bold;
+}
+
+.box-header.well {
+    margin-bottom: 10px;
+	height:48px;
+}

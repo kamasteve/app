@@ -1,0 +1,128 @@
+@import url(bootstrap.min.css);
+
+.navbar{
+	
+  background: #B6EE65;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(20, 20, 20, 0.2);
+  
+  
+  font-weight: bold;
+  color: #fff;
+margin-bottom:20px;
+
+
+
+ font-weight:bold;   border-bottom: 1px solid #F95316; }
+.navbar ul {
+ color: #fff;
+
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+.navbar li:hover > a { color: #7180a0; background: #d9e2ee; }
+
+
+}
+.navbar shadow {
+    background: url('images/head-top-shadow.png') repeat-x scroll 0px 0px transparent;
+    height: 17px;
+    position: absolute;
+    top: 66px;
+    width: 100%;
+    z-index: 1000;
+}
+	
+
+.btn1{
+    width: 100%;
+    border-radius: 7px;
+    background: none repeat scroll 0% 0% #B6EE65;
+    border-width: medium medium 3px;
+    border-style: none none solid;
+    border-color: -moz-use-text-color -moz-use-text-color #307D63;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    color: #51771A;
+    margin-top: -5px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    outline: medium none;
+    font-size: 20px;
+    cursor: pointer;
+}
+butto1n, input.form-submit, input[type="button"], input[type="submit"], input[type="reset"] {
+    margin: 0px 0px 10px 5px;
+}
+butto1n, input.form-submit, input[type="button"], input[type="submit"], input[type="reset"] {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    color: #333;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.75);
+    background-color: #F5F5F5;
+    background-image: linear-gradient(to bottom, #FFF, #E6E6E6);
+    background-repeat: repeat-x;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #CCC #CCC #B3B3B3;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    border-radius: 4px;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2) inset, 0px 1px 2px rgba(0, 0, 0, 0.05);
+}
+input, butto1n, select, textarea {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+label, input, but1ton, select, textarea {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+}
+label, select, butt1on, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
+    cursor: pointer;
+}
+butt1on, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+butto1n, input {
+    line-height: normal;
+}
+butto1n, input, select, textarea {
+    margin: 0px;
+    font-size: 100%;
+    vertical-align: middle;
+}
+body, .block_login input[type="submit"] {
+    font-family: "PT Sans",Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #3D3D3D;
+}
+html {
+
+}
+.login-panel{
+
+height
+
+}
