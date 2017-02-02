@@ -1,26 +1,40 @@
 <?php
-$con=mysqli_connect("localhost","root","","landlord");
+$con=mysqli_connect("localhost","root","","hill_rental");
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-
-
+$query = $con->query("SELECT name FROM properties WHERE property_id = ".$_POST['property']."");
+$row = mysqli_fetch_array($query);
+$pname=$row["name"];
 $property=$_POST['property'];
+$unit=$_POST['unit'];
 $type=$_POST['type'];
 $fname=$_POST['fname'];      
 $lname=$_POST['lname'];
-$email = $_POST['email'];
 $phone=$_POST['phone'];
-$address = $_POST['addres'];
-$rent = $_POST['rent'];
-$deposit = $_POST['deposit'];
+$idnumber=$_POST['idnumber'];
+$email = $_POST['email'];
+$gender=$_POST['gender'];
+$address = $_POST['address'];
+$bank = $_POST['bank'];
+$acountnumber = $_POST['acountnumber'];
 
-$query_insert_user = "INSERT INTO tenants(fname,lname,email,phone,monthly_rent,deposit,adress,property,type)VALUES('$fname','$lname','$email','$phone', '$rent','$deposit','$address','$property','$type')";
+$query_insert_user = "INSERT INTO tenants(property,unit,type,fname,lname,phone,idnumber,email,gender,adress,bank,acountnumber)VALUES('$pname','$unit','$type','$fname','$lname','$phone','$idnumber', '$email','$gender','$address','$bank','$acountnumber')";
 
 
             $result_insert_user = mysqli_query($con, $query_insert_user);
-            if (!$result_insert_user) {
-                echo 'Query Failed ';
+			if($result_insert_user) {
+                 $assign_unit= "UPDATE rental_units SET status='1' WHERE unit_id='$unit'";
+				 $taken_unit = mysqli_query($con, $assign_unit);
             }
+			if (!$taken_unit) {
+                 echo("Error description: " . mysqli_error($con));
+            }
+            if (!$result_insert_user) {
+                 echo("Error description: " . mysqli_error($con));
+            }
+			else{
+				echo"tenant added sucessfully";
+			}
    ?>

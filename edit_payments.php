@@ -1,4 +1,12 @@
-<?php include ('includes/header.php'); ?>
+<?php include ('includes/header.php'); 
+$pageid=108;
+?>
+<style>
+.tentant_footer_cls .box-icon a{
+width:auto !important;
+height:35px !important;
+}
+</style>
 <script type="text/javascript" language="javascript" class="init">
 $(document).ready(function() {
 	$('#example').DataTable( {
@@ -9,12 +17,7 @@ $(document).ready(function() {
 	} );
 } );
 </script>
-<style>
-.tentant_footer_cls .box-icon a{
-width:auto !important;
-height:35px !important;
-}
-</style>
+
 
 <div class="ch-container">
 	<div class="row">
@@ -29,7 +32,7 @@ height:35px !important;
 <table id="example" class="display" cellspacing="0" width="100%">
 
 <thead>
-<tr>
+
 <th>Property</th>
 <th> Period</th>
 
@@ -37,13 +40,12 @@ height:35px !important;
 <th>First Name</th>
 
 <th>
- Adress
+ House Number
 </th>
-<th>Email</th>
 <th>Phone</th>
 <th>Ammount</th>
 <th>Date</th>
-</tr>
+
 </thead>
 <tbody>
 <?php
@@ -56,21 +58,20 @@ if (mysqli_connect_errno()) {
 $result = mysqli_query($con,"SELECT * FROM rent_payments");
 
 while($row = mysqli_fetch_array($result)) {
-?>
 
- <tr>
-<td> <?php echo  $row['property']  ?> </td>
-<td> <?php echo $row['rental_period']; ?> </td>
-<td> <?php echo $row['payment_mode']; ?> </td>
-<td> <?php echo $row['first_name']; ?> </td>
-<td> <?php echo $row['adress']; ?> </td>
-<td> <?php echo $row['email']; ?> </td>
-<td> <?php echo $row['phone'] ;?> </td>
-<td> <?php echo $row['ammount']; ?> </td>
-<td> <?php echo $row['date']; ?></td>
-  </tr>
 
-<?php }
+ echo "<tr>";
+echo "<td>" . htmlentities  ($row['property']) . "</td>";
+echo "<td>" . htmlentities ($row['rental_period']). "</td>";
+echo "<td>" . htmlentities ($row['payment_mode']) . "</td>";
+echo "<td>" . htmlentities ($row['first_name']) . "</td>";
+echo "<td>" . htmlentities ($row['house_number']) . "</td>";
+echo "<td>" . htmlentities ($row['phone']) . "</td>";
+echo "<td>" . htmlentities ($row['ammount']). "</td>";
+echo "<td>" . htmlentities ($row['date']) ."</td>";
+  echo "</tr> \n";
+
+}
 mysqli_close($con);
 	?>
 	</tbody>
@@ -81,14 +82,6 @@ mysqli_close($con);
 </div>
 </div>
 
-<script type="text/javascript" language="javascript" class="init">
-	$(document).ready(function() {
-		var table = $('#example').DataTable();
-		var tt = new $.fn.dataTable.TableTools( table );
-		$( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');
-		
-	} );
-</script>
+</div>
+
 <?php include ('includes/footer.php');  ?>
-</body>
-</html>

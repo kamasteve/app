@@ -2,6 +2,7 @@
 $sql = mysqli_query($con,"SELECT * FROM owner");
 while($row = mysqli_fetch_array($sql)) {
 $owner_arr[]=$row;
+$pageid=109;
 }
 
 $sql1 = mysqli_query($con,"SELECT * FROM properties");
@@ -10,7 +11,19 @@ $pro_arr[]=$row1;
 }
 
 ?>
+  <link href='css/leases.css' rel='stylesheet'>
+<script type="text/javascript" language="javascript" class="init">
+$(document).ready(function() {
+	$('#example').DataTable( {
+	dom: 'T<"clear">lfrtip',
+	tableTools: {
+        "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
+    }
+	} );
+} );
+</script>
 <div class="ch-container">
+<div class="row">
 <?php include ('includes/left_sidebar.php');  ?>
-</div>
+
 <?php  include ('includes/footer.php'); ?>

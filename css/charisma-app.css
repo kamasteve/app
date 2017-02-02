@@ -3,11 +3,43 @@
 select {
     background-color: #fff;
 }
-.invoice{
-margin:5%;
-border: 1px solid #DEDEDE;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
+.btn-primary{
+margin-top:15px;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+    color: #ffffff;
+    background-color: #FF9900 !important;
+	}
+
+
+.tentant_footer_cls .box-icon a{
+width:auto !important;
+height:35px !important;
+
+}
+.form-control {
+background-color:#FFCC99;
+}
+input{
+	
+}
+
+
+
+.tentant_footer_cls .box-icon a{
+width:auto !important;
+height:35px !important;
+
+}
+.form-control {
+
+}
+.ch-container {
+    padding: 0 15px;
+}
+.profile1{
+
+
 }
 .navbar{
 
@@ -21,31 +53,6 @@ border: 1px solid #DEDEDE;
 	-webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
 	box-shadow: 0 1px 10px rgba(0,0,0,0.1);
 }
-
-
-.ch-container {
-    padding: 0 15px;
-}
-.btn-primary{
-margin-top:15px;
-}
-.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
-    color: #ffffff;
-    background-color: rgb(55, 160, 0); !important;
-	}
-input{
-margin-top:35px;
-margin-bottom:10px;
-}
-
-.tentant_footer_cls .box-icon a{
-width:auto !important;
-height:35px !important;
-
-}
-.form-control {
-background-color:rgb(250, 255, 189);
-}
 .btn{
 color: rgb(55, 160, 0);
 
@@ -53,11 +60,10 @@ height:28px;
 
 text-align:center;
 }
-input{
-margin-top:0px;
-margin-bottom:10px;
-}
 
+.ch-container {
+    padding: 0 15px;
+}
 
 .top-block {
     border-radius: 20px;
@@ -90,7 +96,18 @@ margin-bottom:10px;
 .top-block i {
     font-size: 25px;
 }
-
+.rowadd{
+background-color: rgba(0,0,0,0.05);
+padding: 18px;
+margin-top: 18px;
+margin-bottom: 18px;
+}
+.basicinfo{
+background-color: rgba(0,0,0,0.05);
+padding: 18px;
+margin-top: 18px;
+margin-bottom: 18px;
+}
 .top-block:hover {
     text-decoration: none;
 }
@@ -377,7 +394,7 @@ div.center, p.center, img.center {
 }
 
 .navbar-brand img {
-    float: left;
+   float: left;
     height: 35px;
     width: 160px;
     margin-right: 5px;
@@ -442,8 +459,8 @@ ul.ajax-loaders {
 }
 
 .box-content .nav-tabs {
-    margin-right: 0px;
-    margin-left: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 
@@ -514,7 +531,6 @@ ul.ajax-loaders {
 
 .navbar {
     border-radius: 0;
-	height:60px;
 }
 
 ul.main-menu li:hover {

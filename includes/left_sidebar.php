@@ -1,63 +1,53 @@
-<div class="col-sm-2 col-lg-2">
-	<div class="sidebar-nav">
-		<div class="nav-canvas">
-			<div class="nav-sm nav nav-stacked">
-			</div>
-			<ul class="nav nav-pills nav-stacked main-menu">
-				<li class="nav-header">Main</li>
-				<li><a class="ajax-link" href="main.php"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
-				</li>
-				<li><a class="ajax-link" href="tenants1.php"><i class="glyphicon glyphicon-eye-open"></i><span> Tenants</span></a>
-				</li>
-				<li><a class="ajax-link" href="apartments.php"><i class="glyphicon glyphicon-edit"></i><span> Apartments</span></a></li>
-				<li><a class="ajax-link" href="payments.php"><i class="glyphicon glyphicon-list-alt"></i><span> Payments</span></a>
-				<li><a class="ajax-link" href="edit_payments.php"><i class="glyphicon glyphicon-list-alt"></i><span>Edit Payments</span></a>
-				<li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> Accounts</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Charts Of Accounts</a></li>
-                                <li><a href="invoice.php">Invoices</a></li>
-                            </ul>
-                        </li>
-				</li>
-				<li><a class="ajax-link" href="landlord.php"><i class="glyphicon glyphicon-font"></i><span> Property Owners</span></a>
-				</li>
-				<li><a class="ajax-link" href="expenses.php"><i class="glyphicon glyphicon-picture"></i><span> Expenses</span></a>
-				</li>
-				<li class="nav-header hidden-md">Reports</li>
-				<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-align-justify"></i><span> Monthly Report</span></a></li>
-				<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Agency Commission</span></a>
-				</li>
+<?php 
+echo '<div class="col-md-2">';
+echo '<div class="sidebar-nav">';
+	echo '<div class="nav-canvas">';
+		echo '<div class="nav-sm nav nav-stacked">';
+		echo '</div>';
+		echo '<ul class="nav nav-pills nav-stacked main-menu">';
+			echo '<li class="nav-header">Main</li>';
+			
+	if ($pageid >=100 && $pageid<=200){
+	echo '<li><a class="ajax-link" href="invoice.php"><i class="glyphicon glyphicon-list-alt"></i><span>Invoices</a></li>';
+	echo '<li><a class="ajax-link" href="creat_invoice.php"><i class="glyphicon glyphicon-picture"></i><span> Create Inovice</span></a></li>';
+	echo '<li><a class="ajax-link" href="invoice-list.php"><i class="glyphicon glyphicon-picture"></i><span> Manage Invoices</span></a></li>';
+	echo '<li><a class="ajax-link" href="payments.php"><i class="glyphicon glyphicon-list-alt"></i><span> Payments</span></a></li>';
+		echo '<li><a class="ajax-link" href="edit_payments.php"><i class="glyphicon glyphicon-list-alt"></i><span>Edit Payments</span></a></li>';
+		
+		echo '<li><a class="ajax-link" href="expenses.php"><i class="glyphicon glyphicon-picture"></i><span> Expenses</span></a></li>';
+		echo '<li><a class="ajax-link" href="expenses.php"><i class="glyphicon glyphicon-picture"></i><span> Manage Invoices</span></a></li>';
+		
+	}
+	elseif ($pageid >200 && $pageid<=300){
+	echo '<li><a class="ajax-link" href="tenants1.php"><i class="glyphicon glyphicon-eye-open"></i><span> Tenants</span></a></li>';
+				echo '<li><a class="ajax-link" href="apartments.php"><i class="glyphicon glyphicon-edit"></i><span> All Apartments</span></a></li>';
+				echo '<li><a class="ajax-link" href="leased_apartments.php"><i class="glyphicon glyphicon-edit"></i><span> Leased Apartments</span></a></li>';
+				
+				echo '<li><a class="ajax-link" href="landlord.php"><i class="glyphicon glyphicon-font"></i><span> Property Owners</span></a></li>';
+				echo '<li><a class="ajax-link" href="new_tenant.php"><i class="glyphicon glyphicon-list-alt"></i><span> Add New Tenants</span></a></li>';
+				echo '<li><a class="ajax-link" href="add_property.php"><i class="glyphicon glyphicon-pencil"></i><span> Add New Property</span></a></li>';
+				echo '<li><a class="ajax-link" href="leases.php"><i class="glyphicon glyphicon-file"></i><span> Lease Agreaments</span></a></li>';
+				echo '<li><a class="ajax-link" href="maintenance_request.php"><i class="glyphicon glyphicon-th"></i><span> Maintenance Requests</span></a></li>';
+				}
+				elseif ($pageid >300 && $pageid<=400) {
+				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-align-justify"></i><span> Monthly Report</span></a></li>';
+				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Agency Commission</span></a></li>';
+				}
+				elseif ($pageid >0 && $pageid<=100){
+				echo '<li><a class="ajax-link" href="profile.php"><i class="glyphicon glyphicon-calendar"></i><span> Profile</span></a></li>';
+				echo '<li><a class="ajax-link" href="editprofile.php"><i class="glyphicon glyphicon-align-justify"></i><span> Edit profile</span></a></li>';
+				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Edit Company Data</span></a></li>';
+				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Edit SMS settings</span></a></li>';
+				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Edit Billing info </span></a></li>';
+				}
+?>
+
+				
+				
+				
 			</ul>
 		</div>
 	</div>
 </div>
 
 
-<!-- library for cookie management -->
-<script src="js/jquery.cookie.js"></script>
-<!-- calender plugin -->
-<script src='bower_components/moment/min/moment.min.js'></script>
-<script src='bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
-
-
-<!-- select or dropdown enhancer -->
-<script src="bower_components/chosen/chosen.jquery.min.js"></script>
-<!-- plugin for gallery image view -->
-
-<!-- notification plugin -->
-<script src="js/jquery.noty.js"></script>
-<!-- library for making tables responsive -->
-
-<!-- star rating plugin -->
-<script src="js/jquery.raty.min.js"></script>
-<!-- for iOS style toggle switch -->
-<script src="js/jquery.iphone.toggle.js"></script>
-<!-- autogrowing textarea plugin -->
-<script src="js/jquery.autogrow-textarea.js"></script>
-<!-- multiple file upload plugin -->
-<script src="js/jquery.uploadify-3.1.min.js"></script>
-<!-- history.js for cross-browser state change on ajax -->
-<script src="js/jquery.history.js"></script>
-<!-- application script for Charisma demo -->
-<script src="js/charisma.js"></script>

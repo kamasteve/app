@@ -2,6 +2,7 @@
 $sql = mysqli_query($con,"SELECT * FROM owner");
 while($row = mysqli_fetch_array($sql)) {
 $owner_arr[]=$row;
+$pageid=206;
 }
 
 $sql1 = mysqli_query($con,"SELECT * FROM properties");
@@ -31,7 +32,7 @@ height:35px !important;
   <li><a href="#">Menu 2</a></li>
   <li><a href="#">Menu 3</a></li>
 </ul>
-         <form>
+  <form>
   <div class="form-group">   
 			<div class="col-xs-3">
   

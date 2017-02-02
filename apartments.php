@@ -3,6 +3,7 @@
 $sql = mysqli_query($con,"SELECT * FROM owner");
 while($row = mysqli_fetch_array($sql)) {
 $owner_arr[]=$row;
+$pageid=203;
 }
 
 $sql1 = mysqli_query($con,"SELECT * FROM properties");
@@ -36,26 +37,6 @@ $(document).ready(function() {
  <li><a data-toggle="tab" href="#vacant">Vacant</a></li>
 </ul>
 <div class="tab-content">
-<div id="leased" class="tab-pane fade ">
-<div class="row">
-  <div class="col-md-4"> 
-  </div>
-  <div class="col-md-4"> 
-  </div>
-  <div class="col-md-4"> 
-  <button type="button" class="btn1  ">Add New Apartment</button>
-  </div>
-  
-</div>
-
-</div>
-<div id="vacant" class="tab-pane fade ">
-<div class="row">
-  <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-</div>
-
-</div>
 <div id="all" class="tab-pane fade in active">
  <div class="col-md-4"> 
   </div>
@@ -73,15 +54,15 @@ $(document).ready(function() {
 <tr>
 <th>Id</th>
 <th>Name</th>
-<th>landlord</th>
+<th>
+ Type
+</th>
 <th>
  Adress
 </th>
-<th>
- Contact
-</th>
-<th>Units</th>
-<th>Status</th>
+<th>Add Date</th>
+<th>Location</th>
+<th>Edit</th>
 </tr>
 </thead>
 <tbody>
@@ -98,21 +79,19 @@ while($row = mysqli_fetch_array($result)) {
 ?>
 
  <tr>
-<td> <?php echo  $row['id']  ?> </td>
+<td> <?php echo  $row['property_id']  ?> </td>
 <td> <?php echo $row['name']; ?> </td>
-<td> <?php echo $row['landlord']; ?> </td>
+<td> <?php echo $row['type']; ?> </td>
 <td> <?php echo $row['address']; ?> </td>
-<td> <?php echo $row['contact']; ?> </td>
-<td> <?php echo $row['units'] ;?> </td>
-<td> <?php 
- $status = $row['status'] ;
- if ($status ==1) {
-echo 'Not Vacant';
-} 
-else {
-echo 'Vacctant';
-}
-?> </td>
+<td> <?php echo $row['add_date'] ;?> </td>
+<td> <?php echo $row['location'] ;?> </td>
+<td>
+        <form name="editWish" action="edit_tenant.php" method="GET">
+            <input type="hidden" name="wishID" value=" "/>
+           <!-- <input type="submit" class="glyphicon glyphicon-edit" name="editWish" value="Edit"/></span> -->
+			<button type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</button>
+        </form>
+    </td>
   </tr>
 
 <?php }
@@ -123,6 +102,20 @@ mysqli_close($con);
 	</div>
   
   
+
+</div>
+<div id="leased" class="tab-pane fade ">
+<div class="row">
+  
+  
+</div>
+
+</div>
+<div id="vacant" class="tab-pane fade ">
+<div class="row">
+  <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
 
 </div>
 	</div>	
@@ -140,12 +133,5 @@ $(document).ready(function(){
     });
 });
 </script>
-<script type="text/javascript" language="javascript" class="init">
-	$(document).ready(function() {
-		var table = $('#example').DataTable();
-		var tt = new $.fn.dataTable.TableTools( table );
-		$( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');
-		
-	} );
-</script>
+
 <?php  include ('includes/footer.php'); ?>

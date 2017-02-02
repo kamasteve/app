@@ -7,7 +7,7 @@ session_start();
 ?>
 
 <head>
-    <
+    
     <meta charset="utf-8">
     <title>Digital Landlord</title>
   
@@ -47,8 +47,12 @@ session_start();
 
 <body>
 
-<body  class="image-responsive">
-    
+<body  class="image-responsive" >
+<style type="text/css">
+		
+	
+	
+</style>
     <!-- Core Scripts - Include with every page -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -59,14 +63,7 @@ session_start();
 	<div class="row-fluid" id="marketing-spots">
     <div class="span4">
         <!-- Advert #1 -->
-		<style type="text/css">
-		html{
-		background: url(images/app_background.jpg) no-repeat center center fixed;
-		}
- 
-	
-	
-</style>
+
 
 <!--/row-->
 
@@ -74,7 +71,7 @@ session_start();
 	
 	<div class="container">
 	<div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-5 col-md-offset-4">
                 <div class="login-panel panel panel-default">
         
             <div class="alert alert-info panel-heading">
@@ -126,7 +123,7 @@ if (isset($_POST['button'])) {
 
             $_SESSION = mysqli_fetch_array($result_check_credentials, MYSQLI_ASSOC);//Assign the result of this query to SESSION Global Variable
            
-            header("Location: main.php");
+            header("Location: profile.php");
           
 
         }else

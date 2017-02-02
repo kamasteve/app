@@ -1,0 +1,12 @@
+SELECT
+T1.property_id,
+unit_id,
+unit_type,
+T2.name
+FROM
+rental_units AS T1
+INNER JOIN properties AS T2 ON T1.property_id=T2.property_id
+WHERE
+STATUS='1'
+GROUP BY
+unit_id

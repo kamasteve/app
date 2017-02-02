@@ -14,8 +14,8 @@
  font-weight:bold;   border-bottom: 2px solid #FD860E; }
  .form-control{
 
- margin:25px;
- width: 90%;
+ margin:0px;
+ width: 100%;
   display: block;
   border: 1px solid #999;
   height: 40px;
@@ -49,11 +49,7 @@
        
   
  
- .input-group{
-	 margin:10px;
-	 background:#FFCC99;
-	 height:30px;
- }
+ 
  .alert-info{
 	 background-color:#fff;
 	 color:EC1414;

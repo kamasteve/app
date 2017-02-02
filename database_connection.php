@@ -19,11 +19,11 @@ DEFINE('WEBSITE_URL', 'http://localhost/activate.php');
 
 
 // Make the connection:
-$dbc = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
+$con = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
     DATABASE_NAME);
 	$base_url='http://localhost/writer/';
 
-if (!$dbc) {
+if (!$con) {
     trigger_error('Could not connect to MySQL: ' . mysqli_connect_error());
 }
 
