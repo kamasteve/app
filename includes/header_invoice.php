@@ -24,7 +24,7 @@ header("location:index.php");
 <!-- The styles -->
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="js/moment.js"></script>
-	
+	<script src="js/scripts.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/new/jquery-1.11.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -34,7 +34,7 @@ header("location:index.php");
 	<script src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 	<script src="js/bootstrap.datetime.js"></script>
 	<script src="js/bootstrap.password.js"></script>
-	<script src="js/scripts.js"></script>
+	
 	<!-- CSS -->
 	<link href=" css/css_theme.min.css" rel='stylesheet'>
 	<link href='css/new/style.css' rel='stylesheet'>

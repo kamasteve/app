@@ -49,7 +49,7 @@ $(document).ready(function() {
 </thead>
 <tbody>
 <?php
-$con=mysqli_connect("localhost","root","","hill_rental");
+
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();

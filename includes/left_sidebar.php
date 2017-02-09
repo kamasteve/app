@@ -22,6 +22,7 @@ echo '<div class="sidebar-nav">';
 	echo '<li><a class="ajax-link" href="tenants1.php"><i class="glyphicon glyphicon-eye-open"></i><span> Tenants</span></a></li>';
 				echo '<li><a class="ajax-link" href="apartments.php"><i class="glyphicon glyphicon-edit"></i><span> All Apartments</span></a></li>';
 				echo '<li><a class="ajax-link" href="leased_apartments.php"><i class="glyphicon glyphicon-edit"></i><span> Leased Apartments</span></a></li>';
+				echo '<li><a class="ajax-link" href="vacant_apartments.php"><i class="glyphicon glyphicon-edit"></i><span> Vacant Apartments</span></a></li>';
 				
 				echo '<li><a class="ajax-link" href="landlord.php"><i class="glyphicon glyphicon-font"></i><span> Property Owners</span></a></li>';
 				echo '<li><a class="ajax-link" href="new_tenant.php"><i class="glyphicon glyphicon-list-alt"></i><span> Add New Tenants</span></a></li>';

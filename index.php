@@ -110,7 +110,7 @@ if (isset($_POST['button'])) {
    
         
 
-        $result_check_credentials = mysqli_query($dbc, $query_check_credentials);
+        $result_check_credentials = mysqli_query($con, $query_check_credentials);
         if(!$result_check_credentials){//If the QUery Failed 
             echo 'Query Failed ';
         }
@@ -154,7 +154,7 @@ echo '<div class="errormsgbox"> <ol>';
         echo '<div class="warning">'.$msg_error.' </div>';
     }
     /// var_dump($error);
-    mysqli_close($dbc);
+    mysqli_close($con);
 
  // End of the main Submit conditional.
 

@@ -6,25 +6,33 @@ $pro_arr[]=$row1;
 $pageid=101;
 }
 ?>
-<style>
-.tentant_footer_cls .box-icon a{
-width:auto !important;
-height:35px !important;
+<script type="text/javascript" language="javascript" class="init">
+$(function () {
+    $('#create_invoice').on('submit', function (e) {
+        if (!e.isDefaultPrevented()) {
+            var url = "http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/createInvoice.php";
 
-}
-.form-control {
-    
-}
-.btn{
-background: #B6EE65;
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $(this).serialize(),
+                success: function (data)
+                {
+                    var messageAlert = 'alert-' + data.type;
+                    var messageText = data.message;
 
-}
-.invoice_content{
-margin:8px;
-}
-
-
-</style>
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    if (messageAlert && messageText) {
+                        $('#contact-form').find('.messages').html(alertBox);
+                        $('#contact-form')[0].reset();
+                    }
+                }
+            });
+            return false;
+        }
+    })
+});
+</script>
 
 <div class="ch-container">
 <div class="row">
@@ -45,8 +53,9 @@ margin:8px;
 			<a href="#" class="close" data-dismiss="alert">&times;</a>
 			<div class="message"></div>
 		</div>
+<div id="result" class="message" ></div>
 
-		<form method="post" action="ajax/createInvoice.php" id="create_invoice">
+		<form method="post" action="createInvoice.php" id="create_invoice">
 			<!--<input type="hidden" name="action" value="create_invoice"> -->
 			
 			<div class="row">
@@ -119,6 +128,26 @@ margin:8px;
 					</div>
 				
 			</div>
+			<div class=" form-group col-xs-6">
+	<label class="control-label col-xs-4" for="fname">Select Period:</label>
+	<div class=" col-xs-8">
+			<select class='form-control' name="period" id="state">
+			<option value=''>Select Period</option>
+			<option value='1' >Janaury</option>
+			<option value='2'>February</option>
+			<option value='3'>March</option>
+			<option value='4'>April</option>
+			<option value='5'>May</option>
+			<option value='6'>June</option>
+			<option value='7'>July</option>
+			<option value='8'>August</option>
+			<option value='9'>September</option>
+			<option value='10'>October</option>
+			<option value='11'>November</option>
+			<option value='12'>December</option>
+    </select>
+	</div>
+</div>
 			</div>
 			<!-- / end client details section -->
 			<table class="table table-bordered" id="invoice_table">
@@ -241,7 +270,7 @@ margin:8px;
 					<input type="submit" id="action_create_invoice" class="btn btn-success float-right" value="Create Invoice" data-loading-text="Creating...">
 				</div>
 				-->
-				<button type="submit" class="btn btn-default" name="submit">Save</button>
+			<button type="submit" class="btn btn-default" name="submit">Save</button>
 			</div>
 		</form>
 

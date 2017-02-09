@@ -55,19 +55,19 @@ $(document).ready(function() {
 <th>Property Id</th>
 <th>Property Name</th>
 <th>
- Leased Unit
+ Vacant Unit
 </th>
 <th>
  Unit Type
 </th>
-<th>Tenant Name</th>
+<th>Monthly Rent</th>
 
 <th>Edit</th>
 </tr>
 </thead>
 <tbody>
 <?php
-$con=mysqli_connect("localhost","root","","hill_rental");
+
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();

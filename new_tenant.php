@@ -8,7 +8,7 @@ $(document).ready(function(){
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost/app/ajax/ajaxData.php',
+                url:'http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/ajax/ajaxData.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);

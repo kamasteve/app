@@ -27,7 +27,17 @@ margin:8px;
 
 </style>
 
+<script type="text/javascript" language="javascript" class="init">
+$(document).ready(function() {
 
+	$('#example').DataTable( {
+	dom: 'T<"clear">lfrtip',
+	tableTools: {
+        "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
+    }
+	} );
+} );
+</script>
 <div class="ch-container">
 <div class="row">
 
@@ -50,17 +60,7 @@ margin:8px;
 				
 			</div>
 			<div class="panel-body form-group form-group-sm">
-			<script type="text/javascript" language="javascript" class="init">
-$(document).ready(function() {
-
-	$('#example').DataTable( {
-	dom: 'T<"clear">lfrtip',
-	tableTools: {
-        "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
-    }
-	} );
-} );
-</script>
+			
 			
 				<?php getInvoices(); ?>
 			</div>

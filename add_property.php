@@ -1,9 +1,10 @@
 <?php include ('includes/header.php');
+include ('includes/config.php');
 $pageid=209;
 function getpropertyid() {
 
 	// Connect to the database
-	$mysqli = new mysqli('localhost', 'root', '', 'hill_rental');
+	$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
 
 	// output any connection error
 	if ($mysqli->connect_error) {
