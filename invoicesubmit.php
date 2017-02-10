@@ -4,8 +4,10 @@ $con=mysqli_connect("localhost","root","","hill_rental");
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-
-$invoice_number = $_POST['invoice_id']; // invoice number
+$okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
+$errorMessage = 'There was an error while submitting the form. Please try again later';
+  
+    $invoice_number = $_POST['invoice_id']; // invoice number
 	$invoice_date = $_POST['invoice_date']; // invoice date
 	$invoice_due_date = $_POST['invoice_due_date']; // invoice due date
 	$invoice_subtotal = $_POST['invoice_subtotal']; // invoice sub-total
@@ -84,5 +86,9 @@ $query = "INSERT INTO invoices (
             if (!$result_insert_user) {
              echo "die(mysql_error()) " . $query . "<br>" . mysqli_error($con);  
 }	
+}else{  
+    $responseArray = array('type' => 'danger', 'message' => $errorMessage);
+}
+
 		 
    ?>

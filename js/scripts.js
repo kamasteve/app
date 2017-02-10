@@ -283,7 +283,7 @@ $(document).ready(function() {
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/ajax/ajaxPayments.php',
+                url:'http://localhost/app/ajax/ajaxPayments.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -301,7 +301,7 @@ $(document).ready(function() {
         if(stateID){
             $.ajax({
                 type:'POST',
-                url:'ajaxData.php',
+                url:'http://localhost/app/ajax/ajaxData.php',
                 data:'state_id='+stateID,
                 success:function(html){
                     $('#city').html(html);

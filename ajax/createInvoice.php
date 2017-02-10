@@ -8,8 +8,9 @@ include_once('../includes/config.php');
 if ($mysqli->connect_error) {
     die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 }
+$okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
+$errorMessage = 'There was an error while submitting the form. Please try again later';
 
-if (isset($_POST['submit'])) {
 
 
 	// invoice customer information
@@ -93,6 +94,7 @@ if (isset($_POST['submit'])) {
 
 	}
 	if(!$mysqli -> multi_query($query)){
+		$responseArray = array('type' => 'success', 'message' => $okMessage);
 		echo  "Error: " .  $mysqli->error . "<br>" .  $mysqli->error;
 	}
 	else{
@@ -116,7 +118,7 @@ if (isset($_POST['submit'])) {
 	
 	} else{
 		echo "error 123";
-	}
+	
 	
 	
 		$date=date("Y-m-d H:i:s");

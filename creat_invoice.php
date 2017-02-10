@@ -1,3 +1,4 @@
+
 <?php include ('includes/header_invoice.php'); 
 include('functions.php');
 $sql1 = mysqli_query($con,"SELECT * FROM properties");
@@ -6,33 +7,8 @@ $pro_arr[]=$row1;
 $pageid=101;
 }
 ?>
-<script type="text/javascript" language="javascript" class="init">
-$(function () {
-    $('#create_invoice').on('submit', function (e) {
-        if (!e.isDefaultPrevented()) {
-            var url = "http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/createInvoice.php";
 
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $(this).serialize(),
-                success: function (data)
-                {
-                    var messageAlert = 'alert-' + data.type;
-                    var messageText = data.message;
-
-                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-                    if (messageAlert && messageText) {
-                        $('#contact-form').find('.messages').html(alertBox);
-                        $('#contact-form')[0].reset();
-                    }
-                }
-            });
-            return false;
-        }
-    })
-});
-</script>
+<script src="js/invoice.js"></script>
 
 <div class="ch-container">
 <div class="row">
@@ -46,16 +22,13 @@ $(function () {
 		
       <div class="invoice_content">
 
-	<h1>Create Invoice</h1>
+	<h2>Create Invoice</h2>
 		<hr>
 
-		<div id="response" class="alert alert-success" style="display:none;">
-			<a href="#" class="close" data-dismiss="alert">&times;</a>
-			<div class="message"></div>
-		</div>
-<div id="result" class="message" ></div>
+		 <div class="messages"> </div>
 
-		<form method="post" action="createInvoice.php" id="create_invoice">
+
+		<form method="post" action="ajax/createinvoice.php" id="create_invoice" name="create_invoice">
 			<!--<input type="hidden" name="action" value="create_invoice"> -->
 			
 			<div class="row">
