@@ -4,7 +4,7 @@ $pageid=209;
 function getpropertyid() {
 
 	// Connect to the database
-	$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
+	//$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
 
 	// output any connection error
 	if ($mysqli->connect_error) {

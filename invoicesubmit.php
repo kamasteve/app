@@ -84,7 +84,8 @@ $query = "INSERT INTO invoices (
 
        $result_insert_user = mysqli_query($con, $query);
             if (!$result_insert_user) {
-             echo "die(mysql_error()) " . $query . "<br>" . mysqli_error($con);  
+             echo "die(mysql_error()) " . $query . "<br>" . mysqli_error($con);
+             $responseArray = array('type' => 'danger', 'message' => $errorMessage);			 
 }	
 }else{  
     $responseArray = array('type' => 'danger', 'message' => $errorMessage);
@@ -92,3 +93,4 @@ $query = "INSERT INTO invoices (
 
 		 
    ?>
+   

@@ -3,7 +3,6 @@ $(function () {
         if (!e.isDefaultPrevented()) {
 			
             var url = "http://localhost/app/ajax/createinvoice.php";
-
             $.ajax({
                 type: "POST",
                 url: url,
@@ -11,12 +10,12 @@ $(function () {
                 success: function (data)
                 {
                     var messageAlert = 'alert-' + data.type;
-                    var messageText = data.message;
-
+                    var messageText = data;
+                    alert(data);
                     var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
                     if (messageAlert && messageText) {
-                        $('#contact-form').find('.messages').html(alertBox);
-                        $('#contact-form')[0].reset();
+                        $('#create_invoice').find('.messages').html(alertBox);
+                        $('#create_invoice')[0].reset();
                     }
                 }
             });

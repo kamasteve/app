@@ -19,19 +19,20 @@ $pageid=101;
         <div class="box-inner">
 		<div class="box-content row">
 		
-		
+	<form method="post" action="ajax/createinvoice.php" id="create_invoice" role="form">	
       <div class="invoice_content">
 
-	<h2>Create Invoice</h2>
+	<div class='messages'> </div>
 		<hr>
 
-		 <div class="messages"> </div>
+		  
 
 
-		<form method="post" action="ajax/createinvoice.php" id="create_invoice" name="create_invoice">
+		
 			<!--<input type="hidden" name="action" value="create_invoice"> -->
 			
 			<div class="row">
+			
 			<div class=" form-group col-xs-6">
 				        <label class="control-label col-xs-4" for="fname">Invoice Date:</label>
 				            <div class="input-group  col-xs-8" id="invoice_date">

@@ -8,6 +8,7 @@ include_once('../includes/config.php');
 if ($mysqli->connect_error) {
     die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 }
+
 $okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
 $errorMessage = 'There was an error while submitting the form. Please try again later';
 
@@ -94,13 +95,17 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 
 	}
 	if(!$mysqli -> multi_query($query)){
+		$encoded = json_encode($responseArray);
+
+    //header('Content-Type: application/json');
+
+    echo $encoded;
 		$responseArray = array('type' => 'success', 'message' => $okMessage);
-		echo  "Error: " .  $mysqli->error . "<br>" .  $mysqli->error;
 	}
 	else{
     $query_fetchtenant = "SELECT tenant_id FROM tenants WHERE unit = '$unit'";
 	if(!$mysqli -> multi_query($query_fetchtenant)){
-		echo  "Error: " .  $mysqli->error . "<br>" .  $mysqli->error;
+		 $responseArray = array('type' => 'danger', 'message' => $errorMessage);
 	}
 		 
 	if ($result = $mysqli->query($query_fetchtenant)) {
@@ -117,16 +122,16 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	    // Frees the memory associated with a result
 	
 	} else{
-		echo "error 123";
+		echo $okMessage;
 	
 	
 	
-		$date=date("Y-m-d H:i:s");
-		$account = "INSERT INTO accounts(credit,date,transaction_id,tenant_id,property_id,responsible)VALUES('$invoice_total','$date','$invoice_number','$tenant_id','$property','$username')";
-		$result_account = mysqli_query($mysqli, $account);
-		if (!$result_account) {
-             echo "Error: " . $result_account . "<br>" . mysqli_error($result_account);
-			}
+		//$date=date("Y-m-d H:i:s");
+		//$account = "INSERT INTO accounts(credit,date,transaction_id,tenant_id,property_id,responsible)VALUES('$invoice_total','$date','$invoice_number','$tenant_id','$property','$username')";
+		//$result_account = mysqli_query($mysqli, $account);
+		//if (!$result_account) {
+            // echo "Error: " . $result_account . "<br>" . mysqli_error($result_account);
+			//}
 	}
 /**
 	if($mysqli -> multi_query($query)){
