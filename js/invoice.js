@@ -9,13 +9,14 @@ $(function () {
                 data: $(this).serialize(),
                 success: function (data)
                 {
-                    var messageAlert = 'alert-' + data.type;
+                    var messageAlert = 'alert-' + data;
                     var messageText = data;
-                    alert(data);
+                    //alert(data);
                     var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
                     if (messageAlert && messageText) {
                         $('#create_invoice').find('.messages').html(alertBox);
                         $('#create_invoice')[0].reset();
+						//window.location.reload();
                     }
                 }
             });

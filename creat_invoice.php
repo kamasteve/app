@@ -22,7 +22,7 @@ $pageid=101;
 	<form method="post" action="ajax/createinvoice.php" id="create_invoice" role="form">	
       <div class="invoice_content">
 
-	<div class='messages'> </div>
+	<div class='messages alert '> </div>
 		<hr>
 
 		  
@@ -244,7 +244,7 @@ $pageid=101;
 					<input type="submit" id="action_create_invoice" class="btn btn-success float-right" value="Create Invoice" data-loading-text="Creating...">
 				</div>
 				-->
-			<button type="submit" class="btn btn-default" name="submit">Save</button>
+			<button type="submit" class=" btn-default" name="submit">Save</button>
 			</div>
 		</form>
 

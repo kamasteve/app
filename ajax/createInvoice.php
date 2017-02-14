@@ -9,7 +9,7 @@ if ($mysqli->connect_error) {
     die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 }
 
-$okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
+$okMessage = 'Invoice Was Sussefully Created!!';
 $errorMessage = 'There was an error while submitting the form. Please try again later';
 
 
@@ -107,7 +107,7 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	if(!$mysqli -> multi_query($query_fetchtenant)){
 		 $responseArray = array('type' => 'danger', 'message' => $errorMessage);
 	}
-		 
+	}	 
 	if ($result = $mysqli->query($query_fetchtenant)) {
 
 		
@@ -122,17 +122,16 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	    // Frees the memory associated with a result
 	
 	} else{
-		echo $okMessage;
-	
-	
-	
-		//$date=date("Y-m-d H:i:s");
-		//$account = "INSERT INTO accounts(credit,date,transaction_id,tenant_id,property_id,responsible)VALUES('$invoice_total','$date','$invoice_number','$tenant_id','$property','$username')";
-		//$result_account = mysqli_query($mysqli, $account);
-		//if (!$result_account) {
-            // echo "Error: " . $result_account . "<br>" . mysqli_error($result_account);
-			//}
+		echo $errorMessage;
 	}
+	
+		$date=date("Y-m-d H:i:s");
+		$account = "INSERT INTO accounts(credit,date,transaction_id,tenant_id,property_id,responsible)VALUES('$invoice_total','$date','$invoice_number','$tenant_id','$property','$username')";
+		$result_account = mysqli_query($mysqli, $account);
+		if (!$result_account) {
+         $responseArray = array('type' => 'danger', 'message' => $errorMessage);
+			}
+	
 /**
 	if($mysqli -> multi_query($query)){
 		
@@ -226,5 +225,5 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	$mysqli->close();
 
  **/
-}
+
 ?>
