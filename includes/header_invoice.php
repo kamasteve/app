@@ -22,6 +22,7 @@ header("location:index.php");
 <title>Landlord Digital</title>
 
 <!-- The styles -->
+<script src="js/jquery.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="js/moment.js"></script>
 	<script src="js/scripts.js"></script>

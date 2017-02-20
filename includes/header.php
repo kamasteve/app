@@ -53,6 +53,9 @@ header("location:index.php");
 </style>
 
 <script type="text/javascript" charset="utf-8" src="js/new/jquery-1.11.1.min.js"></script>
+<script src="js/moment.js"></script>
+	<script src="js/bootstrap.datetime.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/jquery.dataTables.js"></script>
 <script src="js/bootstrap.min.js"></script>
 

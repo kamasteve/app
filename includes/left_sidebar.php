@@ -14,9 +14,9 @@ echo '<div class="sidebar-nav">';
 	echo '<li><a class="ajax-link" href="payments.php"><i class="glyphicon glyphicon-list-alt"></i><span> Payments</span></a></li>';
 		echo '<li><a class="ajax-link" href="edit_payments.php"><i class="glyphicon glyphicon-list-alt"></i><span>Edit Payments</span></a></li>';
 		
-		echo '<li><a class="ajax-link" href="expenses.php"><i class="glyphicon glyphicon-picture"></i><span> Expenses</span></a></li>';
+		echo '<li><a class="ajax-link" href="newexpense.php"><i class="glyphicon glyphicon-plus"></i><span> Add Expenses</span></a></li>';
+		echo '<li><a class="ajax-link" href="expenses.php"><i class="glyphicon glyphicon-th-list"></i><span> Manage Invoices</span></a></li>';
 		echo '<li><a class="ajax-link" href="expenses.php"><i class="glyphicon glyphicon-picture"></i><span> Manage Invoices</span></a></li>';
-		
 	}
 	elseif ($pageid >200 && $pageid<=300){
 	echo '<li><a class="ajax-link" href="tenants1.php"><i class="glyphicon glyphicon-eye-open"></i><span> Tenants</span></a></li>';

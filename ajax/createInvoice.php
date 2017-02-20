@@ -100,20 +100,20 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
     //header('Content-Type: application/json');
 
     echo $encoded;
-		$responseArray = array('type' => 'success', 'message' => $okMessage);
+		$responseArray = array('type' => 'success', 'message' => $errorMessage);
 	}
-	else{
-    $query_fetchtenant = "SELECT tenant_id FROM tenants WHERE unit = '$unit'";
-	if(!$mysqli -> multi_query($query_fetchtenant)){
-		 $responseArray = array('type' => 'danger', 'message' => $errorMessage);
-	}
-	}	 
-	if ($result = $mysqli->query($query_fetchtenant)) {
+	if($mysqli -> multi_query($query)){
+    $query_fetchtenant = "SELECT * FROM tenants WHERE unit = $unit";
+	
+	//elseif(!$mysqli -> multi_query($query_fetchtenant)){
+		// $responseArray = array('type' => 'danger', 'message' => $errorMessage);
+	//
+	//if ($result = $mysqli->query($query_fetchtenant)) {
 
 		
 	    $row = mysqli_fetch_assoc($result);
-       $tenant_id =$row["tenant_id"];
-	    //var_dump($row);
+       $tenant_id = $row["tenant_id"];
+	   var_dump($row);
 
 	    
 		echo $tenant_id; 
@@ -123,14 +123,16 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	
 	} else{
 		echo $errorMessage;
+		 
+		echo $unit;
 	}
-	
+	echo $row["tenant_id"];
 		$date=date("Y-m-d H:i:s");
-		$account = "INSERT INTO accounts(credit,date,transaction_id,tenant_id,property_id,responsible)VALUES('$invoice_total','$date','$invoice_number','$tenant_id','$property','$username')";
+		$account = "INSERT INTO accounts(credit,date,transaction_id,tenant_id,property_id,responsible)VALUES('$invoice_total','$date','$invoice_number','100','$property','$username')";
 		$result_account = mysqli_query($mysqli, $account);
-		if (!$result_account) {
-         $responseArray = array('type' => 'danger', 'message' => $errorMessage);
-			}
+if (!$result_account) {
+$responseArray = array('type' => 'danger', 'message' => $errorMessage);
+}
 	
 /**
 	if($mysqli -> multi_query($query)){
