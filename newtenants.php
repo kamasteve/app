@@ -35,6 +35,7 @@ $query_insert_user = "INSERT INTO tenants(property,unit,type,fname,lname,phone,i
                  echo("Error description: " . mysqli_error($con));
             }
 			else{
+				
 				echo"tenant added sucessfully";
 			}
    ?>

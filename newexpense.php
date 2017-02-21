@@ -38,6 +38,34 @@ $(document).ready(function(){
     });
 });
 </script>
+<script type="text/javascript">
+$(function () {
+    $('#new_expense').on('submit', function (e) {
+        if (!e.isDefaultPrevented()) {
+			
+            var url = "http://localhost/app/new_expense.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $(this).serialize(),
+                success: function (data)
+                {
+                    var messageAlert = 'alert-' + data;
+                    var messageText = data;
+                    //alert(data);
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    if (messageAlert && messageText) {
+                        $('#new_expense').find('.messages').html(alertBox);
+                        $('#new_expense')[0].reset();
+						//window.location.reload();
+                    }
+                }
+            });
+            return false;
+        }
+    })
+});
+</script>
 <div class="ch-container">
 <div class="row">
 
@@ -47,7 +75,10 @@ $(document).ready(function(){
     <div class="box col-md-12">
         <div class="box-inner">
 		<div class="box-content row ">
-		<form class="form-horizontal" action="newtenants.php"  method="post">
+		<div class="invoice_content">
+
+	<div class='messages alert '> </div>
+		<form class="form-horizontal" action="new_expense.php"  id="new_expense" method="post">
 		<div class="row">
 		
 		
@@ -109,14 +140,14 @@ echo "</select>";
 		<label class="control-label col-xs-4" for="fname">Payer/Payee:</label>
 		<div class="col-xs-8">
   
-  <input class="form-control" name="fname" type="text" placeholder="Payer/Payee " required>
+  <input class="form-control" name="payee" type="text" placeholder="Payer/Payee " required>
 </div>
 </div>
 <div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="fname">Due On:</label>
+<label class="control-label col-xs-4" for="date">Due On:</label>
  <div class="input-group  col-xs-8" id="invoice_due_date">
 				            
-				                <input type="text" class="form-control required" name="invoice_due_date" placeholder="Select due date" data-date-format="" />
+				                <input type="text" class="form-control required" name="due_date" placeholder="Select due date" data-date-format="" />
 				                <span class="input-group-addon">
 				                    <span class="glyphicon glyphicon-calendar"></span>
 				                </span>
@@ -129,7 +160,7 @@ echo "</select>";
 <div class="form-group col-xs-6">
 <label class="control-label col-xs-4" for="fname">Category:</label>
   <div class=" col-xs-8">
-			<select class='form-control' name="unit" id="state">
+			<select class='form-control' name="category" id="state">
         <option value="">Repairs and Maintenance</option>
 		<option value="">Advertising</option>
 		<option value="">Office Expenses</option>
@@ -144,18 +175,18 @@ echo "</select>";
 <div class="form-group col-xs-6">
   <label class="control-label col-xs-4" for="fname">Ammount:</label>
     <div class="col-xs-8">
-		<input class="form-control" name="idnumber" type="text" placeholder=" Ammount" required>
+		<input class="form-control" name="amount" type="text" placeholder=" Amount" required>
 	</div>
 </div>
 
 <div class="form-group col-xs-6">
   <label class="control-label col-xs-4" for="fname">Expense Details:</label>
     <div class="col-xs-8">
-		<textarea  class="form-control" name="idnumber" type="text" placeholder=" details" required></textarea>
+		<textarea  class="form-control" name="details" type="text" placeholder=" details" required></textarea>
 	</div>
 </div>
 <div class="col-xs-6">
-
+<input type="hidden" name="responsible" value="<?php echo  $_id; ?> "/>
 </div>
 <div class="col-xs-6">
 <button type="submit" class="btn btn-default "   name='submit'>Save</button>

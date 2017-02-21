@@ -35,23 +35,20 @@ header("location:index.php");
 
 <link id="bs-css" href="css/bootstrap-cerulean.min.css" rel="stylesheet">
 <link href="css/charisma-app.css" rel="stylesheet">
-<link href='bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
-<link href='bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+
 <link href='css/new/style.css' rel='stylesheet'>
 <link href="css/dataTables.tableTools.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
 <link href="css/TableTools.css" rel="stylesheet">
 <link href='css/animate.min.css' rel='stylesheet'>
-<link href='bower_components/chosen/chosen.min.css' rel='stylesheet'>
-    <link href='bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
-    <link href="bower_components/responsive-tables/responsive-tables.css" rel='stylesheet'>
-    <link href="bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css" rel='stylesheet'>
+
+   
     <link href=" css/jquery.noty.css" rel='stylesheet'>
 	<link href=" css/css_theme.min.css" rel='stylesheet'>
 
 <style type="text/css" class="init">
 </style>
-
+<script src="js/jquery.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/new/jquery-1.11.1.min.js"></script>
 <script src="js/moment.js"></script>
 	<script src="js/bootstrap.datetime.js"></script>
