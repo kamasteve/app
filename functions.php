@@ -34,15 +34,15 @@ function getInvoices() {
 	// mysqli select query
 	if($results) {
 
-		print '<table id="example" class="display" cellspacing="0" width="100%"> 
-		<thead>
-				<th>Invoice</th>
-				<th>Customer</th>
-				<th>Issue Date</th>
-				<th>Due Date</th>
-				<th>Type</th>
-				<th>Status</th>
-				<th>Action</th>
+		print '<table id="example" class="display" cellspacing="0" width="100%">
+    <thead>
+				<td>Invoice</td>
+				<td>Customer</td>
+				<td>Issue Date</td>
+				<td>Due Date</td>
+				<td>Type</td>
+				<td>Status</td>
+				<td>Action</td>
 
 			  </thead><tbody>';
 
@@ -51,10 +51,10 @@ function getInvoices() {
 			print '
 				<tr>
 					<td>'.$row["invoice"].'</td>
-					<td>'.$row["name"].'</td>
+					<td>'.$row["responsible"].'</td>
 				    <td>'.$row["invoice_date"].'</td>
 				    <td>'.$row["invoice_due_date"].'</td>
-				    <td>'.$row["invoice_type"].'</td>
+				    <td>'.$row["property"].'</td>
 				';
 
 				if($row['status'] == "open"){
@@ -63,10 +63,10 @@ function getInvoices() {
 					print '<td><span class="label label-success">'.$row['status'].'</span></td>';
 				}
 
-			print '
-				    <td><a href="invoice-edit.php?id='.$row["invoice"].'" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a href="#" data-invoice-id="'.$row['invoice'].'" data-email="'.$row['email'].'" data-invoice-type="'.$row['invoice_type'].'" data-custom-email="'.$row['custom_email'].'" class="btn btn-success btn-xs email-invoice"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> <a href="/invoices/'.$row["invoice"].'.pdf" class="btn btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a> <a data-invoice-id="'.$row['invoice'].'" class="btn btn-danger btn-xs delete-invoice"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+			//print '
+				  // <td><a href="invoice-edit.php?id='.$row["invoice"].'" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a href="#" data-invoice-id="'.$row['invoice'].'" data-email="'.$row['email'].'" data-invoice-type="'.$row['invoice_type'].'" data-custom-email="'.$row['custom_email'].'" class="btn btn-success btn-xs email-invoice"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> <a href="/invoices/'.$row["invoice"].'.pdf" class="btn btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a> <a data-invoice-id="'.$row['invoice'].'" class="btn btn-danger btn-xs delete-invoice"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 			    
-			';
+			//';
 
 		}
 
