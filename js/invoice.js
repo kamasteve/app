@@ -2,7 +2,7 @@ $(function () {
     $('#create_invoice').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost/app/ajax/createinvoice.php";
+            var url = "http://localhost:6060/app/ajax/createinvoice.php";
             $.ajax({
                 type: "POST",
                 url: url,

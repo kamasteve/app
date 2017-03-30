@@ -522,7 +522,7 @@ $(document).ready(function() {
 
 			$.ajax({
 
-				url:'http://localhost/app/ajax/createInvoice.php',
+				url:'http://localhost:6060/app/ajax/createInvoice.php',
 				type: 'POST',
 				data: $("#create_invoice").serialize(),
 				dataType: 'json',
@@ -848,5 +848,6 @@ $(document).ready(function() {
 
 	    return errorCounter;
 	}
+	
 
 });

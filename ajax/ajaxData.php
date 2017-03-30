@@ -4,7 +4,7 @@ include('../includes/config.php');
 
 if(isset($_POST["property_id"]) && !empty($_POST["property_id"])){
     //Get all state data
-    $query = $mysqli->query("SELECT * FROM rental_units WHERE property_id = ".$_POST['property_id']." and status='0' ORDER BY property_id ASC");
+    $query = $mysqli->query("SELECT * FROM rental_units WHERE property_id = ".$_POST['property_id']." and status='1' ORDER BY property_id ASC");
     
     //Count total number of rows
     $rowCount = $query->num_rows;

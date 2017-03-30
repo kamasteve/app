@@ -16,6 +16,7 @@ if (!$query) {
    printf("Error: %s\n", mysqli_error($con));
     exit();
 }
+$date = date("Y-m-d");
 $propety=$_POST['property'];
 $row = mysqli_fetch_array($query);
 $pname=$row["name"];
@@ -28,7 +29,7 @@ $amount=$_POST['amount'];
 $details=$_POST['details'];
 $okMessage = 'Invoice Was Sussefully Created!!';
 			
-$query_add_expense ="INSERT into expenses (property,responsible,unit,payee,due_date,amount,details) VALUES('$pname','$responsible','$unit','$payee','$due_date','$amount','$details')";
+$query_add_expense ="INSERT into expenses (property,responsible,unit,payee,due_date,credit,details,date) VALUES('$pname','$responsible','$unit','$payee','$due_date','$amount','$details','$date')";
 $result_addexpense = mysqli_query($con, $query_add_expense);
 
 
@@ -36,11 +37,7 @@ if (!$result_addexpense) {
                  echo("Error description: " . mysqli_error($con));
             }
 			else if($result_addexpense){
-				$encoded = json_encode($responseArray);
-
-    //header('Content-Type: application/json');
-
-    echo $encoded;
-		$responseArray = array('type' => 'success', 'message' => $okMessage);
+				echo "expense added sucessfully";
 			}
+			
 ?>

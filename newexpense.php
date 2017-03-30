@@ -77,10 +77,10 @@ $(function () {
 		<div class="box-content row ">
 		<div class="invoice_content">
 
-	<div class='messages alert '> </div>
+	
 		<form class="form-horizontal" action="new_expense.php"  id="new_expense" method="post">
 		<div class="row">
-		
+		<div class='messages alert '> </div>
 		
   		<div class="form-group col-xs-6">
 		
@@ -188,10 +188,11 @@ echo "</select>";
 <div class="col-xs-6">
 <input type="hidden" name="responsible" value="<?php echo  $_id; ?> "/>
 </div>
+<div class="row">
 <div class="col-xs-6">
 <button type="submit" class="btn btn-default "   name='submit'>Save</button>
 </div>
-
+</div>
 
 
 </div>

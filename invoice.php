@@ -7,8 +7,15 @@ $pageid=108;
 width:auto !important;
 height:35px !important;
 }
-</style>
 
+#myModal {
+
+outline: none;
+overflow-x: hidden;
+overflow-y: auto;
+}
+</style>
+<script type="text/javascript" src="js/my_js.js"></script>
 <div class="ch-container">
 <div class="row">
 <?php include ('includes/left_sidebar.php'); ?>
@@ -40,6 +47,8 @@ $(document).ready(function() {
 <th>Due Date</th>
 <th>Subtotal</th>
 <th>Total</th>
+<th>Edit</th>
+<th>PAY</th>
 
 </tr>
 </thead>
@@ -57,6 +66,7 @@ while($row = mysqli_fetch_array($result)) {
 ?>
 
  <tr>
+ <?php $wishID = $row["invoice"]; ?>
 <td> <?php echo $row['fname'].'&nbsp'.$row['lname'] ?> </td>
 <td> <?php echo $row['name']; ?> </td>
 <td> <?php echo $row['invoice_date']; ?> </td>
@@ -65,7 +75,22 @@ while($row = mysqli_fetch_array($result)) {
 <td> <?php echo $row['invoice_due_date']; ?> </td>
 <td> <?php echo $row['subtotal'] ;?> </td>
 <td> <?php echo $row['total']; ?> </td>
-
+<td>
+        <form name="editWish" action="edit_tenant.php" method="GET">
+            <input type="hidden" name="wishID" value="<?php echo $wishID; ?> "/>
+           <!-- <input type="submit" class="glyphicon glyphicon-edit" name="editWish" value="Edit"/></span> -->
+			<button type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</button>
+        </form>
+    </td>
+	<td>
+	
+	<a class=" btn " data-toggle="modal" data-target="#myModal" data-my-id="'.$row["invoice"].'"> <i class="glyphicon glyphicon-euro"> </i>
+													PAY
+											</a>
+	
+    </td>
+	
+ 
   </tr>
 
 <?php }
@@ -79,6 +104,62 @@ mysqli_close($con);
 </div>
 </div>
 
+</div>
+</div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">Exit</button>
+</div>
+
+<div class="modal-body">
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Client</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="id_" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Payement Date</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="external_id">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Paid Ammount</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="name" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Amount</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="amount" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="product-code" class="col-xs-4 col-form-label">Payment Period</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="product_code">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="cast-code" class="col-xs-4 col-form-label">Payment Method</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="custcode">
+  </div>
+</div>
+
+
+<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+<button type="submit" class="btn btn-success" data-dismiss="modal" id="update_record">Update</button>
+
 
 </div>
+</div>
+</div>
+</div>
+
 <?php include ('includes/footer.php');  ?>

@@ -32,7 +32,13 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	$invoice_total = $_POST['invoice_total']; // invoice total
 	$invoice_notes = $_POST['invoice_notes']; // Invoice notes
 	$username=$_POST['responsible'];
-
+	$query_fetchtenant = "SELECT tenant_id FROM tenants WHERE unit = '$unit'";
+	$date=date("Y-m-d H:i:s");
+	if ($result=mysqli_query($mysqli,$query_fetchtenant)){
+  
+	   $row = mysqli_fetch_assoc($result);
+       $tenant_id = $row["tenant_id"];
+	}
 	// insert invoice into database
 	$query = "INSERT INTO invoices (
 					invoice,
@@ -94,6 +100,8 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 		";
 
 	}
+	
+	$query.= "INSERT INTO accounts(credit,date,transaction_id,tenant_id,property_id,responsible)VALUES('$invoice_total','$date','$invoice_number','$tenant_id','$property','$username')";
 	if(!$mysqli -> multi_query($query)){
 		$encoded = json_encode($responseArray);
 
@@ -101,36 +109,13 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 
     echo $encoded;
 		$responseArray = array('type' => 'success', 'message' => $errorMessage);
-	} else{
-		print $okMessage;
+	} else{ 
+	echo "Invoice created sucessfully ";
 	}
-	if($mysqli -> multi_query($query)){
-    $query_fetchtenant = "SELECT * FROM tenants WHERE unit = $unit";
-	$result=mysqli_query($mysqli, $query_fetchtenant);
 	
-	if ($result) {
 
 		
-	    $row = mysqli_fetch_assoc($result);
-       $tenant_id = $row["tenant_id"];
-	   var_dump($row);
-
-	    // Frees the memory associated with a result
 	
-	} else{
-		print $errorMessage;
-		 
-		print $unit;
-	
-	print $row["tenant_id"];
-		$date=date("Y-m-d H:i:s");
-		$account = "INSERT INTO accounts(credit,date,transaction_id,tenant_id,property_id,responsible)VALUES('$invoice_total','$date','$invoice_number','100','$property','$username')";
-		$result_account = mysqli_query($mysqli, $account);
-	}
-if (!$result_account) {
-$responseArray = array('type' => 'danger', 'message' => $errorMessage);
-}
-	}
 /**
 	if($mysqli -> multi_query($query)){
 		

@@ -21,12 +21,7 @@ function getInvoices() {
 	}
 
 	// the query
-    $query = "SELECT * 
-		FROM invoices i
-		JOIN customers c
-		ON c.invoice = i.invoice
-		WHERE i.invoice = c.invoice
-		ORDER BY i.invoice";
+    $query = "SELECT  invoice_date,invoice,status,responsible,invoice_due_date,subtotal,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit";
 
 	// mysqli select query
 	$results = $mysqli->query($query);
@@ -54,7 +49,8 @@ function getInvoices() {
 					<td>'.$row["responsible"].'</td>
 				    <td>'.$row["invoice_date"].'</td>
 				    <td>'.$row["invoice_due_date"].'</td>
-				    <td>'.$row["property"].'</td>
+				    <td>'.$row["name"].'</td>
+					<td>'.$row["fname"].'</td>
 				';
 
 				if($row['status'] == "open"){
