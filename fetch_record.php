@@ -6,10 +6,7 @@
   $id_ = $_REQUEST['id'];
 
   // prepare query
-  $query = 'SELECT *
-            FROM invoice
-            WHERE invoice='.$id_.'
-            LIMIT 100';
+  $query =  "SELECT  invoice_date,invoice,responsible,invoice_due_date,subtotal,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit WHERE T1.invoice='.$id_.'";
 
   // execute query
   $result = mysqli_query($link,$query) or die('Server error = '.mysqli_error($link));

@@ -83,10 +83,13 @@ while($row = mysqli_fetch_array($result)) {
         </form>
     </td>
 	<td>
-	
-	<a class=" btn " data-toggle="modal" data-target="#myModal" data-my-id="'.$row["invoice"].'"> <i class="glyphicon glyphicon-euro"> </i>
-													PAY
-											</a>
+	<?php
+	echo '<a class="xyz btn " data-toggle="modal" data-target="#myModal" data-my-id="'.$row["invoice"].'">
+													<i class="glyphicon glyphicon-euro icon-white"></i>
+													Pay
+											</a>'
+		
+		?>									
 	
     </td>
 	
@@ -124,7 +127,7 @@ mysqli_close($con);
 <div class="form-group row">
   <label for="external-id" class="col-xs-4 col-form-label">Payement Date</label>
   <div class="col-xs-8">
-    <input class="form-control" type="text" value="" id="external_id">
+    <input class="form-control" type="text" value="" id="total">
   </div>
 </div>
 <div class="form-group row">

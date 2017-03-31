@@ -21,8 +21,8 @@ $(document).ready(function() {
           for(var i = 0; i < result.length; i++) {
           var obj = result[i];
 
-          $("#id_").val(obj.id);
-          $("#external_id").val(obj.external_id);
+          $("#id_").val(obj.invoice);
+          $("#total").val(obj.total);
           $("#name").val(obj.name);
           $("#amount").val(obj.amount);
           $("#product_code").val(obj.product_code);
