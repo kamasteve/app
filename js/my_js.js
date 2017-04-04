@@ -25,8 +25,8 @@ $(document).ready(function() {
           $("#total").val(obj.total);
           $("#name").val(obj.name);
           $("#amount").val(obj.amount);
-          $("#product_code").val(obj.product_code);
-          $("#custcode").val(obj.custcode);
+          $("#fname").val(obj.fname);
+          $("#lname").val(obj.lname);
           $("#payer_code").val(obj.payercode);
           $("#line_number").val(obj.linenumber);
           }
@@ -46,7 +46,7 @@ $(document).ready(function() {
     var line_number=$("#line_number").val();
 
     $.ajax({
-        url: "http://localhost/GPTO_Pending_Records/update_record.php",
+        url: "http://localhost:6060/app/update_record.php",
         type: "POST",
         data: {
            id_:id_,

@@ -119,45 +119,53 @@ mysqli_close($con);
 
 <div class="modal-body">
 <div class="form-group row">
-  <label for="external-id" class="col-xs-4 col-form-label">Client</label>
+  <label for="external-id" class="col-xs-4 col-form-label">Invoice Number</label>
   <div class="col-xs-8">
      <input class="form-control" type="text" value="" id="id_" disabled>
   </div>
 </div>
 <div class="form-group row">
-  <label for="external-id" class="col-xs-4 col-form-label">Payement Date</label>
+  <label for="external-id" class="col-xs-4 col-form-label">Customer</label>
   <div class="col-xs-8">
-    <input class="form-control" type="text" value="" id="total">
+     <input class="form-control" type="text" value="" id="fname" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Invoiced Ammount</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="total" disabled>
   </div>
 </div>
 <div class="form-group row">
   <label for="external-id" class="col-xs-4 col-form-label">Paid Ammount</label>
   <div class="col-xs-8">
-    <input class="form-control" type="text" value="" id="name" disabled>
+    <input class="form-control" type="text" value="" id="payment">
   </div>
 </div>
 <div class="form-group row">
-  <label for="external-id" class="col-xs-4 col-form-label">Amount</label>
+<label class="control-label col-xs-4" for="fname">Payment Mode:</label>
+  <div class="col-xs-8">
+  
+ <select class="form-control " name="mode">
+        <option>Cash</option>
+        <option>Bank Deposit</option>
+        <option>Mpesa</option>
+        <option>Cheque</option>
+      </select>
+</div>
+</div>
+
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label"> Payment Ref </label>
   <div class="col-xs-8">
     <input class="form-control" type="text" value="" id="amount" disabled>
   </div>
 </div>
-<div class="form-group row">
-  <label for="product-code" class="col-xs-4 col-form-label">Payment Period</label>
-  <div class="col-xs-8">
-    <input class="form-control" type="text" value="" id="product_code">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="cast-code" class="col-xs-4 col-form-label">Payment Method</label>
-  <div class="col-xs-8">
-    <input class="form-control" type="text" value="" id="custcode">
-  </div>
-</div>
 
 
-<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-<button type="submit" class="btn btn-success" data-dismiss="modal" id="update_record">Update</button>
+
+<button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
+<button type="submit" class=" btn-success" data-dismiss="modal" id="update_record">PAY</button>
 
 
 </div>
