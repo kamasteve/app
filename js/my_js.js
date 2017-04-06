@@ -27,8 +27,8 @@ $(document).ready(function() {
           $("#amount").val(obj.amount);
           $("#fname").val(obj.fname);
           $("#lname").val(obj.lname);
-          $("#payer_code").val(obj.payercode);
-          $("#line_number").val(obj.linenumber);
+         // $("#mode").val(obj.mode);
+          $("#tenant_id").val(obj.tenant_id);
           }
         }
       });
@@ -37,26 +37,26 @@ $(document).ready(function() {
   $('#update_record').click(function () {
 
     var id_=$("#id_").val();
-    var external_id=$("#external_id").val();
+    var fname=$("#fname").val();
     var name=$("#name").val();
     var amount=$("#amount").val();
-    var product_code=$("#product_code").val();
-    var custcode=$("#custcode").val();
-    var payer_code=$("#payer_code").val();
-    var line_number=$("#line_number").val();
+    var responsible=$("#responsible").val();
+    var mode=$("#mode").val();
+    var payment_ref=$("#payment_ref").val();
+    var tenant_id=$("#tenant_id").val();
 
     $.ajax({
         url: "http://localhost:6060/app/update_record.php",
         type: "POST",
         data: {
            id_:id_,
-           external_id:external_id,
+           payment_ref:payment_ref,
            name:name,
            amount:amount,
-           product_code:product_code,
-           custcode:custcode,
-           payer_code:payer_code,
-           line_number:line_number
+           responsible:responsible,
+           mode:mode,
+           
+           tenant_id:tenant_id
         },
         success: function(result){
           console.log("Update response: "+result);

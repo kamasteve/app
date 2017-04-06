@@ -131,6 +131,12 @@ mysqli_close($con);
   </div>
 </div>
 <div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Tenant ID</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="tenant_id" disabled>
+  </div>
+</div>
+<div class="form-group row">
   <label for="external-id" class="col-xs-4 col-form-label">Invoiced Ammount</label>
   <div class="col-xs-8">
     <input class="form-control" type="text" value="" id="total" disabled>
@@ -139,18 +145,18 @@ mysqli_close($con);
 <div class="form-group row">
   <label for="external-id" class="col-xs-4 col-form-label">Paid Ammount</label>
   <div class="col-xs-8">
-    <input class="form-control" type="text" value="" id="payment">
+    <input class="form-control" type="text" value="" id="amount">
   </div>
 </div>
 <div class="form-group row">
 <label class="control-label col-xs-4" for="fname">Payment Mode:</label>
   <div class="col-xs-8">
   
- <select class="form-control " name="mode">
-        <option>Cash</option>
-        <option>Bank Deposit</option>
-        <option>Mpesa</option>
-        <option>Cheque</option>
+ <select class="form-control " name="mode" id="mode">
+        <option value="Cash">Cash</option>
+        <option value="Bank Deposit">>Bank Deposit</option>
+        <option value="Mpesa">Mpesa</option>
+        <option value="Cheque">Cheque</option>
       </select>
 </div>
 </div>
@@ -158,9 +164,10 @@ mysqli_close($con);
 <div class="form-group row">
   <label for="external-id" class="col-xs-4 col-form-label"> Payment Ref </label>
   <div class="col-xs-8">
-    <input class="form-control" type="text" value="" id="amount" disabled>
+    <input class="form-control" type="text" value="" id="payment_ref" >
   </div>
 </div>
+<input type="hidden" id="responsible" value="<?php echo  $_id; ?> "/>
 
 
 

@@ -4,33 +4,54 @@
 
   // get record
   $id_ = $_REQUEST['id_'];
-  $external_id = $_REQUEST['external_id'];
-  $name = $_REQUEST['name'];
+  $mode = $_REQUEST['mode'];
   $amount = $_REQUEST['amount'];
-  $product_code = $_REQUEST['product_code'];
-  $custcode = $_REQUEST['custcode'];
-  $payer_code = $_REQUEST['payer_code'];
-  $line_number = $_REQUEST['line_number'];
-
+  $tenant_id = $_REQUEST['tenant_id'];
+  $payment_ref = $_REQUEST['payment_ref'];
+  $responsible = $_REQUEST['responsible'];
+  $type = 'Invoice Payment';
+   $date = date("Y-m-d");
   // prepare query
-  $query = "UPDATE payments_details
-            SET id='$id_',
-                external_id='$external_id',
-                name='$name',
-                amount='$amount',
-                product_code='$product_code',
-                custcode='$custcode',
-                payercode='$payer_code',
-                linenumber='$line_number'
-            WHERE id='$id_'";
-
+  
+  
+  $query = "INSERT INTO rent_payments (
+					type,
+					payment_mode, 
+					serial,
+					ammount,
+					date,
+					particulars, 
+					tenant_id
+				) VALUES (
+				  	'".$type."',
+				  	'".$mode."',
+				  	'".$id_."',
+					'".$amount."',
+					'".$date."',
+				  	'".$payment_ref."',
+				  	'".$tenant_id."'
+			    );
+			";
+	$query.= "INSERT INTO accounts (
+					debit,
+					date, 
+					invoice_id,
+					tenant_id,
+					responsible
+				) VALUES (
+				  	'".$amount."',
+				  	'".$date."',
+				  	'".$id_."',
+					'".$tenant_id."',
+					'".$responsible."'
+			    );
+			";
   // execute query
   $result = mysqli_query($link,$query) or die('Server error = '.mysqli_error($link));
 
   // check if successful
-  if($result){
-    // return successful
-    echo 1;
+  if($result){	
+				echo 1;
   }else{
     // return failed
     echo 0;
