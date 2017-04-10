@@ -101,7 +101,7 @@ var base_url= 'http://www.hilleconomicgroup.com';
       <a class="nav-link" href="tenants1.php">Property Management</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Reports</a>
+      <a class="nav-link" href="account_statement.php">Reports</a>
     </li>
 	<li class="nav-item">
       <a class="nav-link" href="#">Tenant portal</a>

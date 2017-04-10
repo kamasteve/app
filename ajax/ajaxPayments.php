@@ -22,7 +22,7 @@ if(isset($_POST["property_id"]) && !empty($_POST["property_id"])){
 
 if(isset($_POST["state_id"]) && !empty($_POST["state_id"])){
     //Get all city data
-    $query = $db->query("SELECT * FROM cities WHERE state_id = ".$_POST['state_id']." AND status = '1' ORDER BY city_name ASC");
+    $query = $db->query("SELECT * FROM cities WHERE state_id = ".$_POST['state_id']." AND status = '0' ORDER BY city_name ASC");
     
     //Count total number of rows
     $rowCount = $query->num_rows;

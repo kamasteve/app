@@ -34,6 +34,7 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	$username=$_POST['responsible'];
 	$query_fetchtenant = "SELECT tenant_id FROM tenants WHERE unit = '$unit'";
 	$date=date("Y-m-d H:i:s");
+	$billing_id=$invoice_number;
 	if ($result=mysqli_query($mysqli,$query_fetchtenant)){
   
 	   $row = mysqli_fetch_assoc($result);
@@ -101,7 +102,7 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 
 	}
 	
-	$query.= "INSERT INTO accounts(credit,date,transaction_id,tenant_id,property_id,responsible)VALUES('$invoice_total','$date','$invoice_number','$tenant_id','$property','$username')";
+	$query.= "INSERT INTO accounts(credit,date,invoice_id,customercode,property_id,responsible)VALUES('$invoice_total','$date','$billing_id','$tenant_id','$property','$username')";
 	if(!$mysqli -> multi_query($query)){
 		$encoded = json_encode($responseArray);
 

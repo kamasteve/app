@@ -29,7 +29,7 @@ $amount=$_POST['amount'];
 $details=$_POST['details'];
 $okMessage = 'Invoice Was Sussefully Created!!';
 			
-$query_add_expense ="INSERT into expenses (property,responsible,unit,payee,due_date,credit,details,date) VALUES('$pname','$responsible','$unit','$payee','$due_date','$amount','$details','$date')";
+$query_add_expense ="INSERT into expenses (property,responsible,unit,payee,due_date,amount,details,date) VALUES('$pname','$responsible','$unit','$payee','$due_date','$amount','$details','$date')";
 $result_addexpense = mysqli_query($con, $query_add_expense);
 
 
@@ -38,6 +38,7 @@ if (!$result_addexpense) {
             }
 			else if($result_addexpense){
 				echo "expense added sucessfully";
+				
 			}
 			
 ?>

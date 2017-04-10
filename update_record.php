@@ -32,11 +32,11 @@
 				  	'".$tenant_id."'
 			    );
 			";
-	$query.= "INSERT INTO accounts (
+	$query = "INSERT INTO accounts (
 					debit,
 					date, 
 					invoice_id,
-					tenant_id,
+					customercode,
 					responsible
 				) VALUES (
 				  	'".$amount."',
