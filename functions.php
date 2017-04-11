@@ -21,7 +21,7 @@ function getInvoices() {
 	}
 
 	// the query
-    $query = "SELECT  invoice_date,invoice,status,responsible,invoice_due_date,subtotal,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit";
+    $query = "SELECT  invoice_date,invoice,status,responsible,invoice_due_date,unit,subtotal,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit";
 
 	// mysqli select query
 	$results = $mysqli->query($query);
@@ -33,11 +33,11 @@ function getInvoices() {
     <thead>
 				<td>Invoice</td>
 				<td>Customer</td>
-				<td>Issue Date</td>
-				<td>Due Date</td>
-				<td>Type</td>
-				<td>Status</td>
-				<td>Action</td>
+				<td>property Date</td>
+				<td>Unit</td>
+				<td>Print</td>
+				<td>SMS</td>
+				<td>Delete</td>
 
 			  </thead><tbody>';
 
@@ -46,16 +46,16 @@ function getInvoices() {
 			print '
 				<tr>
 					<td>'.$row["invoice"].'</td>
-					<td>'.$row["responsible"].'</td>
-				    <td>'.$row["invoice_date"].'</td>
-				    <td>'.$row["invoice_due_date"].'</td>
+					<td>'. $row['fname'].'&nbsp'.$row['lname'] .' </td>
+				    <td>'.$row["name"].'</td>
+				    <td>'.$row["unit"].'</td>
 				    <td>'.$row["name"].'</td>
 					<td>'.$row["fname"].'</td>
 				';
 
 				if($row['status'] == "open"){
 					print '<td><span class="label label-info">'.$row['status'].'</span></td>';
-				} elseif ($row['status'] == "paid"){
+				} elseif ($row['status'] == "closed"){
 					print '<td><span class="label label-success">'.$row['status'].'</span></td>';
 				}
 

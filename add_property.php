@@ -1,19 +1,20 @@
 <?php include ('includes/header.php');
-include ('includes/config.php');
+//include ('includes/config.php');
 $pageid=209;
 function getpropertyid() {
 
 	// Connect to the database
-	$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
+	$con = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
+    DATABASE_NAME);
 
 	// output any connection error
-	if ($mysqli->connect_error) {
-	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+	if ($con->connect_error) {
+	    die('Error : ('. $con->connect_errno .') '. $mysqli->connect_error);
 	}
 
 	$query = "SELECT property_id FROM properties ORDER BY property_id DESC LIMIT 1";
 
-	if ($result = $mysqli->query($query)) {
+	if ($result = $con->query($query)) {
 
 		$row_cnt = $result->num_rows;
 
@@ -31,11 +32,39 @@ function getpropertyid() {
 		$result->free();
 
 		// close connection 
-		$mysqli->close();
+		$con->close();
 	}
 	
 }
 ?>
+<script type="text/javascript">
+$(function () {
+    $('#addproperty').on('submit', function (e) {
+        if (!e.isDefaultPrevented()) {
+			
+            var url = "http://localhost:6060/app/addproperty.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $(this).serialize(),
+                success: function (data)
+                {
+                    var messageAlert = 'alert-' + data;
+                    var messageText = data;
+                    //alert(data);
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    if (messageAlert && messageText) {
+                        $('#addproperty').find('.messages').html(alertBox);
+                        $('#addproperty')[0].reset();
+						//window.location.reload();
+                    }
+                }
+            });
+            return false;
+        }
+    })
+});
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
     var max_fields      = 10; //maximum input boxes allowed
@@ -67,10 +96,12 @@ $(document).ready(function() {
 		
 		<div class="box col-md-3">
 		
+		
 		</div>
 		<div class="box col-md-9">
+		<div class='messages alert'> </div>
   
- <form action="addproperty.php" method="post" onsubmit="return confirm('Do you really want to submit the form?');">
+ <form action="addproperty.php" method="post" id="addproperty" onsubmit="return confirm('Do you really want to submit the form?');">
 		<div class="form-group">
 		<div class="row basicinfo">
        <div class="row">

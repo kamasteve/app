@@ -38,7 +38,7 @@ $(document).ready(function() {
 
     var id_=$("#id_").val();
     var fname=$("#fname").val();
-    var name=$("#name").val();
+    var total=$("#total").val();
     var amount=$("#amount").val();
     var responsible=$("#responsible").val();
     var mode=$("#mode").val();
@@ -51,7 +51,7 @@ $(document).ready(function() {
         data: {
            id_:id_,
            payment_ref:payment_ref,
-           name:name,
+           total:total,
            amount:amount,
            responsible:responsible,
            mode:mode,

@@ -11,7 +11,7 @@
      // Initialize ExtendedAddslash() function for every $_POST variable
      
 
-if (isset($_POST['submit'])) {
+
 $property_id=$_POST['property_id'];	
 $name=$_POST['name'];
 $year=$_POST['year'];
@@ -32,12 +32,12 @@ $query_insert_user = "INSERT INTO properties(property_id,name,year,type,address,
 
             $result_insert_user = mysqli_query($con, $query_insert_user);
             if (!$result_insert_user) {
-             echo "Error: " . $query_insert_user . "<br>" . mysqli_error($con);
+             print "Error: " . $query_insert_user . "<br>" . mysqli_error($con);
 			}
 			else{
-			echo " Property Added Successfully";
+			print " Property Added Successfully";
 }
-}
+
 foreach($_POST['unit_id'] as $key => $value) {
 	$unitid = $_POST['unit_id'][$key];
 	$unit_type = $_POST['unit_type'][$key];
@@ -47,10 +47,10 @@ $add_unit ="INSERT into rental_units(property_id,unit_id,unit_type,bed,rent) VAL
  $result_addunits = mysqli_query($con, $add_unit);
 }
             if (!$result_addunits) {
-             echo "Error: " . $add_unit . "<br>" . mysqli_error($con);
+             print "Error: " . $add_unit . "<br>" . mysqli_error($con);
 			}
 			else{
-			echo " Property Added Successfully";
+			print " Property Added Successfully";
 
 }
 ?>

@@ -1,35 +1,45 @@
 
-<?php include ('includes/header_invoice.php'); 
-include('functions.php');
+<?php include ('includes/header.php'); 
+
 $sql1 = mysqli_query($con,"SELECT * FROM properties");
 while($row1 = mysqli_fetch_array($sql1)) {
 $pro_arr[]=$row1;
 $pageid=101;
 }
 ?>
-<style>
-.tentant_footer_cls .box-icon a{
-width:auto !important;
-height:35px !important;
 
-}
-.form-control {
-    background-color: #FFCC99;
-}
-.btn{
-background: #B6EE65;
+<div class="ch-container">
+<div class="row">
 
-}
-.invoice_content{
-margin:8px;
-}
+ <?php include ('includes/left_sidebar.php');  ?>
+ <div id="content" class="col-lg-10 col-sm-10">
+ <div class="row">
+    <div class="box col-md-12">
+<div class="box-inner">
 
+			
+			
+				<?php 
 
-</style>
+$con = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
+    DATABASE_NAME);
+	// output any connection error
+	if ($con->connect_error) {
+		die('Error : ('.$mysqli->connect_errno .') '. $mysqli->connect_error);
+	}
 
+	// the query
+    $query = "SELECT  invoice_date,invoice,status,responsible,invoice_due_date,unit,subtotal,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit";
+
+	// mysqli select query
+	$results = $con->query($query);
+
+	// mysqli select query
+	?>
+
+<table id="example" class="display" cellspacing="0" width="100%">
 <script type="text/javascript" language="javascript" class="init">
 $(document).ready(function() {
-
 	$('#example').DataTable( {
 	dom: 'T<"clear">lfrtip',
 	tableTools: {
@@ -38,59 +48,54 @@ $(document).ready(function() {
 	} );
 } );
 </script>
-<div class="ch-container">
-<div class="row">
+<thead>
+<tr>
+<th>Invoice</th>
+<th>Customer</th>
+<th>property Date</th>
+<th>Unit</th>
+<th>Print</th>
+<th>SMS</th>
+<th>Email</th>
+<th>Delete</th>
+ </tr>
+</thead>
+<tbody>
+<?php
+		while($row = $results->fetch_assoc()) {
 
- <?php include ('includes/left_sidebar.php');  ?>
- <div id="content" class="col-lg-10 col-sm-10">
- <div class="row">
-    <div class="box col-md-12">
-
-<div class="row">
-
-	<div class="col-xs-12">
-
-		<div id="response" class="alert alert-success" style="display:none;">
-			<a href="#" class="close" data-dismiss="alert">&times;</a>
-			<div class="message"></div>
-		</div>
-	
-		<div class="panel panel-default">
-			<div class="panel-heading">
+			?>
+				<tr>
+					<td> <?php echo$row["invoice"]; ?></td>
+					<td> <?php echo $row['fname'];'&nbsp'.$row['lname'] ?> </td>
+				    <td><?php echo $row["name"];?></td>
+				    <td><?php echo $row["unit"];?></td>
+				    <td><?php echo $row["name"];?></td>
+					<td><?php echo $row["fname"];?></td>
+					
+					<td><a href="invoice-edit.php?id='.$row["invoice"].'" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a href="#" data-invoice-id="'.$row['invoice'].'" data-email="'.$row['email'].'" data-invoice-type="'.$row['invoice_type'].'" data-custom-email="'.$row['custom_email'].'" class="btn btn-success btn-xs email-invoice"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> <a href="/invoices/'.$row["invoice"].'.pdf" class="btn btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a> <a data-invoice-id="'.$row['invoice'].'" class="btn btn-danger btn-xs delete-invoice"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td> 
+<?php
+				if($row['status'] == "open"){
+					print '<td><span class="label label-info">'.$row['status'].'</span></td>';
+				} elseif ($row['status'] == "closed"){
+					print '<td><span class="label label-success">'.$row['status'].'</span></td>';
+					'</tr>';
+				}
+		}
+?>
+			
 				
-			</div>
-			<div class="panel-body form-group form-group-sm">
+			    
 			
+		        </tr>
+				
+</tbody>
+</table>
 			
-				<?php getInvoices(); ?>
-			</div>
-		</div>
-	</div>
-<div>
-
-<div id="delete_invoice" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Delete Invoice</h4>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this invoice?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
-		<button type="button" data-dismiss="modal" class="btn">Cancel</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
 </div>
 </div>
 </div>
-</div>
-</div>
-</div><!-- /.modal -->
 
 <?php
-	include('includes/footer.php');
+include('includes/footer.php');
 ?>

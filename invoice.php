@@ -45,7 +45,7 @@ $(document).ready(function() {
 <th>Number</th>
 <th>Resposible</th>
 <th>Due Date</th>
-<th>Subtotal</th>
+<th>Status</th>
 <th>Total</th>
 <th>Edit</th>
 <th>PAY</th>
@@ -60,7 +60,7 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$result = mysqli_query($con,"SELECT  invoice_date,invoice,responsible,invoice_due_date,subtotal,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit");
+$result = mysqli_query($con,"SELECT  invoice_date,invoice,responsible,invoice_due_date,status,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit");
 
 while($row = mysqli_fetch_array($result)) {
 ?>
@@ -73,13 +73,18 @@ while($row = mysqli_fetch_array($result)) {
 <td> <?php echo $row['invoice']; ?> </td>
 <td> <?php echo $row['responsible']; ?> </td>
 <td> <?php echo $row['invoice_due_date']; ?> </td>
-<td> <?php echo $row['subtotal'] ;?> </td>
+<?php if($row['status'] == "open"){
+					print '<td><span class="label label-info">'.$row['status'].'</span></td>';
+				} elseif ($row['status'] == "closed"){
+					print '<td><span class="label label-success">'.$row['status'].'</span></td>';
+				}
+				?>
 <td> <?php echo $row['total']; ?> </td>
 <td>
         <form name="editWish" action="edit_tenant.php" method="GET">
             <input type="hidden" name="wishID" value="<?php echo $wishID; ?> "/>
            <!-- <input type="submit" class="glyphicon glyphicon-edit" name="editWish" value="Edit"/></span> -->
-			<button type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</button>
+			<a type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</a>
         </form>
     </td>
 	<td>

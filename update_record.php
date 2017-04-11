@@ -9,6 +9,7 @@
   $tenant_id = $_REQUEST['tenant_id'];
   $payment_ref = $_REQUEST['payment_ref'];
   $responsible = $_REQUEST['responsible'];
+  $total = $_REQUEST['total'];
   $type = 'Invoice Payment';
    $date = date("Y-m-d");
   // prepare query
@@ -48,10 +49,14 @@
 			";
   // execute query
   $result = mysqli_query($link,$query) or die('Server error = '.mysqli_error($link));
+  if ($amount >= $total){
+	  $update = "UPDATE invoices SET status='closed' WHERE invoice='$id_'";
+	  $result = mysqli_query($link,$update) or die('Server error = '.mysqli_error($link));
+  }
 
   // check if successful
-  if($result){	
-				echo 1;
+  if($result ){	
+				
   }else{
     // return failed
     echo 0;
