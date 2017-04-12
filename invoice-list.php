@@ -54,9 +54,9 @@ $(document).ready(function() {
 <th>Customer</th>
 <th>property Date</th>
 <th>Unit</th>
-<th>Print</th>
+<th>Status</th>
 <th>SMS</th>
-<th>Email</th>
+<th>Print</th>
 <th>Delete</th>
  </tr>
 </thead>
@@ -66,34 +66,67 @@ $(document).ready(function() {
 
 			?>
 				<tr>
+				 <?php $wishID = $row["invoice"]; ?>
 					<td> <?php echo$row["invoice"]; ?></td>
 					<td> <?php echo $row['fname'];'&nbsp'.$row['lname'] ?> </td>
 				    <td><?php echo $row["name"];?></td>
-				    <td><?php echo $row["unit"];?></td>
-				    <td><?php echo $row["name"];?></td>
-					<td><?php echo $row["fname"];?></td>
-					
-					<td><a href="invoice-edit.php?id='.$row["invoice"].'" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a href="#" data-invoice-id="'.$row['invoice'].'" data-email="'.$row['email'].'" data-invoice-type="'.$row['invoice_type'].'" data-custom-email="'.$row['custom_email'].'" class="btn btn-success btn-xs email-invoice"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> <a href="/invoices/'.$row["invoice"].'.pdf" class="btn btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a> <a data-invoice-id="'.$row['invoice'].'" class="btn btn-danger btn-xs delete-invoice"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td> 
-<?php
+					<td><?php echo $row["unit"];?></td>
+					<?php
 				if($row['status'] == "open"){
 					print '<td><span class="label label-info">'.$row['status'].'</span></td>';
 				} elseif ($row['status'] == "closed"){
 					print '<td><span class="label label-success">'.$row['status'].'</span></td>';
 					'</tr>';
 				}
-		}
-?>
-			
+		
+		?>
+
+				   <td><a href="#"  class=" btn-success btn-xs btn-lg email-invoice"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
+				   <td><a href="#" class=" btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
+				   
+	<td>
+	<?php
+	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete" data-my-id="'.$row["invoice"].'">
+													<i class="glyphicon glyphicon-trash icon-white"></i>
+													
+											</a>'
+		
+		?>									
+	
+    </td>
+				    
+					
+	
 				
 			    
 			
 		        </tr>
-				
+		<?php } ?>
 </tbody>
 </table>
 			
 </div>
 </div>
+</div>
+<div id="modalDelete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
+		<button type="submit" class=" btn-success" data-dismiss="modal" id="delete_record">PAY</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <?php

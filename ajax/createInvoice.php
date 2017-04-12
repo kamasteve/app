@@ -102,7 +102,7 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 
 	}
 	
-	$query.= "INSERT INTO accounts(credit,date,invoice_id,customercode,property_id,responsible)VALUES('$invoice_total','$date','$billing_id','$tenant_id','$property','$username')";
+	$query.= "INSERT INTO credit(credit,date,invoice_id,customercode,property_id,responsible)VALUES('$invoice_total','$date','$billing_id','$tenant_id','$property','$username')";
 	if(!$mysqli -> multi_query($query)){
 		$encoded = json_encode($responseArray);
 
