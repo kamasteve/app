@@ -1,6 +1,7 @@
 <?php
 include ('database_connection.php');
-$query = $dbc->query("SELECT name FROM properties WHERE property_id = ".$_POST['property']."");
+$query = $con->query("SELECT name FROM properties WHERE property_id = ".$_POST['property']."");
+
 $row = mysqli_fetch_array($query);
 $property=$row["name"];
 if (isset($_POST['submit'])) {
@@ -21,9 +22,9 @@ $today = date("Y-m-d H:i:s");
 $query_insert_user = "INSERT INTO rent_payments(property,house_number,rental_period,type,first_name,last_name,payment_mode,serial,phone,email,id_number,ammount,date )VALUES('$property','$unit','$period','$type','$fname','$lname','$mode','$serial','$phone','email','$idnumber','$ammount','$today')";
 
 
-            $result_insert_user = mysqli_query($dbc, $query_insert_user);
+            $result_insert_user = mysqli_query($con, $query_insert_user);
             if (!$result_insert_user) {
-             echo "Error: " . $query_insert_user . "<br>" . mysqli_error($dbc);
+             echo "Error: " . $query_insert_user . "<br>" . mysqli_error($con);
 			}
 			else{
 			require('u/fpdf.php');

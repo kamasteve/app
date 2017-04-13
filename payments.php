@@ -18,7 +18,7 @@ $(document).ready(function(){
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost/app/ajax/ajaxPayments.php',
+                url:'http://localhost:6060/app/ajax/ajaxPayments.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);

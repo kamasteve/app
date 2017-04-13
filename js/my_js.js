@@ -63,7 +63,35 @@ $(document).ready(function() {
         }
       });
   })// end of update button action
-  
+  $('#delete_record').click(function () {
+
+    var id_=$("#id_").val();
+    var fname=$("#fname").val();
+    var total=$("#total").val();
+    var amount=$("#amount").val();
+    var responsible=$("#responsible").val();
+    var mode=$("#mode").val();
+    var payment_ref=$("#payment_ref").val();
+    var tenant_id=$("#tenant_id").val();
+
+    $.ajax({
+        url: "http://localhost:6060/app/ajax/delete_record.php",
+        type: "POST",
+        data: {
+           id_:id_,
+           payment_ref:payment_ref,
+           total:total,
+           amount:amount,
+           responsible:responsible,
+           mode:mode,
+           
+           tenant_id:tenant_id
+        },
+        success: function(result){
+          console.log("Update response: "+result);
+        }
+      });
+  })
   $('#myTable').DataTable( {
 	dom: 'T<"clear">lfrtip',
 	tableTools: {

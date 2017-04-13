@@ -38,6 +38,7 @@ $con = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
 	?>
 
 <table id="example" class="display" cellspacing="0" width="100%">
+<script type="text/javascript" src="js/my_js.js"></script>
 <script type="text/javascript" language="javascript" class="init">
 $(document).ready(function() {
 	$('#example').DataTable( {
@@ -71,15 +72,14 @@ $(document).ready(function() {
 					<td> <?php echo $row['fname'];'&nbsp'.$row['lname'] ?> </td>
 				    <td><?php echo $row["name"];?></td>
 					<td><?php echo $row["unit"];?></td>
-					<?php
-				if($row['status'] == "open"){
+					<?php if($row['status'] == "open"){
 					print '<td><span class="label label-info">'.$row['status'].'</span></td>';
 				} elseif ($row['status'] == "closed"){
 					print '<td><span class="label label-success">'.$row['status'].'</span></td>';
-					'</tr>';
+				}elseif ($row['status'] == "deleted"){
+					print '<td><span class="label label-danger">'.$row['status'].'</span></td>';
 				}
-		
-		?>
+				?>
 
 				   <td><a href="#"  class=" btn-success btn-xs btn-lg email-invoice"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
 				   <td><a href="#" class=" btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
@@ -115,14 +115,37 @@ $(document).ready(function() {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Are You Sure You Want to Delete This Invoice</h4>
       </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
+     <div class="modal-body">
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Invoice Number</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="id_" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Customer</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="fname" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Tenant ID</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="tenant_id" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Invoiced Ammount</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="total" disabled>
+  </div>
+</div>
+</div>
       <div class="modal-footer">
         <button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
-		<button type="submit" class=" btn-success" data-dismiss="modal" id="delete_record">PAY</button>
+		<button type="submit" class=" btn-success" data-dismiss="modal" id="delete_record">Delete</button>
       </div>
     </div>
 

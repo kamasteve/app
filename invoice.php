@@ -77,6 +77,8 @@ while($row = mysqli_fetch_array($result)) {
 					print '<td><span class="label label-info">'.$row['status'].'</span></td>';
 				} elseif ($row['status'] == "closed"){
 					print '<td><span class="label label-success">'.$row['status'].'</span></td>';
+				}elseif ($row['status'] == "deleted"){
+					print '<td><span class="label label-danger">'.$row['status'].'</span></td>';
 				}
 				?>
 <td> <?php echo $row['total']; ?> </td>
