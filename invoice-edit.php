@@ -23,9 +23,9 @@ if ($mysqli->connect_error) {
 }
 
 // the query
-$result = mysqli_query($con,"SELECT * FROM register WHERE username ='$_id'");
+$query_edit = "SELECT * from invoices AS T1 INNER JOIN invoice_items AS T2 ON T1.invoice=T2.invoice WHERE T1.invoice=1000";
 
-$result = mysqli_query($mysqli, $query);
+$result = mysqli_query($mysqli, $query_edit);
 
 // mysqli select query
 if($result) {
@@ -398,7 +398,5 @@ $mysqli->close();
 		</div><!-- /.modal -->
 
 <?php  
-  endwhile;
-    mysqli_free_result($result);
-mysqli_close($con);
+ 
  include ('includes/footer.php'); ?>

@@ -40,7 +40,35 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	   $row = mysqli_fetch_assoc($result);
        $tenant_id = $row["tenant_id"];
 	}
+	/**
 	// insert invoice into database
+	$query_newinvoice=" INSERT INTO Invoices(invoice,invoice_date,invoice_due_date,property,id_unit,subtotal,shipping,discount,vat,total,notes,responsible) VALUES ('$invoice_number','$invoice_date','$invoice_due_date','$property','$unit','$invoice_subtotal','$invoice_shipping','$invoice_discount','$invoice_vat','$invoice_total','$invoice_notes','$username')";
+	$result_invoice = mysqli_query($mysqli, $query_newinvoice);
+            if (!$result_invoice) {
+             print "Error: " . $query_newinvoice . "<br>" . mysqli_error($mysqli);
+			}
+			else{
+			print " Property Added Successfully";
+}
+foreach($_POST['invoice_product_qty'] as $key => $value) {
+	    $item_product = $value;
+		//$invoice_number = $_POST['invoice_id'] [$key];
+	    // $item_description = $_POST['invoice_product_desc'][$key];
+	    $item_qty = $_POST['invoice_product'][$key];
+	    $item_price = $_POST['invoice_product_price'][$key];
+	    $item_discount = $_POST['invoice_product_discount'][$key];
+	    $item_subtotal = $_POST['invoice_product_sub'][$key];
+	
+}
+$query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,subtotal)VALUES('$invoice_number','$item_product','$item_qty','$item_price','$item_discount','$item_subtotal')";
+	$result_addunits = mysqli_query($mysqli, $query_additems);
+	if (!$result_addunits) {
+             print "Error: " . $query_newinvoice . "<br>" . mysqli_error($mysqli);
+			}
+			else{
+			print " Property Added Successfully";
+			}
+	**/
 	$query = "INSERT INTO invoices (
 					invoice,
 					invoice_date, 
@@ -75,7 +103,7 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	// invoice product items
 	foreach($_POST['invoice_product'] as $key => $value) {
 	    $item_product = $value;
-		$invoice_number = $_POST['invoice_id'] [$key];
+		//$invoice_number = $_POST['invoice_id'] [$key];
 	    // $item_description = $_POST['invoice_product_desc'][$key];
 	    $item_qty = $_POST['invoice_product_qty'][$key];
 	    $item_price = $_POST['invoice_product_price'][$key];
@@ -99,10 +127,10 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 				'".$item_subtotal."'
 			);
 		";
-
 	}
 	
 	$query.= "INSERT INTO credit(credit,date,invoice_id,customercode,property_id,responsible)VALUES('$invoice_total','$date','$billing_id','$tenant_id','$property','$username')";
+	
 	if(!$mysqli -> multi_query($query)){
 		$encoded = json_encode($responseArray);
 

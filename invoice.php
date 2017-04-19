@@ -83,10 +83,10 @@ while($row = mysqli_fetch_array($result)) {
 				?>
 <td> <?php echo $row['total']; ?> </td>
 <td>
-        <form name="editWish" action="edit_tenant.php" method="GET">
+        <form name="editWish" action="invoice-edit.php" method="GET">
             <input type="hidden" name="wishID" value="<?php echo $wishID; ?> "/>
            <!-- <input type="submit" class="glyphicon glyphicon-edit" name="editWish" value="Edit"/></span> -->
-			<a type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</a>
+			<button type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</button>
         </form>
     </td>
 	<td>
