@@ -11,7 +11,7 @@ include('functions.php');
 
 
 
-$getID = $_GET['id'];
+
 $pageid=101;
 
 // Connect to the database
@@ -26,30 +26,16 @@ if ($mysqli->connect_error) {
 $query_edit = "SELECT * from invoices AS T1 INNER JOIN invoice_items AS T2 ON T1.invoice=T2.invoice WHERE T1.invoice=1000";
 
 $result = mysqli_query($mysqli, $query_edit);
-
+$invoiceid=$_GET['wishID'];
 // mysqli select query
 if($result) {
 	while ($row = mysqli_fetch_assoc($result)) {
-		$customer_name = $row['name']; // customer name
-		$customer_email = $row['email']; // customer email
-		$customer_address_1 = $row['address_1']; // customer address
-		$customer_address_2 = $row['address_2']; // customer address
-		$customer_town = $row['town']; // customer town
-		$customer_county = $row['county']; // customer county
-		$customer_postcode = $row['postcode']; // customer postcode
-		$customer_phone = $row['phone']; // customer phone number
 		
-		//shipping
-		$customer_name_ship = $row['name_ship']; // customer name (shipping)
-		$customer_address_1_ship = $row['address_1_ship']; // customer address (shipping)
-		$customer_address_2_ship = $row['address_2_ship']; // customer address (shipping)
-		$customer_town_ship = $row['town_ship']; // customer town (shipping)
-		$customer_county_ship = $row['county_ship']; // customer county (shipping)
-		$customer_postcode_ship = $row['postcode_ship']; // customer postcode (shipping)
 
 		// invoice details
+		
 		$invoice_number = $row['invoice']; // invoice number
-		$custom_email = $row['custom_email']; // invoice custom email body
+		$custom_email = $row['property']; // invoice custom email body
 		$invoice_date = $row['invoice_date']; // invoice date
 		$invoice_due_date = $row['invoice_due_date']; // invoice due date
 		$invoice_subtotal = $row['subtotal']; // invoice sub-total
@@ -58,7 +44,7 @@ if($result) {
 		$invoice_vat = $row['vat']; // invoice vat
 		$invoice_total = $row['total']; // invoice total
 		$invoice_notes = $row['notes']; // Invoice notes
-		$invoice_type = $row['invoice_type']; // Invoice type
+		$invoice_type = $row['id_unit']; // Invoice type
 		$invoice_status = $row['status']; // Invoice status
 	}
 }
@@ -78,7 +64,7 @@ $mysqli->close();
 		
 		
       <div class="invoice_content">
-		<h1>Edit Invoice (<?php echo $getID; ?>)</h1>
+		<h1>Edit Invoice (<?php echo $invoiceid; ?>)</h1>
 		<hr>
 
 		<div id="response" class="alert alert-success" style="display:none;">
@@ -86,142 +72,109 @@ $mysqli->close();
 			<div class="message"></div>
 		</div>
 
-		<form method="post" id="update_invoice">
-			<input type="hidden" name="action" value="update_invoice">
-			<input type="hidden" name="update_id" value="<?php echo $getID; ?>">
+		<form method="post" action="ajax/createinvoice.php" id="create_invoice" role="form">	
+      <div class="invoice_content">
 
-			<div class="row">
-				<div class="col-xs-12">
-					<textarea name="custom_email" id="custom_email" class="custom_email_textarea" placeholder="Enter a custom email message here if you wish to override the default invoice type email message."><?php echo $custom_email; ?></textarea>
-				</div>
-			</div>
+	<div class='messages alert'> </div>
+		<hr>
 
+		  
+
+
+		
+			<!--<input type="hidden" name="action" value="create_invoice"> -->
+			
 			<div class="row">
-				<div class="col-xs-5">
-					<h1>
-						<img src="<?php echo COMPANY_LOGO ?>" class="img-responsive">
-					</h1>
-				</div>
-				<div class="col-xs-7 text-right">
-					<div class="row">
-						<div class="col-xs-6">
-							<h1>INVOICE</h1>
-						</div>
-						<div class="col-xs-3">
-							<select name="invoice_type" id="invoice_type" class="form-control">
-								<option value="invoice" <?php if($invoice_type === 'invoice'){?>selected<?php } ?>>Invoice</option>
-								<option value="quote" <?php if($invoice_type === 'quote'){?>selected<?php } ?>>Quote</option>
-								<option value="receipt" <?php if($invoice_type === 'receipt'){?>selected<?php } ?>>Receipt</option>
-							</select>
-						</div>
-						<div class="col-xs-3">
-							<select name="invoice_status" id="invoice_status" class="form-control">
-								<option value="open" <?php if($invoice_status === 'open'){?>selected<?php } ?>>Open</option>
-								<option value="paid" <?php if($invoice_status === 'paid'){?>selected<?php } ?>>Paid</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-xs-4 no-padding-right">
-				        <div class="form-group">
-				            <div class="input-group date" id="invoice_date">
-				                <input type="text" class="form-control required" name="invoice_date" placeholder="Select invoice date" data-date-format="<?php echo DATE_FORMAT ?>" value="<?php echo $invoice_date; ?>" />
+			
+			<div class=" form-group col-xs-6">
+				        <label class="control-label col-xs-4" for="fname">Invoice Date:</label>
+				            <div class="input-group  col-xs-8" id="invoice_date">
+				                <input type="text" class="form-control required" name="invoice_date" placeholder="Select invoice date" data-date-format="<?php echo DATE_FORMAT ?>" />
 				                <span class="input-group-addon">
 				                    <span class="glyphicon glyphicon-calendar"></span>
 				                </span>
 				            </div>
 				        </div>
-				    </div>
-				    <div class="col-xs-4">
-				        <div class="form-group">
-				            <div class="input-group date" id="invoice_due_date">
-				                <input type="text" class="form-control required" name="invoice_due_date" placeholder="Select due date" data-date-format="<?php echo DATE_FORMAT ?>" value="<?php echo $invoice_due_date; ?>" />
+			<div class="form-group col-xs-6">
+		
+		<label class="control-label col-xs-4" for="fname">Select Property:</label>
+		<div class=" col-xs-8">
+	<?php
+    //Include database configuration file
+    
+    
+    //Get all country data
+    $query = $con->query("SELECT * FROM properties  ORDER BY property_id ASC");
+    
+    //Count total number of rows
+    $rowCount = $query->num_rows;
+    ?>
+	
+    <select class='form-control input-group' name="property" id="property">
+        <option value="">Select Property</option>
+        <?php
+        if($rowCount > 0){
+            while($row = $query->fetch_assoc()){ 
+                echo '<option value="'.$row['property_id'].'">'.$row['name'].'</option>';
+            }
+        }else{
+            echo '<option value="">Property not available</option>';
+        }
+        ?>
+    </select>
+	</div>
+	</div>
+	<div class=" form-group col-xs-6">
+				        <label class="control-label col-xs-4" for="fname">Invoice Due Date:</label>
+				            <div class="input-group  col-xs-8" id="invoice_due_date">
+				            
+				                <input type="text" class="form-control required" name="invoice_due_date" placeholder="Select due date" data-date-format="<?php echo DATE_FORMAT ?>" />
 				                <span class="input-group-addon">
 				                    <span class="glyphicon glyphicon-calendar"></span>
 				                </span>
 				            </div>
 				        </div>
-				    </div>
-					<div class="input-group col-xs-4 float-right">
+				    
+
+	<div class=" form-group col-xs-6">
+	<label class="control-label col-xs-4" for="fname">Select Unit:</label>
+	<div class=" col-xs-8">
+			<select class='form-control' name="unit" id="state">
+        <option value="">Select Property first</option>
+    </select>
+	</div>
+</div>
+			
+					
+					<div class=" form-group col-xs-6">
+				        <label class="control-label col-xs-4" for="fname">Invoice Number:</label>
+				            <div class="input-group  col-xs-8" >
+					
 						<span class="input-group-addon">#<?php echo INVOICE_PREFIX ?></span>
-						<input type="text" name="invoice_id" id="invoice_id" class="form-control required" placeholder="Invoice Number" aria-describedby="sizing-addon1" value="<?php echo $getID; ?>">
+						<input type="text" name="invoice_id" id="invoice_id" class="form-control required" placeholder="Invoice Number" aria-describedby="sizing-addon1" value="<?php getInvoiceId(); ?>">
 					</div>
-				</div>
+				
 			</div>
-			<div class="row">
-				<div class="col-xs-6">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4>Customer Information</h4>
-							<div class="clear"></div>
-						</div>
-						<div class="panel-body form-group form-group-sm">
-							<div class="row">
-								<div class="col-xs-6">
-									<div class="form-group">
-										<input type="text" class="form-control margin-bottom copy-input required" name="customer_name" id="customer_name" placeholder="Enter name" tabindex="1" value="<?php echo $customer_name; ?>">
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control margin-bottom copy-input required" name="customer_address_1" id="customer_address_1" placeholder="Address 1" tabindex="3" value="<?php echo $customer_address_1; ?>">	
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control margin-bottom copy-input required" name="customer_town" id="customer_town" placeholder="Town" tabindex="5" value="<?php echo $customer_town; ?>">		
-									</div>
-									<div class="form-group no-margin-bottom">
-										<input type="text" class="form-control copy-input required" name="customer_postcode" id="customer_postcode" placeholder="Postcode" tabindex="7" value="<?php echo $customer_postcode; ?>">					
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="input-group float-right margin-bottom">
-										<span class="input-group-addon">@</span>
-										<input type="email" class="form-control copy-input required" name="customer_email" id="customer_email" placeholder="E-mail address" aria-describedby="sizing-addon1" tabindex="2" value="<?php echo $customer_email; ?>">
-									</div>
-								    <div class="form-group">
-								    	<input type="text" class="form-control margin-bottom copy-input" name="customer_address_2" id="customer_address_2" placeholder="Address 2" tabindex="4" value="<?php echo $customer_address_2; ?>">
-								    </div>
-								    <div class="form-group">
-								    	<input type="text" class="form-control margin-bottom copy-input required" name="customer_county" id="customer_county" placeholder="County" tabindex="6" value="<?php echo $customer_county; ?>">
-								    </div>
-								    <div class="form-group no-margin-bottom">
-								    	<input type="text" class="form-control required" name="customer_phone" id="invoice_phone" placeholder="Phone number" tabindex="8" value="<?php echo $customer_phone; ?>">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 text-right">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4>Shipping Information</h4>
-						</div>
-						<div class="panel-body form-group form-group-sm">
-							<div class="row">
-								<div class="col-xs-6">
-									<div class="form-group">
-										<input type="text" class="form-control margin-bottom required" name="customer_name_ship" id="customer_name_ship" placeholder="Enter name" tabindex="9" value="<?php echo $customer_name_ship; ?>">
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control margin-bottom" name="customer_address_2_ship" id="customer_address_2_ship" placeholder="Address 2" tabindex="11" value="<?php echo $customer_address_2_ship; ?>">	
-									</div>
-									<div class="form-group no-margin-bottom">
-										<input type="text" class="form-control required" name="customer_county_ship" id="customer_county_ship" placeholder="County" tabindex="13" value="<?php echo $customer_county_ship; ?>">
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-								    	<input type="text" class="form-control margin-bottom required" name="customer_address_1_ship" id="customer_address_1_ship" placeholder="Address 1" tabindex="10" value="<?php echo $customer_address_1_ship; ?>">
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control margin-bottom required" name="customer_town_ship" id="customer_town_ship" placeholder="Town" tabindex="12" value="<?php echo $customer_town_ship; ?>">							
-								    </div>
-								    <div class="form-group no-margin-bottom">
-								    	<input type="text" class="form-control required" name="customer_postcode_ship" id="customer_postcode_ship" placeholder="Postcode" tabindex="14" value="<?php echo $customer_postcode_ship; ?>">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class=" form-group col-xs-6">
+	<label class="control-label col-xs-4" for="fname">Select Period:</label>
+	<div class=" col-xs-8">
+			<select class='form-control' name="period" id="state">
+			<option value=''>Select Period</option>
+			<option value='1' >Janaury</option>
+			<option value='2'>February</option>
+			<option value='3'>March</option>
+			<option value='4'>April</option>
+			<option value='5'>May</option>
+			<option value='6'>June</option>
+			<option value='7'>July</option>
+			<option value='8'>August</option>
+			<option value='9'>September</option>
+			<option value='10'>October</option>
+			<option value='11'>November</option>
+			<option value='12'>December</option>
+    </select>
+	</div>
+</div>
 			</div>
 			<!-- / end client details section -->
 			<table class="table table-bordered" id="invoice_table">
@@ -256,7 +209,7 @@ $mysqli->close();
 						}
 
 						// the query
-						$query2 = "SELECT * FROM invoice_items WHERE invoice = '" . $mysqli->real_escape_string($getID) . "'";
+						$query2 = "SELECT * FROM invoice_items WHERE invoice = '" . $mysqli->real_escape_string($invoice_number) . "'";
 
 						$result2 = mysqli_query($mysqli, $query2);
 
