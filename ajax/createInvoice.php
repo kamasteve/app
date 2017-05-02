@@ -140,13 +140,7 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		$responseArray = array('type' => 'success', 'message' => $errorMessage);
 	} else{ 
 	echo "Invoice created sucessfully ";
-	}
 	
-
-		
-	
-/**
-	if($mysqli -> multi_query($query)){
 		
 	
 		//if saving success
@@ -168,7 +162,7 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		//Set theme color
 		$invoice->setColor(INVOICE_THEME);
 		//Set type
-		$invoice->setType($invoice_type);
+		$invoice->setType($tenant_id);
 		//Set reference
 		$invoice->setReference($invoice_number);
 		//Set date
@@ -178,9 +172,9 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		//Set from
 		$invoice->setFrom(array(COMPANY_NAME,COMPANY_ADDRESS_1,COMPANY_ADDRESS_2,COMPANY_COUNTY,COMPANY_POSTCODE,COMPANY_NUMBER,COMPANY_VAT));
 		//Set to
-		$invoice->setTo(array($customer_name,$customer_address_1,$customer_address_2,$customer_town,$customer_county,$customer_postcode,"Phone: ".$customer_phone));
+		//$invoice->setTo(array($customer_name,$customer_address_1,$customer_address_2,$customer_town,$customer_county,$customer_postcode,"Phone: ".$customer_phone));
 		//Ship to
-		$invoice->shipTo(array($customer_name_ship,$customer_address_1_ship,$customer_address_2_ship,$customer_town_ship,$customer_county_ship,$customer_postcode_ship,''));
+		//$invoice->shipTo(array($customer_name_ship,$customer_address_1_ship,$customer_address_2_ship,$customer_town_ship,$customer_county_ship,$customer_postcode_ship,''));
 		//Add items
 		// invoice product items
 		foreach($_POST['invoice_product'] as $key => $value) {
@@ -210,12 +204,12 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		}
 		$invoice->addTotal("Total Due",$invoice_total,true);
 		//Add Badge
-		$invoice->addBadge($invoice_status);
+		//$invoice->addBadge($invoice_status);
 		// Customer notes:
 		if(!empty($invoice_notes)) {
 			$invoice->addTitle("Cusatomer Notes");
 			$invoice->addParagraph($invoice_notes);
-		}
+		
 		//Add Title
 		$invoice->addTitle("Payment information");
 		//Add Paragraph
@@ -233,10 +227,10 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 			'message' => 'There has been an error, please try again.<pre>'.$mysqli->error.'</pre><pre>'.$query.'</pre>'
 		));
 	}
-
+	}
 	//close database connection
 	$mysqli->close();
 
- **/
+
 
 ?>

@@ -7,9 +7,7 @@ $pageid=108;
 width:auto !important;
 height:35px !important;
 }
-
 #myModal {
-
 outline: none;
 overflow-x: hidden;
 overflow-y: auto;
@@ -54,14 +52,11 @@ $(document).ready(function() {
 </thead>
 <tbody>
 <?php
-
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-
 $result = mysqli_query($con,"SELECT  invoice_date,invoice,responsible,invoice_due_date,status,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit");
-
 while($row = mysqli_fetch_array($result)) {
 ?>
 

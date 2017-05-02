@@ -8,7 +8,7 @@ $(document).ready(function(){
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost:6060/app/ajax/ajaxData.php',
+                url:'http://localhost/app/ajax/ajaxData.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -37,6 +37,32 @@ $(document).ready(function(){
         }
     });
 });
+$(function () {
+    $('#new_tenant').on('submit', function (e) {
+        if (!e.isDefaultPrevented()) {
+			
+            var url = "http://localhost/app/ajax/createinvoice.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $(this).serialize(),
+                success: function (data)
+                {
+                    var messageAlert = 'alert-' + data;
+                    var messageText = data;
+                    //alert(data);
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    if (messageAlert && messageText) {
+                        $('#new_tenant').find('.messages').html(alertBox);
+                        $('#new_tenant')[0].reset();
+						//window.location.reload();
+                    }
+                }
+            });
+            return false;
+        }
+    })
+});
 </script>
 <div class="ch-container">
 <div class="row">
@@ -47,7 +73,7 @@ $(document).ready(function(){
     <div class="box col-md-12">
         <div class="box-inner">
 		<div class="box-content row ">
-		<form class="form-horizontal" action="newtenants.php"  method="post">
+		<form class="form-horizontal" id="new_tenant" action="newtenants.php"  method="post">
 		<div class="row">
 		
 		

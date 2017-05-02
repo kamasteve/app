@@ -16,7 +16,7 @@ define('DATABASE_USER', 'root');
 define('DATABASE_PASS', '');
 
 // COMPANY INFORMATION
-define('COMPANY_LOGO', 'images/logo.png');
+define('COMPANY_LOGO', '../images/logo.png');
 define('COMPANY_LOGO_WIDTH', '356');
 define('COMPANY_LOGO_HEIGHT', '95');
 define('COMPANY_NAME','Company Name Ltd');
