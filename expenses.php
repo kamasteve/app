@@ -11,7 +11,38 @@ $pro_arr[]=$row1;
 }
 
 ?>
-  <link href='css/leases.css' rel='stylesheet'>
+  
+
+<div class="ch-container">
+<div class="row">
+<?php include ('includes/left_sidebar.php');  ?>
+<div id="content" class="col-lg-10 col-sm-10">
+ <div class="row">
+    <div class="box col-md-12">
+<div class="box-inner">
+
+			
+			
+				<?php 
+
+$con = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
+    DATABASE_NAME);
+	// output any connection error
+	if ($con->connect_error) {
+		die('Error : ('.$mysqli->connect_errno .') '. $mysqli->connect_error);
+	}
+
+	// the query
+    $query = "SELECT  property, unit,id,due_date,credit,status FROM expenses ";
+
+	// mysqli select query
+	$results = $con->query($query);
+
+	// mysqli select query
+	?>
+
+<table id="example" class="display" cellspacing="0" width="100%">
+<script type="text/javascript" src="js/my_js.js"></script>
 <script type="text/javascript" language="javascript" class="init">
 $(document).ready(function() {
 	$('#example').DataTable( {
@@ -22,8 +53,109 @@ $(document).ready(function() {
 	} );
 } );
 </script>
-<div class="ch-container">
-<div class="row">
-<?php include ('includes/left_sidebar.php');  ?>
+<thead>
+<tr>
+<th>Expense ID</th>
+<th>Property</th>
+<th>Unit</th>
+<th>Amount</th>
+<th>Due Date</th>
+<th>Status</th>
+<th>Print</th>
+<th>Pay</th>
+<th>Delete</th>
+ </tr>
+</thead>
+<tbody>
+<?php
+		while($row = $results->fetch_assoc()) {
+
+			?>
+			<?php $wishID = $row["id"]; ?>
+				<tr>
+				 <td> <?php echo$row["id"]; ?></td>
+					<td> <?php echo$row["property"]; ?></td>
+					<td><?php echo $row["unit"];?></td>
+				    <td><?php echo $row["credit"];?></td>
+					<td><?php echo $row["due_date"];?></td>
+					<?php if($row['status'] == "0"){
+					print '<td><span class="label label-info">Open</span></td>';
+				} elseif ($row['status'] == "1"){
+					print '<td><span class="label label-success">Closed</span></td>';
+				}elseif ($row['status'] == "2"){
+					print '<td><span class="label label-danger">Canceled</span></td>';
+				}
+				?>
+
+				   <td><a href="#"  class=" btn-success btn-xs btn-lg email-invoice"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
+				   <td><a href="#" class=" btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
+				    
+	<td>
+	<?php
+	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete" data-my-id="'.$row["id"].'">
+													<i class="glyphicon glyphicon-trash icon-white"></i>
+													
+											</a>'
+		
+		?>									
+	
+    </td>
+				    
+					
+	
+				
+			    
+			
+		        </tr>
+		<?php } ?>
+</tbody>
+</table>
+			
+</div>
+</div>
+</div>
+<div id="modalDelete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Are You Sure You Want to Delete This Record</h4>
+      </div>
+     <div class="modal-body">
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Expense ID</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="id_" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Payee</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="payee" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Due Date</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="due_date" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Amount</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="credit" disabled>
+  </div>
+</div>
+</div>
+      <div class="modal-footer">
+        <button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
+		<button type="submit" class=" btn-success" data-dismiss="modal" id="delete_record">Delete</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <?php  include ('includes/footer.php'); ?>

@@ -8,7 +8,7 @@ $(document).ready(function(){
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost/app/ajax/ajaxData.php',
+                url:'http://localhost:6060/app/ajax/ajaxData.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -43,7 +43,7 @@ $(function () {
     $('#new_expense').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost/app/new_expense.php";
+            var url = "http://localhost:6060/app/new_expense.php";
             $.ajax({
                 type: "POST",
                 url: url,

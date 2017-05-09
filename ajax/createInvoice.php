@@ -218,15 +218,15 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		$invoice->setFooternote(FOOTER_NOTE);
 		//Render the PDF
 		$invoice->render('invoices/'.$invoice_number.'.pdf','F');
-	} else {
+	} 
 		// if unable to create invoice
-		echo json_encode(array(
+		/**echo json_encode(array(
 			'status' => 'Error',
 			//'message' => 'There has been an error, please try again.'
 			// debug
 			'message' => 'There has been an error, please try again.<pre>'.$mysqli->error.'</pre><pre>'.$query.'</pre>'
 		));
-	}
+	**/
 	}
 	//close database connection
 	$mysqli->close();
