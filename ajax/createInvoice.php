@@ -32,13 +32,17 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	$invoice_total = $_POST['invoice_total']; // invoice total
 	$invoice_notes = $_POST['invoice_notes']; // Invoice notes
 	$username=$_POST['responsible'];
-	$query_fetchtenant = "SELECT tenant_id FROM tenants WHERE unit = '$unit'";
+	$query_fetchtenant = "SELECT tenant_id, CONCAT(fname,' ',lname)AS names,email,phone,adress FROM tenants WHERE unit='$unit'";
 	$date=date("Y-m-d H:i:s");
 	$billing_id=$invoice_number;
 	if ($result=mysqli_query($mysqli,$query_fetchtenant)){
   
 	   $row = mysqli_fetch_assoc($result);
        $tenant_id = $row["tenant_id"];
+	   $tenant_names= $row["names"];
+	   $email =$row["email"];
+	   $phone=$row["phone"];
+	   $adress=$row["adress"];
 	}
 	/**
 	// insert invoice into database
@@ -172,9 +176,9 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		//Set from
 		$invoice->setFrom(array(COMPANY_NAME,COMPANY_ADDRESS_1,COMPANY_ADDRESS_2,COMPANY_COUNTY,COMPANY_POSTCODE,COMPANY_NUMBER,COMPANY_VAT));
 		//Set to
-		//$invoice->setTo(array($customer_name,$customer_address_1,$customer_address_2,$customer_town,$customer_county,$customer_postcode,"Phone: ".$customer_phone));
+		$invoice->setTo(array($tenant_names,$email,$adress,$property,"Phone: ".$phone));
 		//Ship to
-		//$invoice->shipTo(array($customer_name_ship,$customer_address_1_ship,$customer_address_2_ship,$customer_town_ship,$customer_county_ship,$customer_postcode_ship,''));
+		$invoice->shipTo(array($tenant_names,$email,$adress,$property,$phone,$property,''));
 		//Add items
 		// invoice product items
 		foreach($_POST['invoice_product'] as $key => $value) {
@@ -217,16 +221,13 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		//Set footer note
 		$invoice->setFooternote(FOOTER_NOTE);
 		//Render the PDF
-		$invoice->render('invoices/'.$invoice_number.'.pdf','F');
+		
 	} else {
 		// if unable to create invoice
-		echo json_encode(array(
-			'status' => 'Error',
-			//'message' => 'There has been an error, please try again.'
-			// debug
-			'message' => 'There has been an error, please try again.<pre>'.$mysqli->error.'</pre><pre>'.$query.'</pre>'
-		));
+		print 'there has been an error in creating the invoice';
+		print $email;
 	}
+	$invoice->render('../invoices/'.$invoice_number.'.pdf','F');
 	}
 	//close database connection
 	$mysqli->close();

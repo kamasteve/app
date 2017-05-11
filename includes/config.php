@@ -19,11 +19,11 @@ define('DATABASE_PASS', '');
 define('COMPANY_LOGO', '../images/logo.png');
 define('COMPANY_LOGO_WIDTH', '356');
 define('COMPANY_LOGO_HEIGHT', '95');
-define('COMPANY_NAME','Company Name Ltd');
-define('COMPANY_ADDRESS_1','123 Something Street');
+define('COMPANY_NAME','Techisoft Property Managers');
+define('COMPANY_ADDRESS_1','66 Kanjatta');
 define('COMPANY_ADDRESS_2','Unit 5C, Office 14');
 define('COMPANY_ADDRESS_3','Camdem');
-define('COMPANY_COUNTY','London');
+define('COMPANY_COUNTY','Nairobi');
 define('COMPANY_POSTCODE','E17 8EE');
 
 define('COMPANY_NUMBER','Company No: 48486468'); // Company registration number
@@ -48,8 +48,8 @@ define('ENABLE_VAT', true); // Enable TAX/VAT
 define('VAT_INCLUDED', false); // Is VAT included or excluded?
 define('VAT_RATE', '0'); // This is the percentage value
 
-define('PAYMENT_DETAILS', 'Company Name Ltd<br>Sort Code: 00-00-00<br>Account Number: 12345678'); // Payment information
-define('FOOTER_NOTE', 'http://www.yourdomain.co.uk/');
+define('PAYMENT_DETAILS', 'Techisoft Solutions Ltd<br>Sort Code: 00-00-00<br>Account Number: 12345678'); // Payment information
+define('FOOTER_NOTE', 'http://www.techisoft.co.ke/');
 
 // CONNECT TO THE DATABASE
 $mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
