@@ -2,7 +2,7 @@ $(function () {
     $('#create_invoice').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost:6060/app/ajax/createinvoice.php";
+            var url = "http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/ajax/createInvoice.php";
             $.ajax({
                 type: "POST",
                 url: url,

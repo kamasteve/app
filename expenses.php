@@ -87,9 +87,21 @@ $(document).ready(function() {
 				}
 				?>
 
-				   <td><a href="#"  class=" btn-success btn-xs btn-lg email-invoice"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
-				   <td><a href="#" class=" btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
-				    
+				  <td>
+        <form name="editWish" action="expenseedit.php" method="GET">
+            <input type="hidden" name="wishID" value="<?php echo $wishID; ?> "/>
+           <!-- <input type="submit" class="glyphicon glyphicon-edit" name="editWish" value="Edit"/></span> -->
+			<button type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</button>
+        </form>
+    </td>
+	<td>
+	<?php
+	echo '<a class="xyz btn " data-toggle="modal" data-target="#myModal" data-my-id="'.$row["invoice"].'">
+													<i class="glyphicon glyphicon-euro icon-white"></i>
+													Pay
+											</a>'
+		
+		?>
 	<td>
 	<?php
 	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete" data-my-id="'.$row["id"].'">
@@ -151,7 +163,7 @@ $(document).ready(function() {
 </div>
       <div class="modal-footer">
         <button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
-		<button type="submit" class=" btn-success" data-dismiss="modal" id="delete_record">Delete</button>
+		<button type="submit" class=" btn-success" data-dismiss="modal" id="delete_expense">Delete</button>
       </div>
     </div>
 
