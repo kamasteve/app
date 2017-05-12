@@ -167,9 +167,9 @@ echo "</select>";
 </div>
 </div>
 <div class="form-group col-xs-6">
-  <label class="control-label col-xs-4" for="fname">Gender:</label>
+  <label class="control-label col-xs-4" for="fname">KRA PIN:</label>
     <div class="col-xs-8">
-  <input class="form-control" name="gender" type="text" placeholder=" Gender" required>
+  <input class="form-control" name="gender" type="text" placeholder=" KRA PIN" required>
 </div>
 </div>
 
@@ -201,7 +201,14 @@ echo "</select>";
 <div class="col-md-4">
 <button type="submit" class="btn btn-default "   name='submit'>Save</button>
 </div>
-
+<div class="col-md-4">
+<span id="fileselector">
+        <label class="btn btn-default" for="upload-file-selector">
+            <input id="upload-file-selector" type="file">
+            <i class="fa_icon icon-upload-alt margin-correction"></i>Upload Lease Agrement
+        </label>
+    </span>
+</div>
 </div>
 </form>
 		</div>

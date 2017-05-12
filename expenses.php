@@ -169,5 +169,81 @@ $(document).ready(function() {
 
   </div>
 </div>
+</div> -->
+  
+		
+		
+		
+		<div class="form-group col-xs-6">
+		<label class="control-label col-xs-4" for="fname">Payer/Payee:</label>
+		<div class="col-xs-8">
+  
+  <input class="form-control" name="payee" type="text" placeholder="Payer/Payee " required>
+</div>
+</div>
+<div class="form-group col-xs-6">
+<label class="control-label col-xs-4" for="date">Due On:</label>
+ <div class="input-group  col-xs-8" id="invoice_due_date">
+				            
+				                <input type="text" class="form-control required" name="due_date" placeholder="Select due date" data-date-format="" />
+				                <span class="input-group-addon">
+				                    <span class="glyphicon glyphicon-calendar"></span>
+				                </span>
+				            </div>
+</div>
+  
+
+	
+
+<div class="form-group col-xs-6">
+<label class="control-label col-xs-4" for="fname">Category:</label>
+  <div class=" col-xs-8">
+			<select class='form-control' name="category" id="state">
+        <option value="">Repairs and Maintenance</option>
+		<option value="">Advertising</option>
+		<option value="">Office Expenses</option>
+		<option value="">Legal and Proffesional fees</option>
+		<option value="">Electircity</option>
+		<option value="">Cleaning</option>
+		<option value="">Management Fee</option>
+		<option value="">Other Expenses(specify)</option>
+    </select>
+	</div>
+</div>
+<div class="form-group col-xs-6">
+  <label class="control-label col-xs-4" for="fname">Ammount:</label>
+    <div class="col-xs-8">
+		<input class="form-control" name="amount" type="text" placeholder=" Amount" required>
+	</div>
+</div>
+
+<div class="form-group col-xs-6">
+  <label class="control-label col-xs-4" for="fname">Expense Details:</label>
+    <div class="col-xs-8">
+		<textarea  class="form-control" name="details" type="text" placeholder=" details" required></textarea>
+	</div>
+</div>
+<div class="col-xs-6">
+<input type="hidden" name="responsible" value="<?php echo  $_id; ?> "/>
+</div>
+<div class="row">
+<div class="col-xs-6">
+<button type="submit" class="btn btn-default "   name='submit'>Save</button>
+</div>
+</div>
+
+
+</div>
+</form>
+		</div>
+		</div>
+ 
+ </div>
+ </div>
+ </div>
+ </div>
+  <style>
+
+ </style>
 
 <?php  include ('includes/footer.php'); ?>
