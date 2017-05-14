@@ -221,6 +221,7 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		//Set footer note
 		$invoice->setFooternote(FOOTER_NOTE);
 		//Render the PDF
+<<<<<<< HEAD
 		
 	} else {
 		// if unable to create invoice
@@ -228,6 +229,18 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		print $email;
 	}
 	$invoice->render('../invoices/'.$invoice_number.'.pdf','F');
+=======
+		$invoice->render('invoices/'.$invoice_number.'.pdf','F');
+	} 
+		// if unable to create invoice
+		/**echo json_encode(array(
+			'status' => 'Error',
+			//'message' => 'There has been an error, please try again.'
+			// debug
+			'message' => 'There has been an error, please try again.<pre>'.$mysqli->error.'</pre><pre>'.$query.'</pre>'
+		));
+	**/
+>>>>>>> 9529b00bd8ffe754f4590a01f0d9342e261f0d5f
 	}
 	//close database connection
 	$mysqli->close();
