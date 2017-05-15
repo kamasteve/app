@@ -1,6 +1,6 @@
 <?php
   // establish connection to database and select DB
-  $link = mysqli_connect("localhost", "root", "kamah4778", "hill_rental");
+  $link = mysqli_connect("localhost", "root", "", "hill_rental");
 
   // get record
   $id_ = $_REQUEST['id_'];

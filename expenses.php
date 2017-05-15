@@ -96,7 +96,7 @@ $(document).ready(function() {
     </td>
 	<td>
 	<?php
-	echo '<a class="xyz btn " data-toggle="modal" data-target="#myModal" data-my-id="'.$row["invoice"].'">
+	echo '<a class="xyz btn " data-toggle="modal" data-target="#payexpense" data-my-id="'.$row["id"].'">
 													<i class="glyphicon glyphicon-euro icon-white"></i>
 													Pay
 											</a>'
@@ -169,72 +169,75 @@ $(document).ready(function() {
 
   </div>
 </div>
-</div> -->
+
   
+<div class="modal fade" id="payexpense" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">Exit</button>
+</div>
+
+<div class="modal-body">
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Payee</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="responsible" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Amount</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="amount" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label"> ID</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="expense_id" disabled>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Paid Ammount</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="payee">
+  </div>
+</div>
+<div class="form-group row">
+<label class="control-label col-xs-4" for="fname">Payment Mode:</label>
+  <div class="col-xs-8">
+  
+ <select class="form-control " name="mode" id="mode">
+        <option value="Cash">Cash</option>
+        <option value="Bank Deposit">Bank Deposit</option>
+        <option value="Mpesa">Mpesa</option>
+        <option value="Cheque">Cheque</option>
+      </select>
+</div>
+</div>
+
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label"> Payment Ref </label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="payment_ref" >
+  </div>
+</div>
+<input type="hidden" id="responsible" value="<?php echo  $_id; ?> "/>
+
+
+
+<button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
+<button type="submit" class=" btn-success" data-dismiss="modal" id="payexpense">PAY</button>
+
+
+</div>
+</div>
+</div>
+</div>	
 		
 		
 		
-		<div class="form-group col-xs-6">
-		<label class="control-label col-xs-4" for="fname">Payer/Payee:</label>
-		<div class="col-xs-8">
-  
-  <input class="form-control" name="payee" type="text" placeholder="Payer/Payee " required>
-</div>
-</div>
-<div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="date">Due On:</label>
- <div class="input-group  col-xs-8" id="invoice_due_date">
-				            
-				                <input type="text" class="form-control required" name="due_date" placeholder="Select due date" data-date-format="" />
-				                <span class="input-group-addon">
-				                    <span class="glyphicon glyphicon-calendar"></span>
-				                </span>
-				            </div>
-</div>
-  
-
-	
-
-<div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="fname">Category:</label>
-  <div class=" col-xs-8">
-			<select class='form-control' name="category" id="state">
-        <option value="">Repairs and Maintenance</option>
-		<option value="">Advertising</option>
-		<option value="">Office Expenses</option>
-		<option value="">Legal and Proffesional fees</option>
-		<option value="">Electircity</option>
-		<option value="">Cleaning</option>
-		<option value="">Management Fee</option>
-		<option value="">Other Expenses(specify)</option>
-    </select>
-	</div>
-</div>
-<div class="form-group col-xs-6">
-  <label class="control-label col-xs-4" for="fname">Ammount:</label>
-    <div class="col-xs-8">
-		<input class="form-control" name="amount" type="text" placeholder=" Amount" required>
-	</div>
-</div>
-
-<div class="form-group col-xs-6">
-  <label class="control-label col-xs-4" for="fname">Expense Details:</label>
-    <div class="col-xs-8">
-		<textarea  class="form-control" name="details" type="text" placeholder=" details" required></textarea>
-	</div>
-</div>
-<div class="col-xs-6">
-<input type="hidden" name="responsible" value="<?php echo  $_id; ?> "/>
-</div>
-<div class="row">
-<div class="col-xs-6">
-<button type="submit" class="btn btn-default "   name='submit'>Save</button>
-</div>
-</div>
-
-
-</div>
-</form>
 		</div>
 		</div>
  

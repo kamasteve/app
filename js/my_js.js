@@ -11,7 +11,7 @@ $(document).ready(function() {
 	
 
     $.ajax({
-        url: "http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/fetch_record.php",
+        url: "http://localhost:6060/app/fetch_record.php",
         type: "POST",
         dataType: 'json',
         data: {
@@ -46,7 +46,7 @@ $(document).ready(function() {
     var tenant_id=$("#tenant_id").val();
 
     $.ajax({
-        url: "http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/update_record.php",
+        url: "http://localhost:6060/app/update_record.php",
         type: "POST",
         data: {
            id_:id_,
@@ -63,6 +63,7 @@ $(document).ready(function() {
         }
       });
   })// end of update button action
+  
   $('#delete_record').click(function () {
 
     var id_=$("#id_").val();
@@ -75,7 +76,7 @@ $(document).ready(function() {
     var tenant_id=$("#tenant_id").val();
 
     $.ajax({
-        url: "http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/ajax/delete_record.php",
+        url: "http://localhost:6060/app/ajax/delete_record.php",
         type: "POST",
         data: {
            id_:id_,
@@ -102,7 +103,7 @@ $(document).ready(function() {
 	
 
     $.ajax({
-        url: "http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/ajax/fetch_expense.php",
+        url: "http://localhost:6060/app/ajax/fetch_expense.php",
         type: "POST",
         dataType: 'json',
         data: {
@@ -136,7 +137,7 @@ $(document).ready(function() {
     var tenant_id=$("#tenant_id").val();
 
     $.ajax({
-        url: "http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/ajax/delete_expense.php",
+        url: "http://localhost:6060/app/ajax/delete_expense.php",
         type: "POST",
         data: {
            id_:id_,
@@ -159,6 +160,38 @@ $(document).ready(function() {
         "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
     }
 	} );
+	$('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
+
+    var my_id = 'payexpense';
+
+    if (typeof $(this).data('my-id') !== 'undefined') {
+      my_id = $(this).data('my-id');
+    }
+	
+
+    $.ajax({
+        url: "http://localhost:6060/app/ajax/fetch_expense.php",
+        type: "POST",
+        dataType: 'json',
+        data: {
+          id:my_id
+        },
+        success: function(result){
+          for(var i = 0; i < result.length; i++) {
+          var obj = result[i];
+
+          $("#expense_id").val(obj.id);
+          $("#responsible").val(obj.payee);
+          $("#due_date").val(obj.due_date);
+          $("#amount").val(obj.credit);
+          $("#fname").val(obj.fname);
+          $("#lname").val(obj.lname);
+         // $("#mode").val(obj.mode);
+          $("#tenant_id").val(obj.tenant_id);
+          }
+        }
+      });
+  })
  $('#myModal').on('hidden.bs.modal', function () {
  location.reload();
 })
