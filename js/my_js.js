@@ -184,7 +184,7 @@ $(document).ready(function() {
           $("#responsible").val(obj.payee);
           $("#due_date").val(obj.due_date);
           $("#amount").val(obj.credit);
-          $("#fname").val(obj.fname);
+          $("#property").val(obj.property);
           $("#lname").val(obj.lname);
          // $("#mode").val(obj.mode);
           $("#tenant_id").val(obj.tenant_id);
@@ -192,6 +192,34 @@ $(document).ready(function() {
         }
       });
   })
+  $('#payexpenses').click(function () {
+
+    var id_=$("#id_").val();
+    var fname=$("#fname").val();
+    var total=$("#total").val();
+    var amount=$("#amount").val();
+    var responsible=$("#responsible").val();
+    var mode=$("#mode").val();
+    var payment_ref=$("#payment_ref").val();
+    var property=$("#property").val();
+
+    $.ajax({
+        url: "http://localhost:6060/app/ajax/payexpense.php",
+        type: "POST",
+        data: {
+           id_:id_,
+           payment_ref:payment_ref,
+           total:total,
+           amount:amount,
+           responsible:responsible,
+           mode:mode,
+           property:property
+        },
+        success: function(result){
+          console.log("Update response: "+result);
+        }
+      });
+  })// end of update button ac
  $('#myModal').on('hidden.bs.modal', function () {
  location.reload();
 })

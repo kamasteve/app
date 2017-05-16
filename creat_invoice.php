@@ -244,7 +244,7 @@ $pageid=101;
 					<input type="submit" id="action_create_invoice" class="btn btn-success float-right" value="Create Invoice" data-loading-text="Creating...">
 				</div>
 				-->
-			<button type="submit" class=" btn-default" name="submit">Save</button>
+			<button type="submit" class=" button btn-default" name="submit">Save</button>
 			</div>
 		</form>
 

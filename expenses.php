@@ -97,14 +97,14 @@ $(document).ready(function() {
 	<td>
 	<?php
 	echo '<a class="xyz btn " data-toggle="modal" data-target="#payexpense" data-my-id="'.$row["id"].'">
-													<i class="glyphicon glyphicon-euro icon-white"></i>
+													<i class="glyphicon glyphicon-euro icon-white"></i> 
 													Pay
 											</a>'
 		
 		?>
 	<td>
 	<?php
-	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete" data-my-id="'.$row["id"].'">
+	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete" data-my-id="'.$row["id"].'" >
 													<i class="glyphicon glyphicon-trash icon-white"></i>
 													
 											</a>'
@@ -192,6 +192,12 @@ $(document).ready(function() {
   </div>
 </div>
 <div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Property</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="property" disabled>
+  </div>
+</div>
+<div class="form-group row">
   <label for="external-id" class="col-xs-4 col-form-label"> ID</label>
   <div class="col-xs-8">
      <input class="form-control" type="text" value="" id="expense_id" disabled>
@@ -228,7 +234,7 @@ $(document).ready(function() {
 
 
 <button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
-<button type="submit" class=" btn-success" data-dismiss="modal" id="payexpense">PAY</button>
+<button type="submit" class=" btn-success" data-dismiss="modal" id="payexpenses">PAY</button>
 
 
 </div>
