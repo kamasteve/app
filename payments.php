@@ -48,6 +48,32 @@ $(document).ready(function(){
         }
     });
 });
+$(function () {
+    $('#addpayments').on('submit', function (e) {
+        if (!e.isDefaultPrevented()) {
+			
+            var url = "http://localhost:6060/app/verify_payments.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $(this).serialize(),
+                success: function (data)
+                {
+                    var messageAlert = 'alert-' + data;
+                    var messageText = data;
+                    //alert(data);
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    if (messageAlert && messageText) {
+                        $('#addpayments').find('.messages').html(alertBox);
+                        $('#addpayments')[0].reset();
+						//window.location.reload();
+                    }
+                }
+            });
+            return false;
+        }
+    })
+});
 </script>
 
 <div class="ch-container">
@@ -62,7 +88,8 @@ $(document).ready(function(){
             
 
 <div class="row">
-<form class="form-horizontal" action="verify_payments.php" method="post">
+<div class='messages alert'> </div>
+<form class="form-horizontal" action="verify_payments.php" id="addpayments" method="post">
   <div class="form-group " >
  
 <div class="form-group col-md-6">

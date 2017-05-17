@@ -27,6 +27,7 @@ $query_insert_user = "INSERT INTO rent_payments(property,house_number,rental_per
              echo "Error: " . $query_insert_user . "<br>" . mysqli_error($con);
 			}
 			else{
+				echo 'payment sucessfully captured!';
 			require('u/fpdf.php');
 
 class PDF extends FPDF
