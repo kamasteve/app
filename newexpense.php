@@ -178,19 +178,32 @@ echo "</select>";
 		<input class="form-control" name="amount" type="text" placeholder=" Amount" required>
 	</div>
 </div>
-
+<div class="row">
 <div class="form-group col-xs-6">
   <label class="control-label col-xs-4" for="fname">Expense Details:</label>
     <div class="col-xs-8">
 		<textarea  class="form-control" name="details" type="text" placeholder=" details" required></textarea>
 	</div>
 </div>
-<div class="col-xs-6">
-<input type="hidden" name="responsible" value="<?php echo  $_id; ?> "/>
+<div class=" form-group col-xs-6">
+<div class="col-xs-4">
 </div>
+<div class="col-xs-8">
+
+</div>
+</div>
+</div>
+<input type="hidden" name="responsible" value="<?php echo  $_id; ?> "/>
+
+
 <div class="row">
+
 <div class="col-xs-6">
-<button type="submit" class="btn btn-default "   name='submit'>Save</button>
+<div class="col-xs-4">
+</div>
+<div class="col-xs-8">
+<button type="submit" class="btn button "   name='submit'>Save</button>
+</div>
 </div>
 </div>
 
