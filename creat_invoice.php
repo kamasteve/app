@@ -239,13 +239,16 @@ $pageid=101;
 				</div>
 
 			</div>
-			<div class="row">
-				<!--<div class="col-xs-12 margin-top btn-group">
-					<input type="submit" id="action_create_invoice" class="btn btn-success float-right" value="Create Invoice" data-loading-text="Creating...">
-				</div>
-				-->
-			<button type="submit" class=" btn-default" name="submit">Save</button>
-			</div>
+			<div class="col-md-6">
+<div class="col-xs-4">
+<button type="submit" class=" button btn-default" name="submit">Create Invoice</button>
+</div>
+<div class="col-xs-8">
+
+</div>
+
+</div>
+			
 		</form>
 
 		<div id="insert" class="modal fade">

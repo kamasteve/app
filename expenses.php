@@ -96,15 +96,15 @@ $(document).ready(function() {
     </td>
 	<td>
 	<?php
-	echo '<a class="xyz btn " data-toggle="modal" data-target="#myModal" data-my-id="'.$row["invoice"].'">
-													<i class="glyphicon glyphicon-euro icon-white"></i>
+	echo '<a class="xyz btn " data-toggle="modal" data-target="#payexpense" data-my-id="'.$row["id"].'">
+													<i class="glyphicon glyphicon-euro icon-white"></i> 
 													Pay
 											</a>'
 		
 		?>
 	<td>
 	<?php
-	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete" data-my-id="'.$row["id"].'">
+	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete" data-my-id="'.$row["id"].'" >
 													<i class="glyphicon glyphicon-trash icon-white"></i>
 													
 											</a>'
@@ -169,5 +169,90 @@ $(document).ready(function() {
 
   </div>
 </div>
+
+  
+<div class="modal fade" id="payexpense" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">Exit</button>
+</div>
+
+<div class="modal-body">
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Payee</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="responsible" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Amount</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="amount" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Property</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="property" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label"> ID</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="expense_id" disabled>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Paid Ammount</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="payee">
+  </div>
+</div>
+<div class="form-group row">
+<label class="control-label col-xs-4" for="fname">Payment Mode:</label>
+  <div class="col-xs-8">
+  
+ <select class="form-control " name="mode" id="mode">
+        <option value="Cash">Cash</option>
+        <option value="Bank Deposit">Bank Deposit</option>
+        <option value="Mpesa">Mpesa</option>
+        <option value="Cheque">Cheque</option>
+      </select>
+</div>
+</div>
+
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label"> Payment Ref </label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="payment_ref" >
+  </div>
+</div>
+<input type="hidden" id="responsible" value="<?php echo  $_id; ?> "/>
+
+
+
+<button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
+<button type="submit" class=" btn-success" data-dismiss="modal" id="payexpenses">PAY</button>
+
+
+</div>
+</div>
+</div>
+</div>	
+		
+		
+		
+		</div>
+		</div>
+ 
+ </div>
+ </div>
+ </div>
+ </div>
+  <style>
+
+ </style>
 
 <?php  include ('includes/footer.php'); ?>

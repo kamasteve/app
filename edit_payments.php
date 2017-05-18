@@ -45,6 +45,7 @@ $(document).ready(function() {
 <th>Phone</th>
 <th>Ammount</th>
 <th>Date</th>
+<th>Edit</th>
 
 </thead>
 <tbody>
@@ -69,7 +70,13 @@ echo "<td>" . htmlentities ($row['house_number']) . "</td>";
 echo "<td>" . htmlentities ($row['phone']) . "</td>";
 echo "<td>" . htmlentities ($row['ammount']). "</td>";
 echo "<td>" . htmlentities ($row['date']) ."</td>";
-  echo "</tr> \n";
+print ' <td>
+        <form name="editWish" action="paymentsedit.php" method="GET">
+            <input type="hidden" name="wishID" value="<?php echo $wishID; ?> "/>
+           <!-- <input type="submit" class="glyphicon glyphicon-edit" name="editWish" value="Edit"/></span> -->
+			<button type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</button>
+        </form>
+    </td>';
 
 }
 mysqli_close($con);
