@@ -19,7 +19,7 @@ $(document).ready(function(){
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost:6060/app/ajax/ajaxPayments.php',
+                url:'http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/ajax/ajaxPayments.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -52,7 +52,7 @@ $(function () {
     $('#addpayments').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost:6060/app/verify_payments.php";
+            var url = "http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/verify_payments.php";
             $.ajax({
                 type: "POST",
                 url: url,

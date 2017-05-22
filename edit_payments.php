@@ -60,7 +60,7 @@ $result = mysqli_query($con,"SELECT * FROM rent_payments");
 
 while($row = mysqli_fetch_array($result)) {
 
-
+$wishID = $row["payment_id"];
  echo "<tr>";
 echo "<td>" . htmlentities  ($row['property']) . "</td>";
 echo "<td>" . htmlentities ($row['rental_period']). "</td>";
