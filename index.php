@@ -48,8 +48,9 @@ session_start();
 <body>
 
 <body  class="image-responsive" >
+
 <style type="text/css">
-		
+	 	
 	
 	
 </style>
@@ -69,7 +70,7 @@ session_start();
 
     
 	
-	<div class="container">
+	<div class="container" >
 	<div class="row">
             <div class="col-md-5 col-md-offset-4">
                 <div class="login-panel panel panel-default">
@@ -200,7 +201,8 @@ echo '<div class="errormsgbox"> <ol>';
 
 </div>
 </body><!--/.fluid-container-->
-<?php  include ('includes/footer.php'); ?>
+<?php  //include ('includes/footer.php'); 
+?>
 <!-- external javascript -->
 
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
