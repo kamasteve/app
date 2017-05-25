@@ -1,9 +1,42 @@
-<?php include ('includes/header.php'); 
-$sql1 = mysqli_query($con,"SELECT * FROM properties");
-while($row1 = mysqli_fetch_array($sql1)) {
-$pro_arr[]=$row1;
-}
+<?php
+/*******************************************************************************
+* Module for editing payments                                            *
+*                                                                              *
+* Version: 1.1.1	                                                               *
+* Author:  Kamau Ngugi                                   				   *
+*******************************************************************************/
+include('includes/header.php');
+include('includes/config.php');
+
+
 $pageid=101;
+// Connect to the database
+$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
+// output any connection error
+if ($mysqli->connect_error) {
+	die('Error : ('.$mysqli->connect_errno .') '. $mysqli->connect_error);
+}
+$paymentid=$_GET['wishID'];
+// the query
+$query_edit = "SELECT * from rent_payments  WHERE  id=$paymentid";
+$result = mysqli_query($mysqli, $query_edit);
+
+// mysqli select query
+if($result) {
+	while ($row = mysqli_fetch_assoc($result)) {
+		
+		// invoice details
+		
+		$property = $row['property']; // invoice number
+		$unit = $row['unit']; // invoice custom email body
+		$payee = $row['payee']; // invoice date
+		$due_date = $row['due_date']; // invoice due date
+		$ammount = $row['credit']; // invoice sub-total
+		$details = $row['details']; // invoice shipping amount
+	}
+}
+/* close connection */
+$mysqli->close();
 ?>
 
 <div class="ch-container">
@@ -18,12 +51,14 @@ $pageid=101;
 	<?php 
 	$var_value = $_GET['wishID'];
 
+	
 	?>	
 <?php 
 if (isset($_POST['submit'])) {
 $tenant_id  = $_POST['varname']; }
 $sql1=mysqli_query($con,"SELECT * FROM tenants WHERE tenant_id='$var_value'");
-$tenant_arr = mysqli_fetch_array($sql1);
+$tenant_arr = mysqli_fetch_array($
+);
 ?>
 <form class="form-horizontal" method='POST'  id='edit_tentant' name='edit_tentant'>
 <div class="row">
@@ -45,7 +80,7 @@ $tenant_arr = mysqli_fetch_array($sql1);
     //Count total number of rows
     $rowCount = $query->num_rows;
     ?>
-    <select class='form-control ' name="property" id="property">
+    <select class='form-control ' name="property" id="property" placeholder="<?php echo $tenant_arr['tenant_id']; ?>">
         <option value="">Select Property</option>
         <?php
         if($rowCount > 0){

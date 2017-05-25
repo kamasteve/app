@@ -1,6 +1,6 @@
 <?php
   // establish connection to database and select DB
-  $link = mysqli_connect("localhost", "root", "", "hill_rental");
+  include('../includes/config.php');
 
   // get record
   $id_ = $_REQUEST['id_'];
@@ -10,7 +10,7 @@
   $query ="INSERT INTO invoice_logs (SELECT * FROM invoices WHERE invoice=$id_)";
   
   
-	  $result = mysqli_query($link,$query) or die('Server error = '.mysqli_error($link));
+	  $result = mysqli_query($mysqli,$query) or die('Server error = '.mysqli_error($link));
 
   // execute query
   
@@ -18,14 +18,14 @@
   // check if successful
   if($result ){	
 		$logging = "DELETE FROM credit WHERE invoice_id=$id_";	
- $result_log = mysqli_query($link,$logging) or die('Server error = '.mysqli_error($link));
+ $result_log = mysqli_query($mysqli,$logging) or die('Server error = '.mysqli_error($link));
 		
   }else{
     // return failed
     echo 0;
   }
 $update1 = "UPDATE invoices SET status='deleted' WHERE invoice='$id_'";
-$result_update = mysqli_query($link,$update1) or die('Server error = '.mysqli_error($link));
+$result_update = mysqli_query($mysqli,$update1) or die('Server error = '.mysqli_error($link));
   // close DB
-  mysqli_close($link);
+  mysqli_close($mysqli);
 ?>

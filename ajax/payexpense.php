@@ -1,6 +1,6 @@
 <?php
   // establish connection to database and select DB
-  $link = mysqli_connect("localhost", "root", "", "hill_rental");
+  
 
   // get record
   $id_ = $_REQUEST['id_'];
@@ -33,10 +33,10 @@
 			    );
 			";
   // execute query
-  $result = mysqli_query($link,$query) or die('Server error = '.mysqli_error($link));
+  $result = mysqli_query($mysqli,$query) or die('Server error = '.mysqli_error($mysqli));
   if ($amount >= 0){
 	  $update = "UPDATE expenses SET status='1' WHERE id='$id_'";
-	  $result = mysqli_query($link,$update) or die('Server error = '.mysqli_error($link));
+	  $result = mysqli_query($mysqli,$update) or die('Server error = '.mysqli_error($mysqli));
   }
 
   // check if successful
@@ -48,5 +48,5 @@
   }
 
   // close DB
-  mysqli_close($link);
+  mysqli_close($mysqli);
 ?>
