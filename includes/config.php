@@ -13,7 +13,7 @@ ini_set('error_reporting', E_ALL);
 define('DATABASE_HOST', 'localhost');
 define('DATABASE_NAME', 'hill_rental');
 define('DATABASE_USER', 'root');
-define('DATABASE_PASS', 'kamah4778');
+define('DATABASE_PASS', '');
 
 // COMPANY INFORMATION
 define('COMPANY_LOGO', '../images/logo.png');
