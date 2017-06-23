@@ -16,7 +16,34 @@ height:35px !important;
 }
 </style>
 
-
+<script type="text/javascript">
+$(function () {
+    $('#account_reports').on('submit', function (e) {
+        if (!e.isDefaultPrevented()) {
+			
+            var url = "http://localhost:6060/app/reports/payment_summary.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $(this).serialize(),
+                success: function (data)
+                {
+                    var messageAlert = 'alert-' + data;
+                    var messageText = data;
+                    //alert(data);
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    if (messageAlert && messageText) {
+                        $('#account_reports').find('.messages').html(alertBox);
+                        $('#account_reports')[0].reset();
+						//window.location.reload();
+                    }
+                }
+            });
+            return false;
+        }
+    })
+});
+</script>
 
 <div class="ch-container">
 	<div class="row">
@@ -38,12 +65,13 @@ height:35px !important;
   } );
   </script>
   
-  
+  <form class="form-horizontal" action="new_expense.php"  id="account_reports" method="post">
   <div class="form-group col-md-4">
+  
 <label class="control-label col-xs-4" for="fname">Start Date:</label>
   <div class="col-xs-8">
   
-  <input type="text" class="form-control" id="datepicker1">
+  <input type="text" class="form-control" name="start_date" id="datepicker1">
 
 </div>
 </div>
@@ -52,7 +80,7 @@ height:35px !important;
 <label class="control-label col-xs-4" for="fname">End Date:</label>
   <div class="col-xs-8">
   
-  <input type="text" class="form-control" id="datepicker">
+  <input type="text" class="form-control" name="end_date" id="datepicker">
 
 </div>
 </div>
@@ -60,7 +88,7 @@ height:35px !important;
 		
 		<div class="form-group ">
 			<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
-		<input class=" btn button  btn-default" type="submit" name="button" value='Search'>
+		<input class=" btn button  btn-default" type="submit" name="button" value='submit'>
 			</div>
 		</div>
 </div>
@@ -71,11 +99,12 @@ height:35px !important;
   } );
   </script>
 		
-		
+	</form>	
 
 </div>
 </div>
 <div class="box-inner">
+<div class='messages alert '> </div>
 <table class="table">
 
     <thead>

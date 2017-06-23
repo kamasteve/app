@@ -1,53 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-table {
-    width: 100%;
-    border-collapse: collapse;
+<?php 
+include_once('../database_connection.php');
+
+// show PHP errors
+
+
+// output any connection error
+if ($con->connect_error) {
+    die('Error : ('. $con->connect_errno .') '. $con->connect_error);
+	
 }
 
-table, td, th {
-    border: 1px solid black;
-    padding: 5px;
-}
+$startdate=2017-05-01;
+$enddate=2017-05-31;
+//WHERE date between '$startdate' and '$enddate' order by date desc
 
-th {text-align: left;}
-</style>
-</head>
-<body>
-
-<?php
-$q = intval($_GET['q']);
-include ('../includes/header.php')
-
-if (!$con) {
-    die('Could not connect: ' . mysqli_error($con));
-}
-
-mysqli_select_db($con,"ajax_demo");
-$sql="SELECT * FROM rent_payments WHERE id = '".$q."'";
-$result = mysqli_query($con,$sql);
-
-echo "<table>
-<tr>
-<th>Firstname</th>
-<th>Lastname</th>
-<th>Age</th>
-<th>Hometown</th>
-<th>Job</th>
-</tr>";
+$result = mysqli_query($con,"SELECT * FROM rent_payments ");
 while($row = mysqli_fetch_array($result)) {
-    echo "<tr>";
-    echo "<td>" . $row['FirstName'] . "</td>";
-    echo "<td>" . $row['LastName'] . "</td>";
-    echo "<td>" . $row['Age'] . "</td>";
-    echo "<td>" . $row['Hometown'] . "</td>";
-    echo "<td>" . $row['Job'] . "</td>";
-    echo "</tr>";
+
+print makeJsonResponse($result);
 }
-echo "</table>";
-mysqli_close($con);
+//if($rows>0){
+    // return Json
+    
+  //
+
+  // close DB
+  mysqli_close($link);
+
+  // generates json response
+  function makeJsonResponse($my_result){
+  		// initialize array
+  		$arr=[];
+
+	    /* fetch associative array */
+	    while ($row = $my_result->fetch_assoc()) {
+	  			// push row to array
+    			array_push($arr,$row);
+		  }
+
+  		// return result
+  		return json_encode($arr);
+	}		
 ?>
-</body>
-</html>
