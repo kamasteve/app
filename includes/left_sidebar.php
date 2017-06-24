@@ -33,6 +33,10 @@ echo '<div class="sidebar-nav">';
 				elseif ($pageid >300 && $pageid<=400) {
 				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-align-justify"></i><span> Monthly Report</span></a></li>';
 				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Agency Commission</span></a></li>';
+				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-align-justify"></i><span> Monthly Report</span></a></li>';
+				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Agency Commission</span></a></li>';
+				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-align-justify"></i><span> Monthly Report</span></a></li>';
+				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Agency Commission</span></a></li>';
 				}
 				elseif ($pageid >0 && $pageid<=100){
 				echo '<li><a class="ajax-link" href="profile.php"><i class="glyphicon glyphicon-calendar"></i><span> Profile</span></a></li>';
@@ -41,6 +45,7 @@ echo '<div class="sidebar-nav">';
 				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Edit SMS settings</span></a></li>';
 				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Edit Billing info </span></a></li>';
 				}
+			
 ?>
 
 				

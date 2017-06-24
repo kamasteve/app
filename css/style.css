@@ -175,6 +175,14 @@ body {
     font-size: 14px;
     line-height: 20px;
     color: #3D3D3D;
+	 background: url(../images/background.jpg)  !important; 
+	  background-position: center;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
 }
 html {
 
