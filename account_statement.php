@@ -14,6 +14,9 @@ $pageid=301;
 width:auto !important;
 height:35px !important;
 }
+#example{
+border: 1px solid #f4f4f4;
+}
 </style>
 
 
@@ -22,11 +25,11 @@ $(function () {
     $('#account_reports').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost/app/reports/payment_summary.php";
+            var url = "http://localhost:6060/app/reports/payment_summary.php";
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: url,
-                data    : {},
+                data: $(this).serialize(),
                 success: function (data)
                 {
                     $("#alert").html(data);
@@ -53,13 +56,16 @@ $(function () {
 		<div class="box-inner">
 			<div class="row">
 	
-    <script>
+      <script>
   $( function() {
     $( "#datepicker1" ).datepicker();
+    $( "#format" ).on( "change", function() {
+      $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+    });
   } );
   </script>
   
-  <form class="form-horizontal" action="/reports/payment_summary.php"  id="account_reports" method="post">
+  <form class="form-horizontal" action=""  id="account_reports" method="post">
   <div class="form-group col-md-4">
   
 <label class="control-label col-xs-4" for="fname">Start Date:</label>
@@ -87,9 +93,12 @@ $(function () {
 		</div>
 </div>
  
-    <script>
+     <script>
   $( function() {
     $( "#datepicker" ).datepicker();
+    $( "#format" ).on( "change", function() {
+      $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+    });
   } );
   </script>
 		

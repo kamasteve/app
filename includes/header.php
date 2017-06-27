@@ -41,8 +41,6 @@ header("location:index.php");
 <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
 <link href="css/TableTools.css" rel="stylesheet">
 <link href='css/animate.min.css' rel='stylesheet'>
-
-   
     <link href=" css/jquery.noty.css" rel='stylesheet'>
 	<link href=" css/css_theme.min.css" rel='stylesheet'>
 

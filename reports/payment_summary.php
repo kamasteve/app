@@ -11,11 +11,16 @@ if ($con->connect_error) {
 	
 }
 
-$startdate=2017-05-01;
-$enddate=2017-05-31;
+$startdate= $_REQUEST['start_date'];
+$enddate= $_REQUEST['end_date'];
+$date = new DateTime($startdate);
+$date2 = new DateTime($enddate);
+$date->format('Y-m-d'); // 31.07.2012
+$date2->format('Y-m-d'); // 31-07-2012
 //WHERE date between '$startdate' and '$enddate' order by date desc
 
-$result = mysqli_query($con,"SELECT * FROM rent_payments ");
+
+$result = mysqli_query($con,"SELECT * FROM rent_payments WHERE date between $date and $date2 order by date desc ");
 
 
 print '<table id="example" class="display" cellspacing="0" width="100%">
@@ -33,9 +38,9 @@ while($row = mysqli_fetch_array($result)) {
     echo "<td>" . $row['first_name'] . "</td>";
     echo "<td>" . $row['last_name'] . "</td>";
     echo "<td>" . $row['date'] . "</td>";
-    echo "</tr></tbody>";
+    echo "</tr>";
 }
-echo "</table>";
+echo "</tbody></table>";
 mysqli_close($con);
 
 ?>
