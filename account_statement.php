@@ -16,28 +16,22 @@ height:35px !important;
 }
 </style>
 
+
 <script type="text/javascript">
 $(function () {
     $('#account_reports').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost:6060/app/reports/payment_summary.php";
+            var url = "http://localhost/app/reports/payment_summary.php";
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: url,
-                data: $(this).serialize(),
+                data    : {},
                 success: function (data)
                 {
-                    var messageAlert = 'alert-' + data;
-                    var messageText = data;
-                    //alert(data);
-                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-                    if (messageAlert && messageText) {
-                        $('#account_reports').find('.messages').html(alertBox);
-                        $('#account_reports')[0].reset();
-						//window.location.reload();
-                    }
+                    $("#alert").html(data);
                 }
+				
             });
             return false;
         }
@@ -65,7 +59,7 @@ $(function () {
   } );
   </script>
   
-  <form class="form-horizontal" action="new_expense.php"  id="account_reports" method="post">
+  <form class="form-horizontal" action="/reports/payment_summary.php"  id="account_reports" method="post">
   <div class="form-group col-md-4">
   
 <label class="control-label col-xs-4" for="fname">Start Date:</label>
@@ -104,25 +98,8 @@ $(function () {
 </div>
 </div>
 <div class="box-inner">
-<div class='messages alert '> </div>
-<table class="table">
+<div class='messages' id="alert"> </div>
 
-    <thead>
-
-        <tr>
-
-            <th>Row</th>
-
-            <th>Bill</th>
-
-            <th>Payment Date</th>
-
-            <th>Payment Status</th>
-
-        </tr>
-
-    </thead>
-	</table>
 
 </div>
 </div>
