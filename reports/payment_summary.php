@@ -10,26 +10,29 @@ if ($con->connect_error) {
     die('Error : ('. $con->connect_errno .') '. $con->connect_error);
 	
 }
-
-$startdate= $_REQUEST['start_date'];
-$enddate= $_REQUEST['end_date'];
-$date = new DateTime($startdate);
-$date2 = new DateTime($enddate);
-$date->format('Y-m-d'); // 31.07.2012
-$date2->format('Y-m-d'); // 31-07-2012
+$startdate= '2017-05-08';
+$enddate = '2017-06-28';
+//$startdate= $_REQUEST['start_date'];2017-05-08
+//$enddate= $_REQUEST['end_date'];
+//$date = new DateTime($startdate);
+//$date2 = new DateTime($enddate);
+//$date->format(\DateTime::ISO8601); // 31.07.2012
+//$date2->format(\DateTime::ISO8601); // 31-07-2012
 //WHERE date between '$startdate' and '$enddate' order by date desc
 
 
-$result = mysqli_query($con,"SELECT * FROM rent_payments WHERE date between $date and $date2 order by date desc ");
+$result = mysqli_query($con,"SELECT * FROM rent_payments WHERE date between '2017-05-08' and '2017-06-28' order by date desc ");
 
-
-print '<table id="example" class="display" cellspacing="0" width="100%">
+print '<input type="button" id="btnExport" value=" Export Table data into Excel " />';
+print '<table id="example" class="display table table-striped" cellspacing="0" width="100%">
  <thead>
-<td>Firstname</td>
-<td>Lastname</td>
-<td>Age</td>
-<td>Hometown</td>
-<td>Job</td>
+ <tr>
+<th>Firstname</th>
+<th>Lastname</th>
+<th>Age</th>
+<th>Hometown</th>
+<th>Job</th>
+</tr>
  </thead> <tbody>';
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";

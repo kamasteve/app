@@ -17,6 +17,18 @@ height:35px !important;
 #example{
 border: 1px solid #f4f4f4;
 }
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+	background-color:#f9f9f9; 
+}
+
+.reports{	
+ border-top: 2px solid #509111;
+}
+.table.dataTable thead th, table.dataTable thead td {
+    padding: 10px 18px;
+    border-bottom: 1px solid #111;
+}
 </style>
 
 
@@ -101,12 +113,18 @@ $(function () {
     });
   } );
   </script>
-		
+		<script>
+		$("#btnExport").click(function (e) {
+    window.open('data:application/vnd.ms-excel,' + $('#example').html());
+    e.preventDefault();
+});
+		</script>
 	</form>	
 
 </div>
 </div>
-<div class="box-inner">
+<div class="box-inner reports">
+
 <div class='messages' id="alert"> </div>
 
 
