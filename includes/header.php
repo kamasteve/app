@@ -32,7 +32,7 @@ header("location:index.php");
     <link href='css/jquery.iphone.toggle.css' rel='stylesheet'>
     <link href='css/uploadify.css' rel='stylesheet'>
     <link href='css/animate.min.css' rel='stylesheet'>
-
+<link rel="stylesheet" href="css/bootstrap.datetimepicker.css">
 <link id="bs-css" href="css/bootstrap-cerulean.min.css" rel="stylesheet">
 <link href="css/charisma-app.css" rel="stylesheet">
 
@@ -46,6 +46,8 @@ header("location:index.php");
 
 <style type="text/css" class="init">
 </style>
+<!--
+<script src="js/scripts.js"></script>
 <script src="js/jquery.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/new/jquery-1.11.1.min.js"></script>
 <script src="js/moment.js"></script>
@@ -60,8 +62,21 @@ header("location:index.php");
 
 <script type="text/javascript" language="javascript" src="js/dataTables.bootstrap.js"></script>
 <script type="text/javascript" language="javascript" class="init"></script>
+-->
 <!-- jQuery -->
-
+<script src="js/jquery.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="js/moment.js"></script>
+	<script src="js/scripts.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/new/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="js/dataTables.tableTools1.js"></script>
+	<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
+	<script src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+	<script src="js/bootstrap.datetime.js"></script>
+	<script src="js/bootstrap.password.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="js/new/general.js"></script>
 <script src="js/new/jquery.validate.js"></script>
 

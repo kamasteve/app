@@ -1,6 +1,5 @@
 <?php include ('includes/header.php'); 
-
-
+define('DATE_FORMAT', 'YYYY/MM/DD'); // DD/MM/YYYY or MM/DD/YYYY
 $sql1 = mysqli_query($con,"SELECT * FROM properties");
 while($row1 = mysqli_fetch_array($sql1)) {
 $pro_arr[]=$row1;
@@ -19,7 +18,7 @@ border: 1px solid #f4f4f4;
 }
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
-	background-color:#f9f9f9; 
+	background-color:#EAEAEA; 
 }
 
 .reports{	
@@ -83,20 +82,32 @@ $(function () {
 <label class="control-label col-xs-4" for="fname">Start Date:</label>
   <div class="col-xs-8">
   
-  <input type="text" class="form-control" name="start_date" id="datepicker1">
+   <div class="input-group  col-xs-8" id="invoice_due_date">
+				            
+				                <input type="text" class="form-control required" name="start_date" placeholder="Select due date" data-date-format="<?php echo DATE_FORMAT ?>" />
+				                <span class="input-group-addon">
+				                    <span class="glyphicon glyphicon-calendar"></span>
+				                </span>
+				            </div>
 
 </div>
 </div>
 
-<div class="form-group col-md-4">
+<div class="form-group col-md-6">
 <label class="control-label col-xs-4" for="fname">End Date:</label>
   <div class="col-xs-8">
   
-  <input type="text" class="form-control" name="end_date" id="datepicker">
+  <div class="input-group  col-xs-8" id="invoice_due_date">
+				            
+				                <input type="text" class="form-control required" name="end_date" placeholder="Select due date" data-date-format="<?php echo DATE_FORMAT ?>" />
+				                <span class="input-group-addon">
+				                    <span class="glyphicon glyphicon-calendar"></span>
+				                </span>
+				            </div>
 
 </div>
 </div>
-<div class="form-group col-md-4 ">
+<div class="form-group col-md-2 ">
 		
 		<div class="form-group ">
 			<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">

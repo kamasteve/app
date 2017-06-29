@@ -42,7 +42,7 @@ define('INVOICE_PREFIX', 'SSJ'); // Prefix at start of invoice - leave empty '' 
 define('INVOICE_INITIAL_VALUE', '1000'); // Initial invoice order number (start of increment)
 define('INVOICE_THEME', '#222222'); // Theme colour, this sets a colour theme for the PDF generate invoice
 define('TIMEZONE', 'Europe/London'); // Timezone - See for list of Timezone's http://php.net/manual/en/function.date-default-timezone-set.php
-define('DATE_FORMAT', 'DD/MM/YYYY'); // DD/MM/YYYY or MM/DD/YYYY
+define('DATE_FORMAT', 'YYYY/MM/DD'); // DD/MM/YYYY or MM/DD/YYYY
 define('CURRENCY', 'KES '); // Currency symbol
 define('ENABLE_VAT', true); // Enable TAX/VAT
 define('VAT_INCLUDED', false); // Is VAT included or excluded?
