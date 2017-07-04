@@ -76,12 +76,10 @@ $(function () {
   } );
   </script>
   
-  <form class="form-horizontal" action=""  id="account_reports" method="post">
-  <div class="form-group col-md-4">
-  
+ <form class="form-horizontal" action=""  id="account_reports" method="post">
+ <div class="form-group col-md-6">
 <label class="control-label col-xs-4" for="fname">Start Date:</label>
-  <div class="col-xs-8">
-  
+ 
    <div class="input-group  col-xs-8" id="invoice_due_date">
 				            
 				                <input type="text" class="form-control required" name="start_date" placeholder="Select due date" data-date-format="<?php echo DATE_FORMAT ?>" />
@@ -89,14 +87,11 @@ $(function () {
 				                    <span class="glyphicon glyphicon-calendar"></span>
 				                </span>
 				            </div>
-
-</div>
 </div>
 
 <div class="form-group col-md-6">
 <label class="control-label col-xs-4" for="fname">End Date:</label>
-  <div class="col-xs-8">
-  
+
   <div class="input-group  col-xs-8" id="invoice_due_date">
 				            
 				                <input type="text" class="form-control required" name="end_date" placeholder="Select due date" data-date-format="<?php echo DATE_FORMAT ?>" />
@@ -104,11 +99,9 @@ $(function () {
 				                    <span class="glyphicon glyphicon-calendar"></span>
 				                </span>
 				            </div>
-
 </div>
-</div>
-<div class="form-group col-md-2 ">
-		
+<div class="form-group col-md-6 ">
+<label class="control-label col-xs-5" for="fname"></label>		
 		<div class="form-group ">
 			<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
 		<input class=" btn button  btn-default" type="submit" name="button" value='submit'>
