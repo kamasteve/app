@@ -8,46 +8,18 @@
   $tenant_id = $_REQUEST['tenant_id'];
   $payment_ref = $_REQUEST['payment_ref'];
   $responsible = $_REQUEST['responsible'];
+  //$property_name = $_REQUEST['name'];
   $total = $_REQUEST['total'];
   $type = 'Invoice Payment';
    $date = date("Y-m-d");
   // prepare query
   
   
-  $query = "INSERT INTO rent_payments (
-					type,
-					payment_mode, 
-					serial,
-					ammount,
-					date,
-					particulars, 
-					tenant_id
-				) VALUES (
-				  	'".$type."',
-				  	'".$mode."',
-				  	'".$id_."',
-					'".$amount."',
-					'".$date."',
-				  	'".$payment_ref."',
-				  	'".$tenant_id."'
-			    );
-			";
-	$query = "INSERT INTO accounts (
-					debit,
-					date, 
-					invoice_id,
-					customercode,
-					responsible
-				) VALUES (
-				  	'".$amount."',
-				  	'".$date."',
-				  	'".$id_."',
-					'".$tenant_id."',
-					'".$responsible."'
-			    );
-			";
+$query = "INSERT INTO rent_payments (type,payment_mode, serial,ammount,date,particulars,tenant_id) VALUES ('$type','$mode','$id_','$amount','$date','$payment_ref','$tenant_id')";
+$query1 = "INSERT INTO accounts (debit,date,invoice_id,customercode,responsible) VALUES ('$amount','$date','$id_','$tenant_id','$responsible')";
   // execute query
   $result = mysqli_query($mysqli,$query) or die('Server error = '.mysqli_error($mysqli));
+  $result2 = mysqli_query($mysqli,$query1) or die('Server error = '.mysqli_error($mysqli));
   if ($amount >= $total){
 	  $update = "UPDATE invoices SET status='closed' WHERE invoice='$id_'";
 	  $result = mysqli_query($mysqli,$update) or die('Server error = '.mysqli_error($mysqli));

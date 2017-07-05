@@ -105,20 +105,24 @@ $pageid=101;
 			<div class=" form-group col-xs-6">
 	<label class="control-label col-xs-4" for="fname">Select Period:</label>
 	<div class=" col-xs-8">
-			<select class='form-control' name="period" id="state">
+			<select class='form-control' name="period" id="state" required>
 			<option value=''>Select Period</option>
-			<option value='1' >Janaury</option>
-			<option value='2'>February</option>
-			<option value='3'>March</option>
-			<option value='4'>April</option>
-			<option value='5'>May</option>
-			<option value='6'>June</option>
-			<option value='7'>July</option>
-			<option value='8'>August</option>
-			<option value='9'>September</option>
-			<option value='10'>October</option>
-			<option value='11'>November</option>
-			<option value='12'>December</option>
+			<option value='Janaury' >Janaury</option>
+			<option value='February'>February</option>
+			<option value='March'>March</option>
+			<option value='April'>April</option>
+			<option value='May'>May</option>
+			<option value='June'>June</option>
+			<option value='July'>July</option>
+			<option value='August'>August</option>
+			<option value='September'>September</option>
+			<option value='October'>October</option>
+			<option value='November'>November</option>
+			<option value='December'>December</option>
+			<option value='December'>1st Quarter</option>
+			<option value='December'>2nd Quarter</option>
+			<option value='December'>3rd Quarter</option>
+			<option value='December'>4th Quarter</option>
     </select>
 	</div>
 </div>

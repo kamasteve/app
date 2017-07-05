@@ -32,6 +32,7 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	$invoice_total = $_POST['invoice_total']; // invoice total
 	$invoice_notes = $_POST['invoice_notes']; // Invoice notes
 	$username=$_POST['responsible'];
+	$period=$_POST['period'];
 	$query_fetchtenant = "SELECT tenant_id, CONCAT(fname,' ',lname)AS names,email,phone,adress FROM tenants WHERE unit='$unit'";
 	$date=date("Y-m-d H:i:s");
 	$billing_id=$invoice_number;
@@ -85,7 +86,8 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 					vat, 
 					total,
 					notes,
-					responsible
+					responsible,
+					period
 				) VALUES (
 				  	'".$invoice_number."',
 				  	'".$invoice_date."',
@@ -98,7 +100,8 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 				  	'".$invoice_vat."',
 				  	'".$invoice_total."',
 				  	'".$invoice_notes."',
-					'".$username."'
+					'".$username."',
+					'".$period."'
 			    );
 			";
 	// insert customer details into database

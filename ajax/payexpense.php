@@ -1,6 +1,6 @@
 <?php
   // establish connection to database and select DB
-  
+  include('../includes/config.php');
 
   // get record
   $id_ = $_REQUEST['id_'];

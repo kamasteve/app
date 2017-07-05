@@ -59,16 +59,9 @@ $(function () {
                 data: $(this).serialize(),
                 success: function (data)
                 {
-                    var messageAlert = 'alert-' + data;
-                    var messageText = data;
-                    //alert(data);
-                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-                    if (messageAlert && messageText) {
-                        $('#addpayments').find('.messages').html(alertBox);
-                        $('#addpayments')[0].reset();
-						//window.location.reload();
-                    }
+                    $("#alert").html(data);
                 }
+				
             });
             return false;
         }
@@ -88,10 +81,34 @@ $(function () {
             
 
 <div class="row">
-<div class='messages alert'> </div>
+
 <form class="form-horizontal" action="verify_payments.php" id="addpayments" method="post">
-  <div class="form-group " >
  
+  <div class="form-group col-md-4">
+<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
+  <input class="form-control" name="invoice" type="text" placeholder=" Invoice Number" >
+  </div>
+</div>
+<div class="form-group col-md-4">
+<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
+  <input class="form-control" name="unit" type="text" placeholder=" House Number" >
+</div>
+</div>
+<div class="form-group col-md-2 ">
+
+		<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
+		<input class=" btn button  btn-default" type="submit" name="button" value='Search'>
+			</div>
+</div>
+</div>
+<div class="box-inner reports">
+
+<div class='messages' id="alert"> </div>
+</form>
+</div>
+
+</div>
+ <!--
 <div class="form-group col-md-6">
 		
 		<label class="control-label col-xs-4" for="fname">Select Property:</label>
@@ -208,20 +225,7 @@ $(function () {
 </div>
 
 
-<div class="form-group col-md-6">
-<label class="control-label col-xs-4" for="fname">Email:</label>
-  <div class="col-xs-8">
-  
-  <input class="form-control" name="email" type="text" placeholder=" Email" required>
-</div>
-</div>
-<div class="form-group col-md-6">
-<label class="control-label col-xs-4" for="fname">ID Number:</label>
-  <div class="col-xs-8">
-  
-  <input class="form-control" name="idnumber" type="text" placeholder=" Mobile Number" required>
-</div>
-</div>
+
  
 <div class="form-group col-md-6">
 <label class="control-label col-xs-4" for="fname">Ammount:</label>
@@ -241,7 +245,8 @@ $(function () {
 </div>
 </div>
 
-</form>	
+</form>
+-->	
 </div>
 </div>
 	

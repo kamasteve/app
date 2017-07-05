@@ -86,11 +86,17 @@ while($row = mysqli_fetch_array($result)) {
     </td>
 	<td>
 	<?php
+	if($row['status'] == "open"){
 	echo '<a class="xyz btn " data-toggle="modal" data-target="#myModal" data-my-id="'.$row["invoice"].'">
 													<i class="glyphicon glyphicon-euro icon-white"></i>
 													Pay
-											</a>'
-		
+											</a>';
+	}else{
+		echo '<a class="xyz btn " data-toggle="modal" data-target="#myModal34" data-my-id="'.$row["invoice"].'">
+													<i class=" class="glyphicon glyphicon-duplicate"></i>
+													Paid
+											</a>';
+	}
 		?>									
 	
     </td>
