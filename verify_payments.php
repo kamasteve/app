@@ -1,3 +1,4 @@
+
 <?php 
 include_once('database_connection.php');
 
@@ -20,7 +21,7 @@ $house_number= $_REQUEST['unit'];
 //WHERE date between '$startdate' and '$enddate' order by date desc
 
 
-$result = mysqli_query($con,"SELECT * FROM invoices WHERE id_unit='$house_number' or invoice='$invoice' order by invoice desc ");
+$result = mysqli_query($con,"SELECT * FROM invoices WHERE( id_unit='$house_number' or invoice='$invoice') AND status='open' order by invoice desc ");
 
 print '<input type="button" id="btnExport" value=" Export Table data into Excel " />';
 print '<table id="example" class="display table table-striped" cellspacing="0" width="100%">
@@ -31,6 +32,7 @@ print '<table id="example" class="display table table-striped" cellspacing="0" w
 <th>Invoice Date</th>
 <th>Total</th>
 <th>Property</th>
+<th>Action</th>
 </tr>
  </thead> <tbody>';
 while($row = mysqli_fetch_array($result)) {
@@ -40,6 +42,10 @@ while($row = mysqli_fetch_array($result)) {
     echo "<td>" . $row['invoice_date'] . "</td>";
     echo "<td>" . $row['total'] . "</td>";
     echo "<td>" . $row['property'] . "</td>";
+	echo '<td> <a class="xyz btn " data-toggle="modal" data-target="#myModal" data-my-id="'.$row["invoice"].'">
+													<i class="glyphicon glyphicon-euro icon-white"></i>
+													Pay
+											</a></td>';
     echo "</tr>";
 }
 echo "</tbody></table>";

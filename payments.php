@@ -11,7 +11,7 @@ $pro_arr[]=$row1;
 }
 
 ?>
-
+<script type="text/javascript" src="js/my_js.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $('#property').on('change',function(){
@@ -67,7 +67,45 @@ $(function () {
         }
     })
 });
+
 </script>
+<script>
+$(function() {
+
+  $('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
+
+    var my_id = '*missing*';
+
+    if (typeof $(this).data('my-id') !== 'undefined') {
+      my_id = $(this).data('my-id');
+    }
+	
+
+    $.ajax({
+        url: "http://localhost:6060/app/fetch_record.php",
+        type: "POST",
+        dataType: 'json',
+        data: {
+          id:my_id
+        },
+        success: function(result){
+          for(var i = 0; i < result.length; i++) {
+          var obj = result[i];
+
+          $("#id_").val(obj.invoice);
+          $("#total").val(obj.total);
+          $("#name").val(obj.name);
+          $("#amount").val(obj.amount);
+          $("#fname").val(obj.fname);
+          $("#lname").val(obj.lname);
+         // $("#mode").val(obj.mode);
+          $("#tenant_id").val(obj.tenant_id);
+          }
+        }
+      });
+  });
+});
+  </script>
 
 <div class="ch-container">
 <div class="row">
@@ -107,6 +145,75 @@ $(function () {
 </form>
 </div>
 
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">Exit</button>
+</div>
+
+<div class="modal-body">
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Invoice Number</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="id_" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Customer</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="fname" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Tenant ID</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="tenant_id" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Invoiced Ammount</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="total" disabled>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Paid Ammount</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="amount">
+  </div>
+</div>
+<div class="form-group row">
+<label class="control-label col-xs-4" for="fname">Payment Mode:</label>
+  <div class="col-xs-8">
+  
+ <select class="form-control " name="mode" id="mode">
+        <option value="Cash">Cash</option>
+        <option value="Bank Deposit">>Bank Deposit</option>
+        <option value="Mpesa">Mpesa</option>
+        <option value="Cheque">Cheque</option>
+      </select>
+</div>
+</div>
+
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label"> Payment Ref </label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="payment_ref" >
+  </div>
+</div>
+<input type="hidden" id="responsible" value="<?php echo  $_id; ?> "/>
+
+
+
+<button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
+<button type="submit" class=" btn-success" data-dismiss="modal" id="update_record">PAY</button>
+
+
+</div>
+</div>
+</div>
 </div>
  <!--
 <div class="form-group col-md-6">
