@@ -19,7 +19,7 @@ $(document).ready(function(){
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost:6060/app/ajax/ajaxPayments.php',
+                url:'http://localhost/app/ajax/ajaxPayments.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -52,7 +52,7 @@ $(function () {
     $('#addpayments').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost:6060/app/verify_payments.php";
+            var url = "http://localhost/app/verify_payments.php";
             $.ajax({
                 type: "POST",
                 url: url,
@@ -82,7 +82,7 @@ $(function() {
 	
 
     $.ajax({
-        url: "http://localhost:6060/app/fetch_record.php",
+        url: "http://localhost/app/fetch_record.php",
         type: "POST",
         dataType: 'json',
         data: {

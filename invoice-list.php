@@ -82,7 +82,7 @@ $(document).ready(function() {
 				?>
 
 				   <td><a href="#"  class=" btn-success btn-xs btn-lg email-invoice"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
-				   <td><a href="#" class=" btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
+			<?php print	'<td><a href="invoices/'.$row["invoice"].'.pdf " class="btn btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>';?>
 				   
 	<td>
 	<?php

@@ -36,7 +36,7 @@ $(function () {
     $('#account_reports').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost:6060/app/reports/payment_summary.php";
+            var url = "http://localhost/app/reports/payment_summary.php";
             $.ajax({
                 type: "POST",
                 url: url,

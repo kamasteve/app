@@ -232,7 +232,7 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 	}
 	$invoice->render('../invoices/'.$invoice_number.'.pdf','F');
 
-		$invoice->render('invoices/'.$invoice_number.'.pdf','F');
+		//$invoice->render('invoices/'.$invoice_number.'.pdf','F');
 	} 
 		// if unable to create invoice
 		/**echo json_encode(array(

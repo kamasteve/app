@@ -7,6 +7,8 @@ $pageid=301;
 }
 
 ?>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <style>
 
 .tentant_footer_cls .box-icon a{
@@ -32,26 +34,35 @@ border: 1px solid #f4f4f4;
 
 
 <script type="text/javascript">
-$(function () {
-    $('#account_reports').on('submit', function (e) {
-        if (!e.isDefaultPrevented()) {
-			
-            var url = "http://localhost/app/reports/payment_breakdown.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $(this).serialize(),
-                success: function (data)
-                {
-                    $("#alert").html(data);
-                }
-				
-            });
-            return false;
-        }
-    })
-});
-</script>
+    
+    // Load the Visualization API and the piechart package.
+    google.charts.load('current', {'packages':['corechart']});
+      
+    // Set a callback to run when the Google Visualization API is loaded.
+    
+    google.charts.setOnLoadCallback(column_chart);
+   
+      
+   
+
+    function column_chart() {
+		
+		var jsonData = $.ajax({
+			url: 'column_chart.php',
+    		dataType:"json",
+    		async: false,
+			success: function(jsonData)
+				{
+					var data = new google.visualization.arrayToDataTable(jsonData);	
+        			var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_values'));
+					chart.draw(data);
+					
+				}	
+			}).responseText;
+  }
+      
+  
+    </script>
 
 <div class="ch-container">
 	<div class="row">
@@ -77,10 +88,10 @@ $(function () {
   </script>
   
   <form class="form-horizontal" action=""  id="account_reports" method="post">
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-6">
   
 <label class="control-label col-xs-4" for="fname">Start Date:</label>
-  <div class="col-xs-8">
+ 
   
    <div class="input-group  col-xs-8" id="invoice_due_date">
 				            
@@ -90,12 +101,12 @@ $(function () {
 				                </span>
 				            </div>
 
-</div>
+
 </div>
 
 <div class="form-group col-md-6">
 <label class="control-label col-xs-4" for="fname">End Date:</label>
-  <div class="col-xs-8">
+  
   
   <div class="input-group  col-xs-8" id="invoice_due_date">
 				            
@@ -105,9 +116,10 @@ $(function () {
 				                </span>
 				            </div>
 
+
 </div>
-</div>
-<div class="form-group col-md-2 ">
+<div class="row">
+<div class="form-group col-md-4 ">
 		
 		<div class="form-group ">
 			<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
