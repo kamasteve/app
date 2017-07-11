@@ -11,7 +11,7 @@ $(document).ready(function() {
 	
 
     $.ajax({
-        url: "http://localhost/app/fetch_record.php",
+        url: "http://localhost:6060/app/fetch_record.php",
         type: "POST",
         dataType: 'json',
         data: {
@@ -46,7 +46,7 @@ $(document).ready(function() {
     var tenant_id=$("#tenant_id").val();
 
     $.ajax({
-        url: "http://localhost/app/update_record.php",
+        url: "http://localhost:6060/app/update_record.php",
         type: "POST",
         data: {
            id_:id_,
@@ -76,7 +76,7 @@ $(document).ready(function() {
     var tenant_id=$("#tenant_id").val();
 
     $.ajax({
-        url: "http://localhost/app/ajax/delete_record.php",
+        url: "http://localhost:6060/app/ajax/delete_record.php",
         type: "POST",
         data: {
            id_:id_,
@@ -103,7 +103,7 @@ $(document).ready(function() {
 	
 
     $.ajax({
-        url: "http://localhost/app/ajax/fetch_expense.php",
+        url: "http://localhost:6060/app/ajax/fetch_expense.php",
         type: "POST",
         dataType: 'json',
         data: {
@@ -137,7 +137,7 @@ $(document).ready(function() {
     var tenant_id=$("#tenant_id").val();
 
     $.ajax({
-        url: "http://localhost/app/ajax/delete_expense.php",
+        url: "http://localhost:6060/app/ajax/delete_expense.php",
         type: "POST",
         data: {
            id_:id_,
@@ -170,7 +170,7 @@ $(document).ready(function() {
 	
 
     $.ajax({
-        url: "http://localhost/app/ajax/fetch_expense.php",
+        url: "http://localhost:6060/app/ajax/fetch_expense.php",
         type: "POST",
         dataType: 'json',
         data: {
@@ -204,7 +204,7 @@ $(document).ready(function() {
     var property=$("#property").val();
 
     $.ajax({
-        url: "http://localhost/app/ajax/payexpense.php",
+        url: "http://localhost:6060/app/ajax/payexpense.php",
         type: "POST",
         data: {
            id_:id_,

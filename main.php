@@ -1,13 +1,16 @@
 <?php include ('includes/header.php');
+$result = mysqli_query($con,"SELECT * FROM register WHERE username ='$_id'");
+while($row = mysqli_fetch_array($result)):
+$pageid=45;
 
  ?>
 
     <!-- topbar ends -->
 <div class="ch-container">
     <div class="row">
-        
+         <?php include ('includes/left_sidebar.php');  ?>
         <!-- left menu starts -->
-        <?php include ('includes/left_sidebar.php'); ?>
+        
         <!--/span-->
         <!-- left menu ends -->
 
@@ -177,9 +180,10 @@
     
 
 </div><!--/.fluid-container-->
-<?php include ('includes/footer.php'); ?>
+<?php   
+  endwhile;
+    mysqli_free_result($result);
+mysqli_close($con);
+ include ('includes/footer.php');  ?>
 
 
-
-</body>
-</html>
