@@ -1,21 +1,19 @@
 
 	<?php
 include ('database_connection.php');
- $fname=$_POST['fname'];
+ $fname=$_REQUEST['fname'];
  $mname='Kenyan';
- $gender=$_POST['lname'];
- $username1 = $_POST['username'];
- $email = $_POST['email'];
- $password = $_POST['password'];
- $pnumber=$_POST['phone'];
+ $gender=$_REQUEST['lname'];
+ $username1 = $_REQUEST['username'];
+ $email = $_REQUEST['email'];
+ $password = $_REQUEST['password'];
+ $pnumber=$_REQUEST['phone'];
+ $role=$_REQUEST['role'];
  $activation=md5($email.time());
-            $query_insert_user = "INSERT INTO register(fname,nationality,lname,email,username,password,phone,activation)VALUES('$fname','$mname','$gender','$email','$username1', '$password','$pnumber','$activation')";
+            $query = "INSERT INTO register(fname,nationality,lname,email,username,password,phone,activation,role)VALUES('$fname','$mname','$gender','$email','$username1', '$password','$pnumber','$activation','$role')";
 
-
-            $result_insert_user = mysqli_query($con, $query_insert_user);
-            if (!$result_insert_user) {
-                print 'Query Failed ';
-            }
+ $result = mysqli_query($con,$query) or die('Server error = '.mysqli_error($con));
+           
 
             if (mysqli_affected_rows($con) == 1) { //If the Insert Query was successfull.
 
@@ -34,15 +32,15 @@ $msg= "Registration successful, please activate email.";
 
 
                 // Finish the page:
-                echo '<div >Thank you for
+                print 'Thank you for
 registering! A confirmation email
-has been sent to '.$email.' Please click on the Activation Link to Activate your account </div>';
+has been sent to '.$email.' Please click on the Activation Link to Activate your account ';
 
 
             } else { // If it did not run OK.
-                echo '<div class="errormsgbox">You could not be registered due to a system
+                print 'You could not be registered due to a system
 error. We apologize for any
-inconvenience.</div>';
+inconvenience.';
             }
 
 
