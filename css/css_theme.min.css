@@ -766,6 +766,7 @@ border:1px solid #F85D2C;
  }
  .alert-dismissable{
  padding-right:35px;
+ background:#d9edf7;
  }
  .alert-dismissable .close{
  top:2px;

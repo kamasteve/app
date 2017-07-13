@@ -30,20 +30,20 @@ $msg= "Registration successful, please activate email.";
                 // Flush the buffered output.
 
 
-
-                // Finish the page:
-                print 'Thank you for
+$response['status'] = 'success';
+			$response['message'] = '<span class="glyphicon glyphicon-ok"></span> &nbsp; registered sucessfully, you may login now';
+                // Finish the page
+              /**  print 'Thank you for
 registering! A confirmation email
 has been sent to '.$email.' Please click on the Activation Link to Activate your account ';
-
+*/
 
             } else { // If it did not run OK.
-                print 'You could not be registered due to a system
-error. We apologize for any
-inconvenience.';
+               $response['status'] = 'error'; // could not register
+			$response['message'] = '<span class="glyphicon glyphicon-info-sign"></span> &nbsp; could not register, try again later';
             }
 
-
+echo json_encode($response);
     
   
 mysqli_close($con);//Close the DB Connection

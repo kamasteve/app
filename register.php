@@ -8,33 +8,12 @@ width:500px;
 
 }
 </style>
-<script src="js/jquery-1.12.4-jquery.min.js"></script>
+
    
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/register.js"></script>
-	<!--
-<script type="text/javascript">
-$(function () {
-    $('#new_user').on('submit', function (e) {
-        if (!e.isDefaultPrevented()) {
-			
-            var url = "http://localhost/app/signup.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $(this).serialize(),
-                success: function (data)
-                {
-                    $("#alert").html(data);
-                }
-				
-            });
-            return false;
-        }
-    })
-});
-</script>
--->
+
+
 
 <div class="ch-container">
 <div class="row">
@@ -45,69 +24,71 @@ $(function () {
     <div class="box col-md-12">
         <div class="box-inner">
 		<div class="box-content row ">
-    <form  method='POST' id="new_user" action="signup.php">
-	<div class="messages alert"> </div>
-	<div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="text">First Name:</label>
- <div class="input-group  col-xs-8" id="invoice_due_text">
+		<div class="form-body">
+    <form  method='POST' id="new_user" action="signup.php" >
+	 <div id="errorDiv"></div>
+	<div class="form-group ">
+<label class="control-label col-xs-3" for="text">First Name:</label>
+ <div class="input-group  col-xs-5" id="invoice_due_text">
   <input class="form-control" name="fname" type="text" placeholder=" First Name" required>
+  <span class="help-block" id="error"></span> 
 </div>
- <span class="help-block" id="error"></span>   
+   
 </div>
-	<div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="text">Last Name:</label>
- <div class="input-group  col-xs-8" id="invoice_due_text">
+	<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Last Name:</label>
+ <div class="input-group  col-xs-5" id="invoice_due_text">
  <input class="form-control" name="lname" type="text" placeholder=" Last Name" required>
 </div>
  <span class="help-block" id="error"></span>   
 </div>    
- <div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="text">Email:</label>
- <div class="input-group  col-xs-8" id="invoice_due_text">
- <input class="form-control" name="email" type="text" placeholder=" Email" required> 
+ <div class="form-group ">
+<label class="control-label col-xs-3" for="text">Email:</label>
+ <div class="input-group  col-xs-5" id="invoice_due_text">
+ <input class="form-control" name="email" id="email" type="text" placeholder=" Email" required> 
  <span class="help-block" id="error"></span> 
 </div> 
 </div>      
-<div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="text">Username:</label>
- <div class="input-group  col-xs-8" id="invoice_due_text">
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Username:</label>
+ <div class="input-group  col-xs-5" id="invoice_due_text">
  <input class="form-control" name="username" type="text" placeholder=" Username" required>
   <span class="help-block" id="error"></span>   
 </div>
 </div> 
-<div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="text">Password:</label>
- <div class="input-group  col-xs-8" id="invoice_due_text">
- <input type="password" class="form-control" name="password" placeholder="Password">
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Password:</label>
+ <div class="input-group  col-xs-5" id="invoice_due_text">
+ <input type="password" class="form-control" name="password" id="password" placeholder="Password">
  <span class="help-block" id="error"></span> 
 </div>
 </div>
-<div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="text">Password Confirm:</label>
- <div class="input-group  col-xs-8" id="invoice_due_text">
- <input type="password" class="form-control" name="cpassword" placeholder="Confirm Password">
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Password Confirm:</label>
+ <div class="input-group  col-xs-5" id="invoice_due_text">
+ <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password">
  <span class="help-block" id="error"></span> 
 </div>
 </div> 	 
- <div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="text">Password Confirm:</label>
- <div class="input-group  col-xs-8" id="invoice_due_text">
+ <div class="form-group ">
+<label class="control-label col-xs-3" for="text">Phone:</label>
+ <div class="input-group  col-xs-5" id="invoice_due_text">
  <input type="tel" class="form-control" name="phone" placeholder="Phone Number">
 </div>
 </div> 
-<div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="text">User Role:</label>
-  <div class="input-group col-xs-8">
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">User Role:</label>
+  <div class="input-group col-xs-5">
 		<select class='form-control' name="role" id="state">
         <option value="admin">Administrator</option>
 		<option value="user">Normal User</option>
     </select>
 	</div>
 </div>
-<div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="text"></label>
- <div class="input-group  col-xs-8" id="invoice_due_text">
- <button class="button " type="submit" name="button" value='submit'>REGISTER</button>
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text"></label>
+ <div class="input-group  col-xs-5" id="invoice_due_text">
+ <button class="button" id="btn-signup" type="submit" name="button" value='submit'>REGISTER</button>
 		
 </div>
 </div>  

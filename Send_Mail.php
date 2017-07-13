@@ -10,7 +10,7 @@ $mail->SMTPAuth   = true;                  // enable SMTP authentication
 $mail->Host       = "tls://mail.techisoft.co.ke"; // SMTP host
 $mail->Port       =  465;                    // set the SMTP port
 $mail->Username   = "info@techisoft.co.ke";  // SMTP  username
-$mail->Password   = "@kamah4778";  // SMTP password
+$mail->Password   = "techisoft4778";  // SMTP password
 $mail->SetFrom($from, 'Digital Landlord');
 $mail->AddReplyTo($from,'Techisoft Solutions');
 $mail->Subject    = $subject;

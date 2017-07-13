@@ -41,8 +41,9 @@ echo '<div class="sidebar-nav">';
 				elseif ($pageid >0 && $pageid<=100){
 				echo '<li><a class="ajax-link" href="main.php"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a></li>';
 				echo '<li><a class="ajax-link" href="profile.php"><i class="glyphicon glyphicon-user"></i><span> Profile</span></a></li>';
-				echo '<li><a class="ajax-link" href="register.php"><i class="glyphicon glyphicon-plus"></i><span> Add User</span></a></li>';
 				echo '<li><a class="ajax-link" href="editprofile.php"><i class="glyphicon glyphicon-edit"></i><span> Edit profile</span></a></li>';
+				echo '<li><a class="ajax-link" href="register.php"><i class="glyphicon glyphicon-plus"></i><span> Add User</span></a></li>';
+				echo '<li><a class="ajax-link" href="manage_users.php"><i class="glyphicon glyphicon-edit"></i><span> Manage Users</span></a></li>';
 				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Edit Company Data</span></a></li>';
 				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-envelope"></i><span> Edit SMS settings</span></a></li>';
 				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Edit Billing info </span></a></li>';

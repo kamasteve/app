@@ -86,10 +86,11 @@ $('document').ready(function()
 		   
 		   function submitForm(){
 			   
+			   
 			   $.ajax({
-			   		url: 'ajax-signup.php',
+			   		url: 'http://localhost/app/signup.php',
 			   		type: 'POST',
-			   		data: $('#register-form').serialize(),
+			   		data: $('#new_user').serialize(),
 			   		dataType: 'json'
 			   })
 			   .done(function(data){
@@ -103,27 +104,27 @@ $('document').ready(function()
 							
 							$('#errorDiv').slideDown('fast', function(){
 								$('#errorDiv').html('<div class="alert alert-info">'+data.message+'</div>');
-								$("#register-form").trigger('reset');
+								$("#new_user").trigger('reset');
 								$('input[type=text],input[type=email],input[type=password]').prop('disabled', false);
 								$('#btn-signup').html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign Me Up').prop('disabled', false);
-							}).delay(3000).slideUp('fast');
+							}).delay(30000).slideUp('fast');
 							
 									   
 					    } else {
 									   
 						    $('#errorDiv').slideDown('fast', function(){
 						      	$('#errorDiv').html('<div class="alert alert-danger">'+data.message+'</div>');
-							  	$("#register-form").trigger('reset');
+							  	$("#new_user").trigger('reset');
 							  	$('input[type=text],input[type=email],input[type=password]').prop('disabled', false);
 							  	$('#btn-signup').html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign Me Up').prop('disabled', false);
-							}).delay(3000).slideUp('fast');
+							}).delay(30000).slideUp('fast');
 						}
 								  
-					},3000);
+					},30000);
 			   		
 			   })
 			   .fail(function(){
-			   		$("#register-form").trigger('reset');
+			   		$("#new_user").trigger('reset');
 			   		alert('An unknown error occoured, Please try again Later...');
 			   });
 		   }
