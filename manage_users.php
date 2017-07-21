@@ -89,7 +89,7 @@ $(document).ready(function() {
 				   
 	<td>
 	<?php
-	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete" data-my-id="'.$row["username"].'">
+	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete_user" data-my-id="'.$row["username"].'">
 													<i class="glyphicon glyphicon-trash icon-white"></i>
 													
 											</a>'
@@ -111,7 +111,7 @@ $(document).ready(function() {
 </div>
 </div>
 </div>
-<div id="modalDelete" class="modal fade" role="dialog">
+<div id="modalDelete_user" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->

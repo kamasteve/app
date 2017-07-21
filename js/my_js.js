@@ -124,7 +124,39 @@ $(document).ready(function() {
           }
         }
       });
-  })//
+  })
+  $('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
+
+    var my_id = '*missing*';
+
+    if (typeof $(this).data('my-id') !== 'undefined') {
+      my_id = $(this).data('my-id');
+    }
+	
+
+    $.ajax({
+        url: "http://localhost/app/ajax/fetch_user.php",
+        type: "POST",
+        dataType: 'json',
+        data: {
+          id:my_id
+        },
+        success: function(result){
+          for(var i = 0; i < result.length; i++) {
+          var obj = result[i];
+
+          $("#id_").val(obj.username);
+          $("#payee").val(obj.email);
+          $("#due_date").val(obj.fname);
+          $("#credit").val(obj.lname);
+          $("#fname").val(obj.fname);
+          $("#lname").val(obj.lname);
+         // $("#mode").val(obj.mode);
+          $("#tenant_id").val(obj.tenant_id);
+          }
+        }
+      });
+  })
   $('#delete_expense').click(function () {
 
     var id_=$("#id_").val();
