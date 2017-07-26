@@ -77,19 +77,22 @@ $(document).ready(function() {
 					<td><?php echo $row["nationality"];?></td>
 					<td><?php echo $row["status"];?></span></td>
 				
-<td>
- <form name="editWish" action="invoice-edit.php" method="GET">
-            <input type="hidden" name="wishID" value="<?php echo $wishID; ?> "/>
-           <!-- <input type="submit" class="glyphicon glyphicon-edit" name="editWish" value="Edit"/></span> -->
-			<button type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</button>
-        </form>
-</td>
-				   
+
+	<td>
+	<?php
+	echo '<a class=" btn  " data-toggle="modal" data-target="#modaledit" data-my-id="'.$row["username"].'">
+													<span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit
+													
+											</a>'
+		
+		?>									
+	
+    </td>			   
 			
 				   
 	<td>
 	<?php
-	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete_user" data-my-id="'.$row["username"].'">
+	echo '<a class=" btn-danger btn-xs " data-toggle="modal" data-target="#modalDelete" data-my-id="'.$row["username"].'">
 													<i class="glyphicon glyphicon-trash icon-white"></i>
 													
 											</a>'
@@ -111,44 +114,107 @@ $(document).ready(function() {
 </div>
 </div>
 </div>
-<div id="modalDelete_user" class="modal fade" role="dialog">
+<div id="modaledit" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Are You Sure You Want to Delete This User</h4>
+        <h4 class="modal-title">Edit System User</h4>
+      </div>
+<form id="update_profile"  >
+  <div class="form-group" >
+         <div class='messages alert '> </div>
+	<div class="form-group ">
+<label class="control-label col-xs-3" for="text">First Name:</label>
+ <div class="input-group  col-xs-7" id="invoice_due_text">
+  <input class="form-control" name="fname" value="" id='fname' type="text" placeholder=" First Name"  required>
+  <span class="help-block" id="error"></span> 
+</div>
+</div>	  
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Last Name:</label>
+ <div class="input-group  col-xs-7" id="invoice_due_text">
+  <input class="form-control" name="lname" type="text" value="" id='lname' placeholder=" Last Name"  required>
+  <span class="help-block" id="error"></span> 
+</div>
+</div>
+
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Username:</label>
+ <div class="input-group  col-xs-7" id="invoice_due_text">
+ <input class="form-control" name="username" type="text" placeholder="Username" value="" id='id_' readonly>
+  <span class="help-block" id="error"></span> 
+</div>
+</div>
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Email:</label>
+ <div class="input-group  col-xs-7" id="invoice_due_text">
+  <input class="form-control" name="email" type="text" placeholder="Email" value="" id='email' readonly>
+  <span class="help-block" id="error"></span> 
+</div>
+</div>
+
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Phone:</label>
+ <div class="input-group  col-xs-7" id="invoice_due_text">
+  <input class="form-control" name="phone_number" type="text" placeholder=" Phone Number" value="" id='phone_number' required>
+  <span class="help-block" id="error"></span> 
+</div>
+</div>
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Nationality:</label>
+ <div class="input-group  col-xs-7" id="invoice_due_text">
+   <input class="form-control" name="country" type="text" placeholder=" Country" value="" id='country' required>
+  <span class="help-block" id="error"></span> 
+</div>
+</div>
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Company:</label>
+ <div class="input-group  col-xs-7" id="invoice_due_text">
+   <input class="form-control" name="company" type="text" placeholder=" Company"value="" id='company' required>
+  <span class="help-block" id="error"></span> 
+</div>
+</div>
+<div class="form-group ">
+<label class="control-label col-xs-3" for="text">Role:</label>
+ <div class="input-group  col-xs-7" id="invoice_due_text">
+  <input class="form-control" name="role" type="text" placeholder="Role" value="" id='role' required>
+  <span class="help-block" id="error"></span> 
+</div>
+</div>
+ 
+ 
+<div class="row">
+		<div class="col-xs-4">
+		
+		<button type="submit" class=" btn-success" data-dismiss="modal" id="update_user">Update Profile</button>
+		</div>
+		</div>
+          <!-- .vd_content-section --> 
+          </div>
+        </div>
+		</div>
+		</form>
+		</div>
+		</div>
+		
+<div id="modalDelete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
       </div>
      <div class="modal-body">
-<div class="form-group row">
-  <label for="external-id" class="col-xs-4 col-form-label">Invoice Number</label>
-  <div class="col-xs-8">
-     <input class="form-control" type="text" value="" id="id_" disabled>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="external-id" class="col-xs-4 col-form-label">Customer</label>
-  <div class="col-xs-8">
-     <input class="form-control" type="text" value="" id="fname" disabled>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="external-id" class="col-xs-4 col-form-label">Tenant ID</label>
-  <div class="col-xs-8">
-     <input class="form-control" type="text" value="" id="tenant_id" disabled>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="external-id" class="col-xs-4 col-form-label">Invoiced Ammount</label>
-  <div class="col-xs-8">
-    <input class="form-control" type="text" value="" id="total" disabled>
-  </div>
-</div>
+<h4 class="modal-title">Are You Sure You Want to Delete this user</h4>
 </div>
       <div class="modal-footer">
         <button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
-		<button type="submit" class=" btn-success" data-dismiss="modal" id="delete_record">Delete</button>
+		<button type="submit" class=" btn-success" data-dismiss="modal" id="delete_user">Delete</button>
       </div>
     </div>
 

@@ -146,7 +146,7 @@ $query1 = "INSERT INTO accounts (debit,date,invoice_id,customercode,responsible)
 	} else {
 		// if unable to create invoice
 		print 'there has been an error in creating the invoice';
-		print $email;
+		//print $email;
 	}
 	$invoice->render('receipts/'.$payment_ref.'.pdf','F');
 

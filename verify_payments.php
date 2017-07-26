@@ -38,7 +38,7 @@ print '<table id="example" class="display table table-striped" cellspacing="0" w
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
     echo "<td>" . $row['invoice'] . "</td>";
-    echo "<td>" . $row['rental_period'] . "</td>";
+    echo "<td>" . $row['Period'] . "</td>";
     echo "<td>" . $row['invoice_date'] . "</td>";
     echo "<td>" . $row['total'] . "</td>";
     echo "<td>" . $row['property'] . "</td>";

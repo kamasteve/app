@@ -63,7 +63,35 @@ $(document).ready(function() {
         }
       });
   })// end of update button action
-  
+    $('#update_user').click(function () {
+
+    var id_=$("#id_").val();
+    var fname=$("#fname").val();
+    var lname=$("#lname").val();
+    var email=$("#email").val();
+    var phone_number=$("#phone_number").val();
+    var country=$("#country").val();
+    var company=$("#company").val();
+    var role=$("#role").val();
+
+    $.ajax({
+        url: "http://localhost/app/ajax/update_profile.php",
+        type: "POST",
+        data: {
+           username:id_,
+           fname:fname,
+           lname:lname,
+           email:email,
+           phone_number:phone_number,
+           country:country,
+           company:company,
+		   role:role
+        },
+        success: function(result){
+          console.log("Update response: "+result);
+        }
+      });
+  })
   $('#delete_record').click(function () {
 
     var id_=$("#id_").val();
@@ -77,6 +105,35 @@ $(document).ready(function() {
 
     $.ajax({
         url: "http://localhost/app/ajax/delete_record.php",
+        type: "POST",
+        data: {
+           id_:id_,
+           payment_ref:payment_ref,
+           total:total,
+           amount:amount,
+           responsible:responsible,
+           mode:mode,
+           
+           tenant_id:tenant_id
+        },
+        success: function(result){
+          console.log("Update response: "+result);
+        }
+      });
+  })
+   $('#delete_user').click(function () {
+
+    var id_=$("#id_").val();
+    var fname=$("#fname").val();
+    var total=$("#total").val();
+    var amount=$("#amount").val();
+    var responsible=$("#responsible").val();
+    var mode=$("#mode").val();
+    var payment_ref=$("#payment_ref").val();
+    var tenant_id=$("#tenant_id").val();
+
+    $.ajax({
+        url: "http://localhost/app/ajax/delete_user.php",
         type: "POST",
         data: {
            id_:id_,
@@ -146,13 +203,13 @@ $(document).ready(function() {
           var obj = result[i];
 
           $("#id_").val(obj.username);
-          $("#payee").val(obj.email);
-          $("#due_date").val(obj.fname);
-          $("#credit").val(obj.lname);
+          $("#email").val(obj.email);
           $("#fname").val(obj.fname);
+          $("#country").val(obj.nationality);
+          $("#role").val(obj.role);
           $("#lname").val(obj.lname);
-         // $("#mode").val(obj.mode);
-          $("#tenant_id").val(obj.tenant_id);
+         $("#company").val(obj.company);
+          $("#phone_number").val(obj.phone);
           }
         }
       });

@@ -25,53 +25,53 @@ width:500px;
         <div class="box-inner">
 		<div class="box-content row ">
 		<div class="form-body">
-    <form  method='POST' id="new_user" action="signup.php" >
+    <form  method='POST' id="new_company" action="signup.php" >
 	 <div id="errorDiv"></div>
-	<div class="form-group ">
-<label class="control-label col-xs-3" for="text">First Name:</label>
- <div class="input-group  col-xs-5" id="invoice_due_text">
+	<div class="form-group col-md-6">
+<label class="control-label " for="text">Company Name:</label>
+ <div class="input-group  " id="invoice_due_text">
   <input class="form-control" name="fname" type="text" placeholder=" First Name" required>
   <span class="help-block" id="error"></span> 
 </div>
    
 </div>
-	<div class="form-group ">
-<label class="control-label col-xs-3" for="text">Last Name:</label>
+	<div class="form-group col-md-6">
+<label class="control-label col-xs-3" for="text">COMPANY_ADDRESS_1:</label>
  <div class="input-group  col-xs-5" id="invoice_due_text">
  <input class="form-control" name="lname" type="text" placeholder=" Last Name" required>
 </div>
  <span class="help-block" id="error"></span>   
 </div>    
  <div class="form-group ">
-<label class="control-label col-xs-3" for="text">Email:</label>
+<label class="control-label col-xs-3" for="text">COMPANY_ADDRESS_2:</label>
  <div class="input-group  col-xs-5" id="invoice_due_text">
  <input class="form-control" name="email" id="email" type="text" placeholder=" Email" required> 
  <span class="help-block" id="error"></span> 
 </div> 
 </div>      
 <div class="form-group ">
-<label class="control-label col-xs-3" for="text">Username:</label>
+<label class="control-label col-xs-3" for="text">COMPANY_ADDRESS:</label>
  <div class="input-group  col-xs-5" id="invoice_due_text">
  <input class="form-control" name="username" type="text" placeholder=" Username" required>
   <span class="help-block" id="error"></span>   
 </div>
 </div> 
 <div class="form-group ">
-<label class="control-label col-xs-3" for="text">Password:</label>
+<label class="control-label col-xs-3" for="text">Email:</label>
  <div class="input-group  col-xs-5" id="invoice_due_text">
- <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+ <input type="text" class="form-control" name="password" id="password" placeholder="Password">
  <span class="help-block" id="error"></span> 
 </div>
 </div>
 <div class="form-group ">
-<label class="control-label col-xs-3" for="text">Password Confirm:</label>
+<label class="control-label col-xs-3" for="text">Registration Number:</label>
  <div class="input-group  col-xs-5" id="invoice_due_text">
  <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password">
  <span class="help-block" id="error"></span> 
 </div>
 </div> 	 
  <div class="form-group ">
-<label class="control-label col-xs-3" for="text">Phone:</label>
+<label class="control-label col-xs-3" for="text">Tax Information:</label>
  <div class="input-group  col-xs-5" id="invoice_due_text">
  <input type="tel" class="form-control" name="phone" placeholder="Phone Number">
 </div>
@@ -94,8 +94,6 @@ width:500px;
 </div>  
           
     </form>
-</div>
-</div>
 </div>
 </div>
 </div>

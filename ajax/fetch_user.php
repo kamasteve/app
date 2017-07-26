@@ -6,7 +6,7 @@
   $id_ = $_REQUEST['id'];
 
   // prepare query
-  $query ="SELECT  fname, lname,username,email FROM register WHERE username ='$id_'";
+  $query ="SELECT  * FROM register WHERE username ='$id_'";
 
   // execute query
   $result = mysqli_query($link,$query) or die('Server error = '.mysqli_error($link));
