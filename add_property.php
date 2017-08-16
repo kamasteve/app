@@ -42,7 +42,7 @@ $(function () {
     $('#addproperty').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost:6060/app/addproperty.php";
+            var url = "http://localhost/app/addproperty.php";
             $.ajax({
                 type: "POST",
                 url: url,

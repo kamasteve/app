@@ -108,7 +108,7 @@ var base_url= 'http://www.hilleconomicgroup.com';
       <a class="nav-link" href="profile.php">Home <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="invoice.php">Acounting</a>
+      <a class="nav-link" href="invoice.php">Accounting</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="tenants1.php">Property Management</a>

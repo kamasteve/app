@@ -17,6 +17,7 @@
 		</div>
   <div class="col-md-8">
   <form class="form-horizontal tentant_cls">
+  <div class='messages alert '> </div>
   <div class="form-group">
 		<label class="control-label col-xs-3" for="Deposit">First Name:</label>
 		<div class="col-xs-9">

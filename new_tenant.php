@@ -1,5 +1,7 @@
 <?php include ('includes/header.php'); 
 $pageid=205;
+define('DATE_FORMAT', 'YYYY/MM/DD'); // DD/MM/YYYY or MM/DD/YYYY
+
 ?>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -8,7 +10,7 @@ $(document).ready(function(){
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost:6060/app/ajax/ajaxData.php',
+                url:'http://localhost/app/ajax/ajaxData.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -41,7 +43,7 @@ $(function () {
     $('#new_tenant').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost:6060/app/newtenants.php";
+            var url = "http://localhost/app/newtenants.php";
             $.ajax({
                 type: "POST",
                 url: url,
@@ -74,6 +76,7 @@ $(function () {
         <div class="box-inner">
 		<div class="box-content row ">
 		<form class="form-horizontal" id="new_tenant" action="newtenants.php"  method="post">
+		<div class='messages alert '> </div>
 		<div class="row">
 		
 		
@@ -169,7 +172,7 @@ echo "</select>";
 <div class="form-group col-xs-6">
   <label class="control-label col-xs-4" for="fname">KRA PIN:</label>
     <div class="col-xs-8">
-  <input class="form-control" name="gender" type="text" placeholder=" KRA PIN" required>
+  <input class="form-control" name="tax_details" type="text" placeholder=" KRA PIN" required>
 </div>
 </div>
 
@@ -192,23 +195,35 @@ echo "</select>";
 </div>
 </div>
 
-<div class="form-group col-xs-6">
-<label class="control-label col-xs-4" for="fname">First Name:</label>
-    <div class="col-xs-8">
-  <input class="form-control" name="acountnumber" type="text" placeholder="Bank Account Number" required>
+   <script>
+  $( function() {
+    $( "#datepicker1" ).datepicker();
+    $( "#format" ).on( "change", function() {
+      $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+    });
+  } );
+  </script>
+  
+ <div class="form-group col-md-6">
+<label class="control-label col-xs-4" for="fname">Start Date:</label>
+ 
+   <div class="input-group  col-xs-7" id="invoice_due_date">
+				            
+				                <input type="text" class="form-control required" name="start_date" placeholder="Select due date" data-date-format="<?php echo DATE_FORMAT ?>" />
+				                <span class="input-group-addon">
+				                    <span class="glyphicon glyphicon-calendar"></span>
+				                </span>
+				            </div>
 </div>
+<div class="col-md-6">
+<button type="submit" class="button btn-default "   name='submit'>Save</button>
 </div>
-<div class="col-md-4">
-<button type="submit" class="btn btn-default "   name='submit'>Save</button>
-</div>
-<div class="col-md-4">
-<span id="fileselector">
-        <label class="btn btn-default" for="upload-file-selector">
-            <input id="upload-file-selector" type="file">
-            <i class="fa_icon icon-upload-alt margin-correction"></i>Upload Lease Agrement
-        </label>
-    </span>
-</div>
+<div class="fileupload col-xs-6 fileupload-new" data-provides="fileupload">
+    <span class="btn btn-primary btn-file"><span class="fileupload-new">Select file</span>
+    <span class="fileupload-exists">Change</span>         <input type="file" /></span>
+    <span class="fileupload-preview"></span>
+    <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+  </div>
 </div>
 </form>
 		</div>

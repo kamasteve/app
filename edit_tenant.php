@@ -14,6 +14,34 @@ $pageid=201;
     <div class="box col-md-12">
         <div class="box-inner">
 		<div class="box-content row">
+		<script type="text/javascript">
+$(function () {
+    $('#update_profile').on('submit', function (e) {
+        if (!e.isDefaultPrevented()) {
+			
+            var url = "http://localhost/app/ajax/update_tenant.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $(this).serialize(),
+                success: function (data)
+                {
+                    var messageAlert = 'alert-' + data;
+                    var messageText = data;
+                    //alert(data);
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    if (messageAlert && messageText) {
+                        $('#edit_tentant').find('.messages').html(alertBox);
+                        $('#edit_tentant')[0].reset();
+						
+                    }
+                }
+            });
+            return false;
+        }
+    })
+});
+</script>
 		
 	<?php 
 	$var_value = $_GET['wishID'];
@@ -22,44 +50,34 @@ $pageid=201;
 <?php 
 if (isset($_POST['submit'])) {
 $tenant_id  = $_POST['varname']; }
-$sql1=mysqli_query($dbc,"SELECT * FROM tenants WHERE tenant_id='$var_value'");
+$sql1=mysqli_query($con,"SELECT * FROM tenants WHERE tenant_id='$var_value'");
 $tenant_arr = mysqli_fetch_array($sql1);
 ?>
 <form class="form-horizontal" method='POST'  id='edit_tentant' name='edit_tentant'>
+<div class='messages alert '> </div>
 <div class="row">
   
 
 <div class="alert_msg" id='alert_msg_<?php echo $tenant_arr['tenant_id']; ?>' style='display:none;'></div><br />
 
-	<div class="form-group col-md-6">
-		<label class="control-label col-xs-3" for="property">Property :</label>
-		<div class="col-xs-9">
-			<select class="form-control" name="property"  onchange='get_owner_edit_property(this.value);'>
-			<option value='0'>Select Property owner</option>
-				<?php 
-				if(!empty($owner_arr)){
-				foreach($owner_arr as $owner){ ?>
-			<option <?php if($tenant_arr['property']==$owner['owner_id']){ echo 'selected="selected"'; } ?>  value='<?php  echo $owner['owner_id']; ?>'><?php echo $owner['owner_name']; ?></option>	
-			<?php	}} ?>
-				
-			</select>
-		</div>
-	</div>
-	<div class="form-group col-md-6" >
-		<label class="control-label col-xs-3" for="username">Property Type </label>
-		<div class="col-xs-9">
-			<select class="form-control" name="type" id='type_edit_id'>
-				
-				<?php 
-				if(!empty($pro_arr)){
-				foreach($pro_arr as $pro){ ?>
-					<option <?php if($tenant_arr['type']==$pro['id']){ echo 'selected="selected"'; } ?>  value='<?php  echo $pro['id']; ?>'><?php echo $pro['name']; ?></option>	
-				<?php	}} ?>
-				
-			</select>
-		</div>
-	</div>
 	
+	
+	<div class="form-group col-md-6">
+	
+		<label class="control-label col-xs-3" for="fname">Property :</label>
+		<div class=" col-xs-9">
+			<input type="text" class="form-control col-xs-8" name="property" id="fname" placeholder="First Name" value='<?php echo $tenant_arr['property']; ?> 'readonly>
+		</div>
+	
+	</div>
+	<div class="form-group col-md-6">
+	
+		<label class="control-label col-xs-3" for="fname">Unit:</label>
+		<div class=" col-xs-9">
+			<input type="text" class="form-control col-xs-8" name="fname" id="unit" placeholder="First Name" value='<?php echo $tenant_arr['unit']; ?> 'readonly>
+		</div>
+	
+	</div>
 	<div class="form-group col-md-6">
 	
 		<label class="control-label col-xs-3" for="fname">First Name:</label>
@@ -114,21 +132,24 @@ $tenant_arr = mysqli_fetch_array($sql1);
 		</div>
 	</div>
 	<div class="form-group col-md-6">
-		<label class="control-label col-xs-3">gender:</label>
-		<div class="col-xs-2">
-			<label class="radio-inline">
-			<input type="radio" checked='checked' <?php if($tenant_arr['gender']=='male'){ echo "checked='checked'"; } ?> name="genderRadios" value="male"> Male </label>
-		</div>
-		<div class="col-xs-2">
-			<label class="radio-inline">
-			<input type="radio" name="genderRadios" <?php if($tenant_arr['gender']=='female'){ echo "checked='checked'"; } ?> value="female"> Female </label>
-		</div>
+		<label class="control-label col-xs-3">Satus</label>
+		
+  <div class="col-xs-9">
+  
+ <select class="form-control " name="mode" id="mode">
+        <option value="1">Active</option>
+        <option value="2">Deactivate</option>
+        <option value="3">Suspended</option>       
+      </select>
+</div>
+</div>
 	</div>
-	<div class="form-group ">
-		<br>
-		<div class="form-group ">
-			<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
-		<input class=" btn gglyphicon  btn-default" type="submit" name="button" value='Update changes'>
+	<div class="form-group col-md-6">
+		<div class="col-xs-3">
+		</div>
+		<div class="col-xs-9">
+			
+		<input class=" button " type="submit" name="button" >
 			</div>
 		</div>
 </div>

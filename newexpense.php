@@ -173,7 +173,7 @@ echo "</select>";
 	</div>
 </div>
 <div class="form-group col-xs-6">
-  <label class="control-label col-xs-4" for="fname">Ammount:</label>
+  <label class="control-label col-xs-4" for="fname">Amount:</label>
     <div class="col-xs-8">
 		<input class="form-control" name="amount" type="text" placeholder=" Amount" required>
 	</div>

@@ -9,18 +9,18 @@ $row = mysqli_fetch_array($query);
 $pname=$row["name"];
 $property=$_POST['property'];
 $unit=$_POST['unit'];
-$type=$_POST['type'];
+//$type=$_POST['type'];
 $fname=$_POST['fname'];      
 $lname=$_POST['lname'];
 $phone=$_POST['phone'];
 $idnumber=$_POST['idnumber'];
 $email = $_POST['email'];
-$gender=$_POST['gender'];
+$gender=$_POST['tax_details'];
 $address = $_POST['address'];
 $bank = $_POST['bank'];
 $acountnumber = $_POST['acountnumber'];
 
-$query_insert_user = "INSERT INTO tenants(property,unit,type,fname,lname,phone,idnumber,email,gender,adress,bank,acountnumber)VALUES('$pname','$unit','$type','$fname','$lname','$phone','$idnumber', '$email','$gender','$address','$bank','$acountnumber')";
+$query_insert_user = "INSERT INTO tenants(property,unit,fname,lname,phone,idnumber,email,tax_id ,adress,bank,acountnumber)VALUES('$pname','$unit','$fname','$lname','$phone','$idnumber', '$email','$gender','$address','$bank','$acountnumber')";
 
 
             $result_insert_user = mysqli_query($con, $query_insert_user);
@@ -28,9 +28,7 @@ $query_insert_user = "INSERT INTO tenants(property,unit,type,fname,lname,phone,i
                  $assign_unit= "UPDATE rental_units SET status='1' WHERE unit_id='$unit'";
 				 $taken_unit = mysqli_query($con, $assign_unit);
             }
-			if (!$taken_unit) {
-                 echo("Error description: " . mysqli_error($con));
-            }
+			
             if (!$result_insert_user) {
                  echo("Error description: " . mysqli_error($con));
             }

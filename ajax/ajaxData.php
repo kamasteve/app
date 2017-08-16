@@ -4,7 +4,7 @@ include('../includes/config.php');
 
 if(isset($_POST["property_id"]) && !empty($_POST["property_id"])){
     //Get all state data
-    $query = $mysqli->query("SELECT * FROM rental_units WHERE property_id = ".$_POST['property_id']." and status='1' ORDER BY property_id ASC");
+    $query = $mysqli->query("SELECT * FROM rental_units WHERE property_id = ".$_POST['property_id']." and status='0' ORDER BY property_id ASC");
     
     //Count total number of rows
     $rowCount = $query->num_rows;
@@ -22,7 +22,7 @@ if(isset($_POST["property_id"]) && !empty($_POST["property_id"])){
 
 if(isset($_POST["state_id"]) && !empty($_POST["state_id"])){
     //Get all city data
-    $query = $db->query("SELECT * FROM cities WHERE state_id = ".$_POST['state_id']." AND status = 1 ORDER BY city_name ASC");
+    $query = $db->query("SELECT * FROM cities WHERE state_id = ".$_POST['state_id']." AND status = '1' ORDER BY city_name ASC");
     
     //Count total number of rows
     $rowCount = $query->num_rows;

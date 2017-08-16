@@ -43,7 +43,7 @@ $(document).ready(function() {
  House Number
 </th>
 <th>Phone</th>
-<th>Ammount</th>
+<th>Amount</th>
 <th>Date</th>
 <th>Edit</th>
 

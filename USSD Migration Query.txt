@@ -1,0 +1,21 @@
+INSERT INTO CMS_M_CUSTOMER ( 
+SELECT
+SUBSTR(account_id,2,10) CUS_TEL_NO,
+SUBSTR(cust_name,1,INSTR(cust_name,' ')-1) CUS_FIRST_NAME,
+SUBSTR(SUBSTR(cust_name,INSTR(cust_name,' ')+1),1,INSTR(SUBSTR(cust_name,INSTR(cust_name,' ')+1),' ')-1) CUS_MIDDLE_NAME,
+SUBSTR(SUBSTR(cust_name,INSTR(cust_name,' ')+1),INSTR(SUBSTR(cust_name,INSTR(cust_name,' ')+1),' ')+1) CUS_LAST_NAME,
+'GSM' CUS_CUSTOMER_TYPE,'USSD20' CUS_MARKET_CODE,
+bdate CUS_DOB,
+DECODE(gender,0,'Male',1,'Female') CUS_GENDER,
+identification_type CUS_PHOTO_ID_NO,
+cust_national_id CUS_PHOTO_ID_DETAILS,
+'KENYAN' CUS_NATIONALITY,
+cust_email CUS_EMAIL_ID,
+cust_post_box CUS_ADDRESS1,
+cust_tel CUS_CONTACT_NO,cust_postal_code CUS_ADDRESS2,physical_address CUS_ADDRESS3,cust_town CUS_STATE
+,'PREPAID' CUS_CUSTOMER_CATEGORY,reg_date CUS_ADD_DATE,
+seg CUS_SEGEMENT,'CONSUMER' CUS_LINE_OF_BUSINESS,'1' CUS_CATEGORY, 'L'||SUBSTR(account_id,2,10) CUS_ACCOUNT_ID
+FROM legal.sim_ruim_registration
+WHERE pf_no = 'USSD'
+AND reg_date >= TO_DATE('02-AUG-2017 17:00:00','dd-mon-yyyy hh24:mi:ss')
+AND reg_date <= TO_DATE('04-AUG-2017 17:00:00','dd-mon-yyyy hh24:mi:ss'));

@@ -69,43 +69,7 @@ $(function () {
 });
 
 </script>
-<script>
-$(function() {
 
-  $('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
-
-    var my_id = '*missing*';
-
-    if (typeof $(this).data('my-id') !== 'undefined') {
-      my_id = $(this).data('my-id');
-    }
-	
-
-    $.ajax({
-        url: "http://localhost/app/fetch_record.php",
-        type: "POST",
-        dataType: 'json',
-        data: {
-          id:my_id
-        },
-        success: function(result){
-          for(var i = 0; i < result.length; i++) {
-          var obj = result[i];
-
-          $("#id_").val(obj.invoice);
-          $("#total").val(obj.total);
-          $("#name").val(obj.name);
-          $("#amount").val(obj.amount);
-          $("#fname").val(obj.fname);
-          $("#lname").val(obj.lname);
-         // $("#mode").val(obj.mode);
-          $("#tenant_id").val(obj.tenant_id);
-          }
-        }
-      });
-  });
-});
-  </script>
 
 <div class="ch-container">
 <div class="row">

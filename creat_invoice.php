@@ -107,7 +107,7 @@ $pageid=101;
 	<div class=" col-xs-8">
 			<select class='form-control' name="period" id="state" required>
 			<option value=''>Select Period</option>
-			<option value='Janaury' >Janaury</option>
+			<option value='January' >January</option>
 			<option value='February'>February</option>
 			<option value='March'>March</option>
 			<option value='April'>April</option>
