@@ -6,20 +6,18 @@
 * Author:  Kamau Ngugi                                   				   *
 *******************************************************************************/
 include('includes/header.php');
-include('includes/config.php');
+//include('includes/config.php');
 
 
 $pageid=101;
 // Connect to the database
-$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
+//$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
 // output any connection error
-if ($mysqli->connect_error) {
-	die('Error : ('.$mysqli->connect_errno .') '. $mysqli->connect_error);
-}
+
 $paymentid=$_GET['wishID'];
 // the query
 $query_edit = "SELECT * from rent_payments  WHERE  id=$paymentid";
-$result = mysqli_query($mysqli, $query_edit);
+$result = mysqli_query($con, $query_edit);
 
 // mysqli select query
 if($result) {
@@ -36,7 +34,7 @@ if($result) {
 	}
 }
 /* close connection */
-$mysqli->close();
+$con->close();
 ?>
 
 <div class="ch-container">
@@ -54,11 +52,11 @@ $mysqli->close();
 	
 	?>	
 <?php 
+
 if (isset($_POST['submit'])) {
 $tenant_id  = $_POST['varname']; }
 $sql1=mysqli_query($con,"SELECT * FROM tenants WHERE tenant_id='$var_value'");
-$tenant_arr = mysqli_fetch_array($
-);
+$tenant_arr = mysqli_fetch_array($sql1);
 ?>
 <form class="form-horizontal" method='POST'  id='edit_tentant' name='edit_tentant'>
 <div class="row">

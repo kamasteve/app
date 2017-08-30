@@ -143,18 +143,14 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 
     //header('Content-Type: application/json');
 
-    echo $encoded;
-		$responseArray = array('type' => 'success', 'message' => $errorMessage);
+    echo 'something went wrong during processing, please try again';
 	} else{ 
 	echo "Invoice created sucessfully ";
 	
 		
 	
 		//if saving success
-		echo json_encode(array(
-			'status' => 'Success',
-			'message' => 'Invoice has been created successfully!'
-		));
+		
 
 		//Set default date timezone
 		date_default_timezone_set(TIMEZONE);

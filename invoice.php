@@ -56,7 +56,7 @@ $(document).ready(function() {
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-$result = mysqli_query($con,"SELECT  invoice_date,invoice,responsible,invoice_due_date,status,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit");
+$result = mysqli_query($con,"SELECT  invoice_date,invoice,responsible,invoice_due_date,T1.status,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit");
 while($row = mysqli_fetch_array($result)) {
 ?>
 
@@ -162,7 +162,18 @@ mysqli_close($con);
   
  <select class="form-control " name="mode" id="mode">
         <option value="Cash">Cash</option>
-        <option value="Bank Deposit">>Bank Deposit</option>
+        <option value="Bank Deposit">>Bank Deposit</option><input type="hidden" id="responsible" value="<?php echo  $_id; ?> "/>
+
+
+
+<button type="button" class="  btn-warning" data-dismiss="modal">Cancel</button>
+<button type="submit" class=" btn-success " data-dismiss="modal" id="update_record">PAY</button>
+
+
+</div>
+</div>
+</div>
+</div>
         <option value="Mpesa">Mpesa</option>
         <option value="Cheque">Cheque</option>
       </select>
@@ -175,17 +186,6 @@ mysqli_close($con);
     <input class="form-control" type="text" value="" id="payment_ref" >
   </div>
 </div>
-<input type="hidden" id="responsible" value="<?php echo  $_id; ?> "/>
 
-
-
-<button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
-<button type="submit" class=" btn-success" data-dismiss="modal" id="update_record">PAY</button>
-
-
-</div>
-</div>
-</div>
-</div>
 
 <?php include ('includes/footer.php');  ?>

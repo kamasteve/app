@@ -22,7 +22,7 @@ $pageid=101;
 	<form method="post" action="ajax/createinvoice.php" id="create_invoice" role="form">	
       <div class="invoice_content">
 
-	<div class='messages alert'> </div>
+	<div class=' messages alert'> </div>
 		<hr>
 
 		  

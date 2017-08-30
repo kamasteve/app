@@ -54,6 +54,9 @@ $(document).ready(function() {
 			 Last Name
 		</th>
 		<th>
+			 Status
+		</th>
+		<th>
 			 Email
 		</th>
 		<th>
@@ -84,6 +87,7 @@ $(document).ready(function() {
           echo  "<tr><td>" . htmlentities($row["tenant_id"]) . "</td>";
            echo "<td>" . htmlentities ($row['fname']) . "</td>";
            echo "<td>" . htmlentities ($row['lname']) . "</td>";
+		   echo "<td>" . htmlentities ($row['status']) . "</td>";
            echo "<td>" . htmlentities ($row['email']) . "</td>";
            echo "<td>" . htmlentities ($row['phone']) . "</td>";
            echo "<td>" . htmlentities ($row['property']) . "</td>";

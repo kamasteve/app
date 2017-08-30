@@ -154,7 +154,7 @@ $(function () {
   
  <select class="form-control " name="mode" id="mode">
         <option value="Cash">Cash</option>
-        <option value="Bank Deposit">>Bank Deposit</option>
+        <option value="Bank Deposit">Bank Deposit</option>
         <option value="Mpesa">Mpesa</option>
         <option value="Cheque">Cheque</option>
       </select>

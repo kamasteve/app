@@ -10,11 +10,19 @@ margin-top:15px;
     color: #ffffff;
     background-color: #FF9900 !important;
 	}
+.property_edit{
 
+padding-left:18px;
+width:95%;
+margin-left:10px;
+margin-bottom:5px !important;
+border-bottom:2px;
+}
 
 .tentant_footer_cls .box-icon a{
 width:auto !important;
 height:35px !important;
+
 
 }
 .form-control {
@@ -23,7 +31,12 @@ background-color:#FFCC99
 input{
 	
 }
+.rowadd1{
 
+padding: 18px;
+margin-top: 35px;
+margin-bottom: 18px;
+}
 .button{
     background: -moz-linear-gradient(center top , #68B12F, #50911E) repeat scroll 0% 0% transparent;
     border-width: 1px;
@@ -80,9 +93,20 @@ height:28px;
 
 text-align:center;
 }
+.btn-limited{
+color: rgb(55, 160, 0);
 
+width:100px !important;
+
+text-align:center;
+}
 .ch-container {
     padding: 0 15px;
+}
+.legend{
+	color:rgb(55, 160, 0)!important;
+	border-bottom: 1px solid rgb(55, 160, 0);
+	font-size: 18px;
 }
 
 .top-block {

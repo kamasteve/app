@@ -73,7 +73,7 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$result = mysqli_query($con,"SELECT T1.property_id, unit_id, unit_type, T2.name, T3.fname, T3.lname FROM rental_units AS T1 INNER JOIN properties AS T2 ON T1.property_id=T2.property_id INNER JOIN tenants AS T3 on T1.unit_id=T3.unit WHERE STATUS='1' ");
+$result = mysqli_query($con,"SELECT T1.property_id, unit_id, unit_type, T2.name, T3.fname, T3.lname FROM rental_units AS T1 INNER JOIN properties AS T2 ON T1.property_id=T2.property_id INNER JOIN tenants AS T3 on T1.unit_id=T3.unit WHERE T1.STATUS='1' ");
 
 while($row = mysqli_fetch_array($result)) {
 ?>

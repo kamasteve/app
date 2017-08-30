@@ -177,7 +177,7 @@ $(document).ready(function() {
 </div>
 <div class="row">
 		<div class="col-xs-4">
-		<button type="submit" class="btn btn-default" name="submit">Save</button>
+		<button type="submit" class="button btn-default" name="submit">Save</button>
 		</div>
 </div>
 

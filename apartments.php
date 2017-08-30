@@ -76,6 +76,7 @@ if (mysqli_connect_errno()) {
 $result = mysqli_query($con,"SELECT * FROM properties");
 
 while($row = mysqli_fetch_array($result)) {
+	$wishID = $row["property_id"];
 ?>
 
  <tr>
@@ -86,8 +87,8 @@ while($row = mysqli_fetch_array($result)) {
 <td> <?php echo $row['add_date'] ;?> </td>
 <td> <?php echo $row['location'] ;?> </td>
 <td>
-        <form name="editWish" action="edit_tenant.php" method="GET">
-            <input type="hidden" name="wishID" value=" "/>
+        <form name="editWish" action="edit_apartment.php" method="GET">
+            <input type="hidden" name="wishID" value="<?php echo $wishID; ?> "/>
            <!-- <input type="submit" class="glyphicon glyphicon-edit" name="editWish" value="Edit"/></span> -->
 			<button type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</button>
         </form>

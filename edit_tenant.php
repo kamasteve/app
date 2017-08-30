@@ -16,7 +16,7 @@ $pageid=201;
 		<div class="box-content row">
 		<script type="text/javascript">
 $(function () {
-    $('#update_profile').on('submit', function (e) {
+    $('#edit_tentant').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
             var url = "http://localhost/app/ajax/update_tenant.php";
@@ -32,7 +32,7 @@ $(function () {
                     var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
                     if (messageAlert && messageText) {
                         $('#edit_tentant').find('.messages').html(alertBox);
-                        $('#edit_tentant')[0].reset();
+                        //$('#edit_tentant')[0].reset();
 						
                     }
                 }
@@ -74,7 +74,7 @@ $tenant_arr = mysqli_fetch_array($sql1);
 	
 		<label class="control-label col-xs-3" for="fname">Unit:</label>
 		<div class=" col-xs-9">
-			<input type="text" class="form-control col-xs-8" name="fname" id="unit" placeholder="First Name" value='<?php echo $tenant_arr['unit']; ?> 'readonly>
+			<input type="text" class="form-control col-xs-8" name="unit" id="unit" placeholder="First Name" value='<?php echo $tenant_arr['unit']; ?> 'readonly>
 		</div>
 	
 	</div>
@@ -118,28 +118,41 @@ $tenant_arr = mysqli_fetch_array($sql1);
 		</div>
 	</div>
 	<div class="form-group col-md-6">
-		<label class="control-label col-xs-3" for="Deposit">Deposit:</label>
+		<label class=" col-xs-3 control-label " for="addres">ID Number:</label>
 		<div class="col-xs-9">
-			<input type="text" class="form-control" value='<?php echo $tenant_arr['acountnumber']; ?>'   name="deposit" placeholder="Deposit ">
+			<input type="text" class="form-control" value ='<?php echo $tenant_arr['idnumber']; ?>' name="idnumber" placeholder="Postal Address"> 
+		</div>
+	</div>
+	<div class="form-group col-md-6">
+		<label class="control-label col-xs-3" for="Deposit">Bank:</label>
+		<div class="col-xs-9">
+			<input type="text" class="form-control" value='<?php echo $tenant_arr['bank']; ?>'   name="bank" placeholder="Deposit ">
 		</div>
 	</div>
 	
 	
 	<div class="form-group col-md-6">
-		<label class="control-label col-xs-3" for="confirmPassword">Monthly Rent:</label>
+		<label class="control-label col-xs-3" for="confirmPassword">Bank A/C Number:</label>
 		<div class="col-xs-9">
-			<input type="rent" class="form-control" value='<?php echo $tenant_arr['unit']; ?>' name="rent" placeholder="Monthly Rent">
+			<input type="rent" class="form-control" value='<?php echo $tenant_arr['acountnumber']; ?>' name="bank_ac" placeholder="Monthly Rent">
+		</div>
+	</div>
+	<div class="form-group col-md-6">
+		<label class="control-label col-xs-3" for="confirmPassword">Tax ID:</label>
+		<div class="col-xs-9">
+			<input type="rent" class="form-control" value='<?php echo $tenant_arr['tax_id']; ?>' name="tax" placeholder="Monthly Rent">
 		</div>
 	</div>
 	<div class="form-group col-md-6">
 		<label class="control-label col-xs-3">Satus</label>
-		
+		<input type="hidden" name="id" value="<?php echo  $tenant_arr['tenant_id']; ?> "/>
   <div class="col-xs-9">
   
- <select class="form-control " name="mode" id="mode">
-        <option value="1">Active</option>
-        <option value="2">Deactivate</option>
-        <option value="3">Suspended</option>       
+ <select class="form-control " name="status" id="status" >
+         <option ><?php echo $tenant_arr['status']; ?></option>
+        <option value="Active">Active</option>
+        <option value="Deactivate">Deactivate</option>
+        <option value="Suspended">Suspended</option>       
       </select>
 </div>
 </div>

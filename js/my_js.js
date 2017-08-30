@@ -92,6 +92,35 @@ $(document).ready(function() {
         }
       });
   })
+   $('#update_unit').click(function () {
+
+    var id_=$("#id_").val();
+    var type=$("#type").val();
+    var beds=$("#beds").val();
+    var email=$("#email").val();
+    var rent=$("#rent").val();
+    var country=$("#country").val();
+    var company=$("#company").val();
+    var role=$("#role").val();
+
+    $.ajax({
+        url: "http://localhost/app/ajax/update_unit.php",
+        type: "POST",
+        data: {
+           id:id_,
+           type:type,
+           beds:beds,
+           rent:rent,
+           
+           country:country,
+           company:company,
+		   role:role
+        },
+        success: function(result){
+          console.log("Update response: "+result);
+        }
+      });
+  })
   $('#delete_record').click(function () {
 
     var id_=$("#id_").val();
@@ -150,6 +179,32 @@ $(document).ready(function() {
         }
       });
   })
+  
+    $('#add_unit_edit').on('submit', function (e) {
+        if (!e.isDefaultPrevented()) {
+			
+            var url = "http://localhost/app/ajax/add_unit.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $(this).serialize(),
+                success: function (data)
+                {
+                    var messageAlert = 'alert-' + data;
+                    var messageText = data;
+                    //alert(data);
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    if (messageAlert && messageText) {
+                        $('#add_unit_edit').find('.messages').html(alertBox);
+                        //$('#edit_tentant')[0].reset();
+						
+                    }
+                }
+            });
+            return false;
+        }
+    });
+
   $('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
 
     var my_id = '*missing*';
@@ -273,6 +328,38 @@ $(document).ready(function() {
           $("#responsible").val(obj.payee);
           $("#due_date").val(obj.due_date);
           $("#amount").val(obj.credit);
+          $("#property").val(obj.property);
+          $("#lname").val(obj.lname);
+         // $("#mode").val(obj.mode);
+          $("#tenant_id").val(obj.tenant_id);
+          }
+        }
+      });
+  })
+  $('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
+
+    var my_id = 'payexpense';
+
+    if (typeof $(this).data('my-id') !== 'undefined') {
+      my_id = $(this).data('my-id');
+    }
+	
+
+    $.ajax({
+        url: "http://localhost/app/ajax/fetch_unit.php",
+        type: "POST",
+        dataType: 'json',
+        data: {
+          id:my_id
+        },
+        success: function(result){
+          for(var i = 0; i < result.length; i++) {
+          var obj = result[i];
+
+          $("#id_").val(obj.unit_id);
+          $("#type").val(obj.unit_type);
+          $("#beds").val(obj.bed);
+          $("#rent").val(obj.rent);
           $("#property").val(obj.property);
           $("#lname").val(obj.lname);
          // $("#mode").val(obj.mode);
