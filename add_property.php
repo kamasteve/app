@@ -1,36 +1,27 @@
+
 <?php include ('includes/header.php');
 //include ('includes/config.php');
 $pageid=209;
 function getpropertyid() {
-
 	// Connect to the database
 	$con = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
     DATABASE_NAME);
-
 	// output any connection error
 	if ($con->connect_error) {
 	    die('Error : ('. $con->connect_errno .') '. $mysqli->connect_error);
 	}
-
 	$query = "SELECT property_id FROM properties ORDER BY property_id DESC LIMIT 1";
-
 	if ($result = $con->query($query)) {
-
 		$row_cnt = $result->num_rows;
-
 	    $row = mysqli_fetch_assoc($result);
-
 	    //var_dump($row);
-
 	    if($row_cnt == 0){
 			echo '101';
 		} else {
 			echo $row['property_id'] + 1; 
 		}
-
 	    // Frees the memory associated with a result
 		$result->free();
-
 		// close connection 
 		$con->close();
 	}
@@ -196,6 +187,7 @@ input{
 margin-top:35px;
 margin-bottom:10px;
 }
-
  </style>
  <?php  include ('includes/footer.php'); ?>
+
+    

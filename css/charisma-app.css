@@ -93,6 +93,7 @@ height:28px;
 
 text-align:center;
 }
+
 .btn-limited{
 color: rgb(55, 160, 0);
 
@@ -235,7 +236,22 @@ margin-bottom: 18px;
     -webkit-box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
     -moz-box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
 }
-
+.kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+.kv-avatar .file-input {
+    display: table-cell;
+    max-width: 220px;
+}
+.kv-reqd {
+    color: red;
+    font-family: monospace;
+    font-weight: normal;
+}
 .box-header {
     border: none;
     padding-top: 5px;

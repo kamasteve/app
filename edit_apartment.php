@@ -154,6 +154,7 @@ $tenant_arr = mysqli_fetch_array($sql1);
     <legend class='legend'><i class="glyphicon glyphicon-plus"></i>Add New Unit</legend>
 	<div class="row ">
 <form class="form-horizontal" method='POST'  id='add_unit_edit' name='add_unit_edit'>
+<div class=' alert messages '> </div>
 <div class="col-md-2">
   
   <input class="form-control" name="unit_id" type="text" placeholder="Unit ID" required>
@@ -168,6 +169,7 @@ $tenant_arr = mysqli_fetch_array($sql1);
 <div class="col-md-3">
    <input class="form-control" name="unit_rent" type="text" placeholder="Rent (KSH) " required>
 </div>
+<input type="hidden" name="property_id" value="<?php echo  $var_value; ?> "/>
 <div class="col-md-2">
 <button type="submit" class="button btn-limited">
 <i class="glyphicon glyphicon-floppy-save"></i> 
