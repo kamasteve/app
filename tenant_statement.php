@@ -8,6 +8,7 @@ $pageid=301;
 
 ?>
 <style>
+
 .tentant_footer_cls .box-icon a{
 width:auto !important;
 height:35px !important;
@@ -35,7 +36,7 @@ $(function () {
     $('#account_reports').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://ec2-54-186-105-222.us-west-2.compute.amazonaws.com/app/reports/payment_breakdown.php";
+            var url = "http://localhost/app/reports/tenant_summary.php";
             $.ajax({
                 type: "POST",
                 url: url,
@@ -75,39 +76,47 @@ $(function () {
   } );
   </script>
   
-  <form class="form-horizontal" action=""  id="account_reports" method="post">
-  <div class="form-group col-md-4">
-  
-<label class="control-label col-xs-4" for="fname">Start Date:</label>
-  <div class="col-xs-8">
-  
-   <div class="input-group  col-xs-8" id="invoice_due_date">
-				            
-				                <input type="text" class="form-control required" name="start_date" placeholder="Select due date" data-date-format="<?php echo DATE_FORMAT ?>" />
-				                <span class="input-group-addon">
-				                    <span class="glyphicon glyphicon-calendar"></span>
-				                </span>
-				            </div>
+ <form class="form-horizontal" action=""  id="account_reports" method="post">
+ <div class="form-group col-xs-5">
+		
+		<label class="control-label col-xs-4" for="fname">Select Property:</label>
+		<div class=" col-xs-8">
+	<?php
+    //Include database configuration file
+    
+    
+    //Get all country data
+    $query = $con->query("SELECT * FROM properties  ORDER BY property_id ASC");
+    
+    //Count total number of rows
+    $rowCount = $query->num_rows;
+    ?>
+	
+    <select class='form-control input-group' name="property1" id="property1">
+        <option value="">Select Property</option>
+        <?php
+        if($rowCount > 0){
+            while($row = $query->fetch_assoc()){ 
+                echo '<option value="'.$row['name'].'">'.$row['name'].'</option>';
+            }
+        }else{
+            echo '<option value="">Property not available</option>';
+        }
+        ?>
+    </select>
+	</div>
+	</div>
 
-</div>
-</div>
-
-<div class="form-group col-md-6">
-<label class="control-label col-xs-4" for="fname">End Date:</label>
-  <div class="col-xs-8">
-  
-  <div class="input-group  col-xs-8" id="invoice_due_date">
-				            
-				                <input type="text" class="form-control required" name="end_date" placeholder="Select due date" data-date-format="<?php echo DATE_FORMAT ?>" />
-				                <span class="input-group-addon">
-				                    <span class="glyphicon glyphicon-calendar"></span>
-				                </span>
-				            </div>
-
-</div>
+<div class=" form-group col-xs-5">
+	<label class="control-label col-xs-4" for="fname">Select Unit:</label>
+	<div class=" col-xs-8">
+			<select class='form-control' name="unit" id="state">
+        <option value="">Select Property first</option>
+    </select>
+	</div>
 </div>
 <div class="form-group col-md-2 ">
-		
+<label class="control-label col-xs-5" for="fname"></label>		
 		<div class="form-group ">
 			<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
 		<input class=" btn button  btn-default" type="submit" name="button" value='submit'>

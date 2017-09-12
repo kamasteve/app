@@ -9,6 +9,7 @@
   $tenant_id = $_REQUEST['tenant_id'];
   $payment_ref = $_REQUEST['payment_ref'];
   $responsible = $_REQUEST['responsible'];
+  $period = $_REQUEST['period'];
   //$property_name = $_REQUEST['name'];
   $total = $_REQUEST['total'];
   $type = 'Invoice Payment';
@@ -47,31 +48,36 @@
 	}
 	
 }
-$query_fetchtenant = "SELECT tenant_id, fname, lname CONCAT(fname,' ',lname)AS names,email,phone,property,adress FROM tenants WHERE tenant_id='$tenant_id'";
+
+$query_fetchtenant = "SELECT tenant_id, fname,property, lname, CONCAT(fname,' ',lname)AS names,email,phone,property,adress FROM tenants WHERE tenant_id=$tenant_id";
 	//$date=date("Y-m-d H:i:s");
-	if ($result=mysqli_query($mysqli,$query_fetchtenant)){
+if($result_fetch=mysqli_query($mysqli,$query_fetchtenant)){
   
-	   $row = mysqli_fetch_assoc($result);
+	   $row = mysqli_fetch_assoc($result_fetch);
        $tenant_id = $row["tenant_id"];
 	   $tenant_names= $row["names"];
 	   $email =$row["email"];
 	   $phone=$row["phone"];
 	   $adress=$row["adress"];
 	   $property=$row["property"];
-	}
-$query = "INSERT INTO rent_payments (type,payment_mode, serial,ammount,date,particulars,tenant_id) VALUES ('$type','$mode','$id_','$amount','$date','$payment_ref','$tenant_id')";
+	   $fname=$row["fname"];
+	   $lname=$row["lname"];
+	   $property=$row["property"];
+	   
+}
+$query = "INSERT INTO rent_payments (type,last_name,first_name,payment_mode, serial,ammount,date,particulars,tenant_id,property,rental_period) VALUES ('$type','$lname','$fname','$mode','$id_','$amount','$date','$payment_ref','$tenant_id','$property','$period')";
 $query1 = "INSERT INTO accounts (debit,date,invoice_id,customercode,responsible) VALUES ('$amount','$date','$id_','$tenant_id','$responsible')";
   // execute query
-  $result = mysqli_query($mysqli,$query) or die('Server error = '.mysqli_error($mysqli));
+  $result_rent_payments = mysqli_query($mysqli,$query) or die('Server error = '.mysqli_error($mysqli));
   $result2 = mysqli_query($mysqli,$query1) or die('Server error = '.mysqli_error($mysqli));
   if ($amount >= $total){
 	  $update = "UPDATE invoices SET status='closed' WHERE invoice='$id_'";
-	  $result = mysqli_query($mysqli,$update) or die('Server error = '.mysqli_error($mysqli));
+	  $result3 = mysqli_query($mysqli,$update) or die('Server error = '.mysqli_error($mysqli));
   }
 
 
   // check if successful
-  if($result ){	
+  if($result3 ){	
   //include('receipt.php');
 		//Set default date timezone
 		date_default_timezone_set(TIMEZONE);

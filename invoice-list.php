@@ -29,7 +29,7 @@ $con = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
 	}
 
 	// the query
-    $query = "SELECT  invoice_date,invoice,status,responsible,invoice_due_date,unit,subtotal,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit";
+    $query = "SELECT  invoice_date,invoice,t1.status,responsible,invoice_due_date,unit,subtotal,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit";
 
 	// mysqli select query
 	$results = $con->query($query);
@@ -81,7 +81,7 @@ $(document).ready(function() {
 				}
 				?>
 
-				   <td><a href="#"  class=" btn-success btn-xs btn-lg email-invoice"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
+				   <td><a href="#"  class=" btn-success btn-xs btn-lg email-invoice" data-toggle="modal" data-target="#modalsms"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
 			<?php print	'<td><a href="invoices/'.$row["invoice"].'.pdf " class="btn btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>';?>
 				   
 	<td>
@@ -107,6 +107,28 @@ $(document).ready(function() {
 			
 </div>
 </div>
+</div>
+<div id="modalsms" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>  
+      </div>
+     <div class="modal-body">
+
+
+
+
+</div>
+      <div class="modal-footer">
+        <button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
+		<button type="submit" class=" btn-success" data-dismiss="modal" id="delete_record">Delete</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 <div id="modalDelete" class="modal fade" role="dialog">
   <div class="modal-dialog">

@@ -29,6 +29,7 @@ $(document).ready(function() {
           $("#lname").val(obj.lname);
          // $("#mode").val(obj.mode);
           $("#tenant_id").val(obj.tenant_id);
+		  $("#period").val(obj.period);
           }
         }
       });
@@ -44,6 +45,7 @@ $(document).ready(function() {
     var mode=$("#mode").val();
     var payment_ref=$("#payment_ref").val();
     var tenant_id=$("#tenant_id").val();
+	var period=$("#period").val();
 
     $.ajax({
         url: "http://localhost/app/update_record.php",
@@ -55,8 +57,8 @@ $(document).ready(function() {
            amount:amount,
            responsible:responsible,
            mode:mode,
-           
-           tenant_id:tenant_id
+           tenant_id:tenant_id,
+		   period:period
         },
         success: function(result){
           console.log("Update response: "+result);

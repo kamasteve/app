@@ -295,6 +295,23 @@ $(document).ready(function() {
             $('#city').html('<option value="">Select state first</option>'); 
         }
     });
+	$('#property1').on('change',function(){
+        var countryID = $(this).val();
+        if(countryID){
+            $.ajax({
+                type:'POST',
+                url:'http://localhost/app/ajax/fetch_statement.php',
+                data:'property_id='+countryID,
+                success:function(html){
+                    $('#state').html(html);
+                    $('#city').html('<option value="">Select state first</option>'); 
+                }
+            }); 
+        }else{
+            $('#state').html('<option value="">Select country first</option>');
+            $('#city').html('<option value="">Select state first</option>'); 
+        }
+    });
 	
     
     $('#state').on('change',function(){

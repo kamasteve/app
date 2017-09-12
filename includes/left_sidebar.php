@@ -32,6 +32,7 @@ echo '<div class="sidebar-nav">';
 				}
 				elseif ($pageid >300 && $pageid<=400) {
 				echo '<li><a class="ajax-link" href="account_statement.php"><i class="glyphicon glyphicon-align-justify"></i><span> Rent Payement </span></a></li>';
+				echo '<li><a class="ajax-link" href="tenant_statement.php"><i class="glyphicon glyphicon-user"></i><span> Tenant Account Statement </span></a></li>';
 				echo '<li><a class="ajax-link" href="breakdown.php"><i class="glyphicon glyphicon-calendar"></i><span> Rent Payement Breakdown</span></a></li>';
 				echo '<li><a class="ajax-link" href="entries.php"><i class="glyphicon glyphicon-align-justify"></i><span> Entries Analysis</span></a></li>';
 				echo '<li><a class="ajax-link" href="#"><i class="glyphicon glyphicon-calendar"></i><span> Account Payable</span></a></li>';

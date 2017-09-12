@@ -43,6 +43,7 @@ $(document).ready(function() {
 <th>Number</th>
 <th>Resposible</th>
 <th>Due Date</th>
+<th>Balance</th>
 <th>Status</th>
 <th>Total</th>
 <th>Edit</th>
@@ -56,7 +57,9 @@ $(document).ready(function() {
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-$result = mysqli_query($con,"SELECT  invoice_date,invoice,responsible,invoice_due_date,T1.status,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit");
+$result = mysqli_query($con,"SELECT  invoice_date,invoice,t1.responsible,invoice_due_date,T1.status,total, name,fname,lname,((SELECT SUM(ammount) AS paid
+FROM rent_payments
+WHERE serial= t1.invoice)-t1.total) as balance FROM invoices AS T1 INNER JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit ;");
 while($row = mysqli_fetch_array($result)) {
 ?>
 
@@ -68,6 +71,7 @@ while($row = mysqli_fetch_array($result)) {
 <td> <?php echo $row['invoice']; ?> </td>
 <td> <?php echo $row['responsible']; ?> </td>
 <td> <?php echo $row['invoice_due_date']; ?> </td>
+<td> <?php echo $row['balance']; ?> </td>
 <?php if($row['status'] == "open"){
 					print '<td><span class="label label-info">'.$row['status'].'</span></td>';
 				} elseif ($row['status'] == "closed"){
@@ -151,6 +155,12 @@ mysqli_close($con);
   </div>
 </div>
 <div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Rental Period</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="period" disabled>
+  </div>
+</div>
+<div class="form-group row">
   <label for="external-id" class="col-xs-4 col-form-label">Paid Ammount</label>
   <div class="col-xs-8">
     <input class="form-control" type="text" value="" id="amount">
@@ -162,7 +172,20 @@ mysqli_close($con);
   
  <select class="form-control " name="mode" id="mode">
         <option value="Cash">Cash</option>
-        <option value="Bank Deposit">>Bank Deposit</option><input type="hidden" id="responsible" value="<?php echo  $_id; ?> "/>
+        <option value="Bank Deposit">Bank Deposit</option>
+		
+		<option value="Mpesa">Mpesa</option>
+        <option value="Cheque">Cheque</option>
+      </select>
+	</div>	
+	</div>
+	<input type="hidden" id="responsible" value="<?php echo  $_id; ?> "/>
+		<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label"> Payment Ref </label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="payment_ref" >
+  </div>
+</div>
 
 
 
@@ -174,18 +197,11 @@ mysqli_close($con);
 </div>
 </div>
 </div>
-        <option value="Mpesa">Mpesa</option>
-        <option value="Cheque">Cheque</option>
-      </select>
+        
 </div>
 </div>
 
-<div class="form-group row">
-  <label for="external-id" class="col-xs-4 col-form-label"> Payment Ref </label>
-  <div class="col-xs-8">
-    <input class="form-control" type="text" value="" id="payment_ref" >
-  </div>
-</div>
+
 
 
 <?php include ('includes/footer.php');  ?>

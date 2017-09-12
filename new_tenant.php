@@ -195,6 +195,7 @@ echo "</select>";
 </div>
 </div>
 
+
    <script>
   $( function() {
     $( "#datepicker1" ).datepicker();
@@ -204,7 +205,7 @@ echo "</select>";
   } );
   </script>
   
- <div class="form-group col-md-6">
+<div class="form-group col-md-6">
 <label class="control-label col-xs-4" for="fname">Start Date:</label>
  
    <div class="input-group  col-xs-7" id="invoice_due_date">
@@ -215,15 +216,12 @@ echo "</select>";
 				                </span>
 				            </div>
 </div>
+
 <div class="col-md-6">
+<label class="control-label col-xs-4" for="fname"> </label>
 <button type="submit" class="button btn-default "   name='submit'>Save</button>
 </div>
-<div class="fileupload col-xs-6 fileupload-new" data-provides="fileupload">
-    <span class="btn btn-primary btn-file"><span class="fileupload-new">Select file</span>
-    <span class="fileupload-exists">Change</span>         <input type="file" /></span>
-    <span class="fileupload-preview"></span>
-    <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-  </div>
+
 </div>
 </form>
 		</div>
