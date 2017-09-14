@@ -92,7 +92,7 @@ $(function () {
     $rowCount = $query->num_rows;
     ?>
 	
-    <select class='form-control input-group' name="property1" id="property1">
+    <select class='form-control input-group' name="property1" id="property1" required>
         <option value="">Select Property</option>
         <?php
         if($rowCount > 0){
@@ -110,7 +110,7 @@ $(function () {
 <div class=" form-group col-xs-5">
 	<label class="control-label col-xs-4" for="fname">Select Unit:</label>
 	<div class=" col-xs-8">
-			<select class='form-control' name="unit" id="state">
+			<select class='form-control' name="unit" id="state" required>
         <option value="">Select Property first</option>
     </select>
 	</div>

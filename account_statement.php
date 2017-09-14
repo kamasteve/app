@@ -77,7 +77,7 @@ $(function () {
   </script>
   
  <form class="form-horizontal" action=""  id="account_reports" method="post">
- <div class="form-group col-md-6">
+ <div class="form-group col-md-5">
 <label class="control-label col-xs-4" for="fname">Start Date:</label>
  
    <div class="input-group  col-xs-8" id="invoice_due_date">
@@ -89,7 +89,7 @@ $(function () {
 				            </div>
 </div>
 
-<div class="form-group col-md-6">
+<div class="form-group col-md-5">
 <label class="control-label col-xs-4" for="fname">End Date:</label>
 
   <div class="input-group  col-xs-8" id="invoice_due_date">
@@ -100,7 +100,7 @@ $(function () {
 				                </span>
 				            </div>
 </div>
-<div class="form-group col-md-6 ">
+<div class="form-group col-md-2 ">
 <label class="control-label col-xs-5" for="fname"></label>		
 		<div class="form-group ">
 			<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">

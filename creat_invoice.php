@@ -91,6 +91,18 @@ $pageid=101;
     </select>
 	</div>
 </div>
+<div class=" form-group col-xs-6">
+  <label for="external-id" class="col-xs-4 col-form-label">Tenant ID</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="tenant_id"  name="tenant_id" readonly>
+  </div>
+</div>
+<div class=" form-group col-xs-6">
+  <label for="external-id" class="col-xs-4 col-form-label">Tenant Name</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="fname" name="fname" readonly>
+  </div>
+</div>
 			
 					
 					<div class=" form-group col-xs-6">
@@ -98,7 +110,7 @@ $pageid=101;
 				            <div class="input-group  col-xs-8" >
 					
 						<span class="input-group-addon">#<?php echo INVOICE_PREFIX ?></span>
-						<input type="text" name="invoice_id" id="invoice_id" class="form-control required" placeholder="Invoice Number" aria-describedby="sizing-addon1" value="<?php getInvoiceId(); ?>">
+						<input type="text" name="invoice_id" id="invoice_id" class="form-control required" placeholder="Invoice Number" aria-describedby="sizing-addon1" value="<?php getInvoiceId(); ?>" readonly>
 					</div>
 				
 			</div>

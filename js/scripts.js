@@ -319,11 +319,22 @@ $(document).ready(function() {
         if(stateID){
             $.ajax({
                 type:'POST',
+				dataType: 'json',
                 url:'http://localhost/app/ajax/ajaxData.php',
                 data:'state_id='+stateID,
-                success:function(html){
-                    $('#city').html(html);
-                }
+			
+				success: function(html){
+          for(var i = 0; i < html.length; i++) {
+          var obj = html[i];
+
+          $("#tenant_id").val(obj.tenant_id);
+          $("#fname").val(obj.name);
+          
+		  }
+				}
+                // success:function(html){
+                    //$('#tenant_id').html(html);
+               // }
             }); 
         }else{
             $('#city').html('<option value="">Select state first</option>'); 

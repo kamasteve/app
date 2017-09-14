@@ -1,0 +1,1 @@
+SELECT invoice,invoice_date,property,id_unit,Period, concat('fname',' ','lanme')FROM `invoices` as t1 WHERE `invoice_due_date` <= curdate() INNER join tenants as t2 ON t1.

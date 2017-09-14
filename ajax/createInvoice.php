@@ -19,7 +19,9 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	
 
 	// invoice details
-	$invoice_number = $_POST['invoice_id']; // invoice number
+	$invoice_number = $_POST['invoice_id'];
+    $invoice_tenant= $_POST['tenant_id'];
+    $tenant_name= $_POST['fname'];	// invoice number
 	//$custom_email = $_POST['custom_email']; // invoice custom email body
 	$invoice_due_date = $_POST['invoice_due_date'];
 	$invoice_date = $_POST['invoice_date']; // invoice date
@@ -87,7 +89,9 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 					total,
 					notes,
 					responsible,
-					period
+					period,
+					tenant_name,
+					tenant_id
 				) VALUES (
 				  	'".$invoice_number."',
 				  	'".$invoice_date."',
@@ -101,7 +105,10 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 				  	'".$invoice_total."',
 				  	'".$invoice_notes."',
 					'".$username."',
-					'".$period."'
+					'".$period."',
+					'".$tenant_name."',
+					'".$invoice_number."'
+					
 			    );
 			";
 	// insert customer details into database

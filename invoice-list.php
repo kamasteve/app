@@ -29,7 +29,9 @@ $con = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
 	}
 
 	// the query
-    $query = "SELECT  invoice_date,invoice,t1.status,responsible,invoice_due_date,unit,subtotal,total, name,fname,lname FROM invoices AS T1 LEFT JOIN properties AS T2 on T1.property=T2.property_id LEFT JOIN tenants AS T3 ON T1.id_unit=T3.unit";
+    $query = "SELECT  invoice_date,invoice,t1.responsible,invoice_due_date,T1.status,total, name,tenant_name,((SELECT SUM(ammount) AS paid
+FROM rent_payments
+WHERE serial= t1.invoice)-t1.total) as balance FROM invoices AS T1 INNER JOIN properties AS T2 on T1.property=T2.property_id ;";
 
 	// mysqli select query
 	$results = $con->query($query);
@@ -69,9 +71,9 @@ $(document).ready(function() {
 				<tr>
 				 <?php $wishID = $row["invoice"]; ?>
 					<td> <?php echo$row["invoice"]; ?></td>
-					<td> <?php echo $row['fname'];'&nbsp'.$row['lname'] ?> </td>
+					<td> <?php echo $row['tenant_name'];?> </td>
 				    <td><?php echo $row["name"];?></td>
-					<td><?php echo $row["unit"];?></td>
+					<td><?php echo $row["name"];?></td>
 					<?php if($row['status'] == "open"){
 					print '<td><span class="label label-info">'.$row['status'].'</span></td>';
 				} elseif ($row['status'] == "closed"){
