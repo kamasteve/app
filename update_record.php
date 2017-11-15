@@ -13,7 +13,9 @@
   //$property_name = $_REQUEST['name'];
   $total = $_REQUEST['total'];
   $type = 'Invoice Payment';
+  $id_unit = $_REQUEST['id_unit'];
    $date = date("Y-m-d");
+  
   // prepare query
   
   function getpropertyid() {
@@ -22,33 +24,35 @@
 	
 
 	// output any connection error
-	
+	$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
 
-	$query = "SELECT payment_id FROM rent_payments ORDER BY property_id DESC LIMIT 1";
+	$query = "SELECT payment_id FROM rent_payments ORDER BY `payment_id` DESC LIMIT 1";
+$results = $mysqli->query($query);
 
-	if ($result = $mysqli->query($query)) {
+	// mysqli select query
+	if($results) {
 
-		$row_cnt = $result->num_rows;
+		$row_cnt = $results->num_rows;
 
-	    $row = mysqli_fetch_assoc($result);
+	    $row = mysqli_fetch_assoc($results);
 
 	    //var_dump($row);
 
 	    if($row_cnt == 0){
 			echo '101';
 		} else {
-			echo $row['property_id'] + 1; 
+			echo $row['payment_id'] + 1; 
 		}
 
 	    // Frees the memory associated with a result
-		$result->free();
+		$results->free();
 
 		// close connection 
-		$con->close();
+		$mysqli->close();
 	}
 	
 }
-
+$receipt_id=getpropertyid();
 $query_fetchtenant = "SELECT tenant_id, fname,property, lname, CONCAT(fname,' ',lname)AS names,email,phone,property,adress FROM tenants WHERE tenant_id=$tenant_id";
 	//$date=date("Y-m-d H:i:s");
 if($result_fetch=mysqli_query($mysqli,$query_fetchtenant)){
@@ -65,7 +69,7 @@ if($result_fetch=mysqli_query($mysqli,$query_fetchtenant)){
 	   $property=$row["property"];
 	   
 }
-$query = "INSERT INTO rent_payments (type,last_name,first_name,payment_mode, serial,ammount,date,particulars,tenant_id,property,rental_period) VALUES ('$type','$lname','$fname','$mode','$id_','$amount','$date','$payment_ref','$tenant_id','$property','$period')";
+$query = "INSERT INTO rent_payments (type,last_name,first_name,payment_mode, serial,ammount,date,particulars,tenant_id,property,rental_period,house_number) VALUES ('$type','$lname','$fname','$mode','$id_','$amount','$date','$payment_ref','$tenant_id','$property','$period','$id_unit')";
 $query1 = "INSERT INTO accounts (debit,date,invoice_id,customercode,responsible) VALUES ('$amount','$date','$id_','$tenant_id','$responsible')";
   // execute query
   $result_rent_payments = mysqli_query($mysqli,$query) or die('Server error = '.mysqli_error($mysqli));
@@ -77,7 +81,7 @@ $query1 = "INSERT INTO accounts (debit,date,invoice_id,customercode,responsible)
 
 
   // check if successful
-  if($result3 ){	
+  if($query){	
   //include('receipt.php');
 		//Set default date timezone
 		date_default_timezone_set(TIMEZONE);
@@ -154,7 +158,7 @@ $query1 = "INSERT INTO accounts (debit,date,invoice_id,customercode,responsible)
 		print 'there has been an error in creating the invoice';
 		//print $email;
 	}
-	$invoice->render('receipts/'.$payment_ref.'.pdf','F');
+	$invoice->render('receipts/'.$receipt_id.'.pdf','F');
 
 		//$invoice->render('invoices/'.$invoice_number.'.pdf','F');
 	 		

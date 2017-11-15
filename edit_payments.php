@@ -38,14 +38,15 @@ $(document).ready(function() {
 
 <th>Payment Mode</th>
 <th>First Name</th>
-
+<th>Last Name</th>
 <th>
  House Number
 </th>
-<th>Phone</th>
+
 <th>Amount</th>
 <th>Date</th>
 <th>Edit</th>
+<th>Print</th>
 
 </thead>
 <tbody>
@@ -66,18 +67,19 @@ echo "<td>" . htmlentities  ($row['property']) . "</td>";
 echo "<td>" . htmlentities ($row['rental_period']). "</td>";
 echo "<td>" . htmlentities ($row['payment_mode']) . "</td>";
 echo "<td>" . htmlentities ($row['first_name']) . "</td>";
+echo "<td>" . htmlentities ($row['last_name']) . "</td>";
 echo "<td>" . htmlentities ($row['house_number']) . "</td>";
-echo "<td>" . htmlentities ($row['phone']) . "</td>";
+
 echo "<td>" . htmlentities ($row['ammount']). "</td>";
 echo "<td>" . htmlentities ($row['date']) ."</td>";
-print ' <td>
+print '<td>
         <form name="editWish" action="paymentsedit.php" method="GET">
             <input type="hidden" name="wishID" value="<?php echo $wishID; ?> "/>
            <!-- <input type="submit" class="glyphicon glyphicon-edit" name="editWish" value="Edit"/></span> -->
 			<button type="submit" class="btn " name="editWish" value="Edit"   ><span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit</button>
         </form>
     </td>';
-
+ print	'<td><a href="receipts/'.$row["particulars"].'.pdf " class="btn btn-info btn-xs" target="_blank"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>';
 }
 mysqli_close($con);
 	?>

@@ -27,11 +27,11 @@ print '<input type="button" id="btnExport" value=" Export Table data into Excel 
 print '<table id="example" class="display table table-striped" cellspacing="0" width="100%">
  <thead>
  <tr>
-<th>Firstname</th>
-<th>Lastname</th>
-<th>Age</th>
-<th>Hometown</th>
-<th>Job</th>
+<th>Payment Id</th>
+<th>Payment Mode</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Payment Date</th>
 </tr>
  </thead> <tbody>';
 while($row = mysqli_fetch_array($result)) {

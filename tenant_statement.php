@@ -13,23 +13,34 @@ $pageid=301;
 width:auto !important;
 height:35px !important;
 }
-#example{
-border: 1px solid #f4f4f4;
+#statement{
+width:85% !important;
+ margin-left:auto; 
+    margin-right:auto;
 }
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-	background-color:#EAEAEA; 
-}
+ 
 
+#statement thead {
+    padding-top: 11px;
+	height:30px;
+	border-bottom: 2px solid #68B12F;
+    padding-bottom: 11px;
+    background-color: #FFF;
+    
+}
+tr#row1 { border-top: 2px solid #68B12F }
+tr#col1 { border: 3px solid blue }
+td#total{text-align:left}
 .reports{	
  border-top: 2px solid #509111;
 }
-.table.dataTable thead th, table.dataTable thead td {
-    padding: 10px 18px;
-    border-bottom: 1px solid #111;
-}
-</style>
 
+</style>
+<!-- 
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+	background-color:#EAEAEA;
+ -->
 
 <script type="text/javascript">
 $(function () {
@@ -67,14 +78,7 @@ $(function () {
 		<div class="box-inner">
 			<div class="row">
 	
-      <script>
-  $( function() {
-    $( "#datepicker1" ).datepicker();
-    $( "#format" ).on( "change", function() {
-      $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
-    });
-  } );
-  </script>
+   
   
  <form class="form-horizontal" action=""  id="account_reports" method="post">
  <div class="form-group col-xs-5">

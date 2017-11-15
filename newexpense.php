@@ -147,7 +147,7 @@ echo "</select>";
 <label class="control-label col-xs-4" for="date">Due On:</label>
  <div class="input-group  col-xs-8" id="invoice_due_date">
 				            
-				                <input type="text" class="form-control required" name="due_date" placeholder="Select due date" data-date-format="" />
+				                <input type="text form-control1" class="form-control required" name="due_date" placeholder="Select due date" data-date-format="" />
 				                <span class="input-group-addon">
 				                    <span class="glyphicon glyphicon-calendar"></span>
 				                </span>

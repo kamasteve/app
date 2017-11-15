@@ -30,6 +30,7 @@ $(document).ready(function() {
          // $("#mode").val(obj.mode);
           $("#tenant_id").val(obj.tenant_id);
 		  $("#period").val(obj.period);
+		  $("#id_unit").val(obj.id_unit);
           }
         }
       });
@@ -46,6 +47,7 @@ $(document).ready(function() {
     var payment_ref=$("#payment_ref").val();
     var tenant_id=$("#tenant_id").val();
 	var period=$("#period").val();
+    var id_unit=$("#id_unit").val();
 
     $.ajax({
         url: "http://localhost/app/update_record.php",
@@ -58,13 +60,45 @@ $(document).ready(function() {
            responsible:responsible,
            mode:mode,
            tenant_id:tenant_id,
-		   period:period
+		   period:period,
+		   id_unit:id_unit
         },
         success: function(result){
           console.log("Update response: "+result);
         }
       });
-  })// end of update button action
+  })// end of update button action add_expenses
+  
+   $('#add_expenses').click(function () {
+
+    var id_=$("#id_").val();
+    var property=$("#property").val();
+    var due_date=$("#due_date").val();
+	var unit=$("#unit").val();
+    var details=$("#details").val(); 
+	var payee=$("#payee").val();
+    var responsible=$("#responsible").val();
+    var cost=$("#cost").val();
+  
+
+    $.ajax({
+        url: "http://localhost/app/ajax/new_expense.php",
+        type: "POST",
+        data: {
+           id_:id_,
+           property:property,
+           due_date:due_date,
+           details:details,
+		   payee:payee,
+		   unit:unit,
+           responsible:responsible,
+           cost:cost
+        },
+        success: function(result){
+          console.log("Update response: "+result);
+        }
+      });
+  })
     $('#update_user').click(function () {
 
     var id_=$("#id_").val();
@@ -247,6 +281,39 @@ $(document).ready(function() {
       my_id = $(this).data('my-id');
     }
 	
+	
+
+    $.ajax({
+        url: "http://localhost/app/ajax/fetch_request.php",
+        type: "POST",
+        dataType: 'json',
+        data: {
+          id:my_id
+        },
+        success: function(result){
+          for(var i = 0; i < result.length; i++) {
+          var obj = result[i];
+
+          $("#id_").val(obj.id);
+          $("#property").val(obj.property);
+          $("#due_date").val(obj.due_date);
+          $("#unit").val(obj.unit);
+          $("#details").val(obj.details);
+          $("#payee").val(obj.payee);
+         // $("#mode").val(obj.mode);
+          $("#tenant_id").val(obj.tenant_id);
+          }
+        }
+      });
+  })
+  $('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
+
+    var my_id = '*missing*';
+
+    if (typeof $(this).data('my-id') !== 'undefined') {
+      my_id = $(this).data('my-id');
+    }
+	
 
     $.ajax({
         url: "http://localhost/app/ajax/fetch_user.php",
@@ -300,12 +367,7 @@ $(document).ready(function() {
         }
       });
   }) 
-  $('#myTable').DataTable( {
-	dom: 'T<"clear">lfrtip',
-	tableTools: {
-        "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
-    }
-	} );
+  
 	$('a[data-toggle=modal], button[data-toggle=modal]').click(function () {
 
     var my_id = 'payexpense';
@@ -399,6 +461,63 @@ $(document).ready(function() {
       });
   })// end of update button ac
  
+$(document).on('click', '#close-preview', function(){ 
+    $('.image-preview').popover('hide');
+    // Hover befor close the preview
+    $('.image-preview').hover(
+        function () {
+           $('.image-preview').popover('show');
+        }, 
+         function () {
+           $('.image-preview').popover('hide');
+        }
+    );    
+});
 
+$(function() {
+    // Create the close button
+    var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class","close pull-right");
+    // Set the popover default content
+    $('.image-preview').popover({
+        trigger:'manual',
+        html:true,
+        title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
+        content: "There's no image",
+        placement:'bottom'
+    });
+    // Clear event
+    $('.image-preview-clear').click(function(){
+        $('.image-preview').attr("data-content","").popover('hide');
+        $('.image-preview-filename').val("");
+        $('.image-preview-clear').hide();
+        $('.image-preview-input input:file').val("");
+        $(".image-preview-input-title").text("Browse"); 
+    }); 
+    // Create the preview image
+    $(".image-preview-input input:file").change(function (){     
+        var img = $('<img/>', {
+            id: 'dynamic',
+            width:250,
+            height:200
+        });      
+        var file = this.files[0];
+        var reader = new FileReader();
+        // Set preview image into the popover data-content
+        reader.onload = function (e) {
+            $(".image-preview-input-title").text("Change");
+            $(".image-preview-clear").show();
+            $(".image-preview-filename").val(file.name);            
+            img.attr('src', e.target.result);
+            $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+        }        
+        reader.readAsDataURL(file);
+    });  
+});
 });
 	  

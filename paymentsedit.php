@@ -52,11 +52,12 @@ $con->close();
 	
 	?>	
 <?php 
-
+/**
 if (isset($_POST['submit'])) {
 $tenant_id  = $_POST['varname']; }
-$sql1=mysqli_query($con,"SELECT * FROM tenants WHERE tenant_id='$var_value'");
+$sql1=mysqli_query($con,"SELECT * FROM tenants WHERE tenant_id='$paymentid'");
 $tenant_arr = mysqli_fetch_array($sql1);
+*/
 ?>
 <form class="form-horizontal" method='POST'  id='edit_tentant' name='edit_tentant'>
 <div class="row">

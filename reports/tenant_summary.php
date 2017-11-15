@@ -21,30 +21,38 @@ $tenant_id= $_REQUEST['unit'];
 //WHERE date between '$startdate' and '$enddate' order by date desc
 
 
-$result = mysqli_query($con,"SELECT * FROM rent_payments WHERE tenant_id=$tenant_id order by date desc ");
+$result = mysqli_query($con,"SELECT ammount as debit,0 as credit , serial as Invoice_number,date FROM `rent_payments` WHERE tenant_id=$tenant_id
+UNION
+SELECT 0 as debit, total*(-1) as credit, invoice as invoice_id , invoice_date as date FROM `invoices` WHERE tenant_id =$tenant_id
+order by date desc ");
 
 
-print '<table id="example" class="display table table-striped" cellspacing="0" width="100%">
+print '<table id="statement" class="display " cellspacing="0" width="100%">
  <thead>
  <tr>
-<th>Firstname</th>
-<th>Lastname</th>
-<th>Age</th>
-<th>Hometown</th>
-<th>Job</th>
+<th>Reference</th>
+<th>Date</th>
+<th>Credit</th>
+<th>Debit</th>
 </tr>
  </thead> <tbody>';
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>" . $row['payment_id'] . "</td>";
-    echo "<td>" . $row['payment_mode'] . "</td>";
-    echo "<td>" . $row['first_name'] . "</td>";
-    echo "<td>" . $row['last_name'] . "</td>";
-    echo "<td>" . $row['date'] . "</td>"; 
-	echo "<td>" . $row['ammount'] . "</td>";
-	echo "<td>" . $row['date'] . "</td>";
+    echo "<td id='col1'>" . $row['Invoice_number'] . "</td>";
+    echo "<td>" . $row['date'] . "</td>";
+    echo "<td>" . $row['credit'] . "</td>";
+    echo "<td>" . $row['debit'] . "</td>";
     echo "</tr>";
 }
+echo "<tr id='row1'>";
+echo '<td align="center" valign="middle" style="font-weight:bold; border-bottom: 2px solid #68B12F"" colspan="2">Total</th>';
+echo '<td style="font-weight:bold; border-bottom: 2px solid #68B12F">6990</th>';
+echo '<td style="font-weight:bold; border-bottom: 2px solid #68B12F">7899</th>';
+echo "</tr>";
+echo "<tr>";
+echo '<td align="center" valign="middle" style="font-weight:bold" colspan="2">Balance</th>';
+echo '<td colspan="2" align="center"  style="font-weight:bold" >7899</th>';
+echo "</tr>";
 echo "</tbody></table>";
 mysqli_close($con);
 

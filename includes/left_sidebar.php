@@ -16,19 +16,20 @@ echo '<div class="sidebar-nav">';
 		
 		echo '<li><a class="ajax-link" href="newexpense.php"><i class="glyphicon glyphicon-plus"></i><span> Add expenses</span></a></li>';
 		echo '<li><a class="ajax-link" href="expenses.php"><i class="glyphicon glyphicon-th-list"></i><span> Manage Epenses</span></a></li>';
-		echo '<li><a class="ajax-link" href="expenses1.php"><i class="glyphicon glyphicon-picture"></i><span> Manage Invoices</span></a></li>';
+			echo '<li><a class="ajax-link" href="mpesa.php"><i class="glyphicon glyphicon-picture"></i><span> Mpesa Payments</span></a></li>';
 	}
 	elseif ($pageid >200 && $pageid<=300){
-	echo '<li><a class="ajax-link" href="tenants1.php"><i class="glyphicon glyphicon-eye-open"></i><span> Tenants</span></a></li>';
-				echo '<li><a class="ajax-link" href="apartments.php"><i class="glyphicon glyphicon-edit"></i><span> All Apartments</span></a></li>';
-				echo '<li><a class="ajax-link" href="leased_apartments.php"><i class="glyphicon glyphicon-edit"></i><span> Leased Apartments</span></a></li>';
+	echo '<li><a class="ajax-link" href="tenants1.php"><i class="glyphicon glyphicon-file"></i><span> Tenants</span></a></li>';
+				echo '<li><a class="ajax-link" href="apartments.php"><i class="glyphicon glyphicon-check"></i><span> All Apartments</span></a></li>';
+				echo '<li><a class="ajax-link" href="leased_apartments.php"><i class="glyphicon glyphicon-lock"></i><span> Leased Apartments</span></a></li>';
 				echo '<li><a class="ajax-link" href="vacant_apartments.php"><i class="glyphicon glyphicon-edit"></i><span> Vacant Apartments</span></a></li>';
 				
-				echo '<li><a class="ajax-link" href="landlord.php"><i class="glyphicon glyphicon-font"></i><span> Property Owners</span></a></li>';
+				echo '<li><a class="ajax-link" href="landlord.php"><i class="glyphicon glyphicon-user"></i><span> Property Owners</span></a></li>';
 				echo '<li><a class="ajax-link" href="new_tenant.php"><i class="glyphicon glyphicon-list-alt"></i><span> Add New Tenants</span></a></li>';
-				echo '<li><a class="ajax-link" href="add_property.php"><i class="glyphicon glyphicon-pencil"></i><span> Add New Property</span></a></li>';
+				echo '<li><a class="ajax-link" href="add_property.php"><i class="glyphicon glyphicon-plus-sign"></i><span> Add New Property</span></a></li>';
 				echo '<li><a class="ajax-link" href="leases.php"><i class="glyphicon glyphicon-file"></i><span> Lease Agreaments</span></a></li>';
-				echo '<li><a class="ajax-link" href="maintenance_request.php"><i class="glyphicon glyphicon-th"></i><span> Maintenance Requests</span></a></li>';
+				echo '<li><a class="ajax-link" href="maintenance_request.php"><i class="glyphicon glyphicon-wrench"></i><span> New Maintenance Requests</span></a></li>';
+				echo '<li><a class="ajax-link" href="maintenance.php"><i class="glyphicon glyphicon-th"></i><span> Maintenance Requests</span></a></li>';
 				}
 				elseif ($pageid >300 && $pageid<=400) {
 				echo '<li><a class="ajax-link" href="account_statement.php"><i class="glyphicon glyphicon-align-justify"></i><span> Rent Payement </span></a></li>';

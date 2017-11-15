@@ -23,18 +23,46 @@ overflow-y: auto;
 <div class="row">
 	<div class="box col-md-12">
 		<div class="box-inner">
-
-<table id="example" class="display" cellspacing="0" width="100%">
 <script type="text/javascript" language="javascript" class="init">
 $(document).ready(function() {
-	$('#example').DataTable( {
-	dom: 'T<"clear">lfrtip',
-	tableTools: {
-        "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
-    }
-	} );
+    $('#example').DataTable( {
+        "footerCallback": function ( row, data, start, end, display ) {
+            var api = this.api(), data;
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+            // Total over all pages
+            total = api
+                .column( 9 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Total over this page
+            pageTotal = api
+                .column( 9, { page: 'current'} )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Update footer
+            $( api.column( 4 ).footer() ).html(
+                '$'+pageTotal +' ( $'+ total +' total)'
+            );
+        }
+    } );
 } );
 </script>
+<table id="example" class="display" cellspacing="0" width="100%">
+
 <thead>
 <tr>
 <th>Customer Name</th>
@@ -158,6 +186,12 @@ mysqli_close($con);
   <label for="external-id" class="col-xs-4 col-form-label">Rental Period</label>
   <div class="col-xs-8">
     <input class="form-control" type="text" value="" id="period" disabled>
+  </div>
+</div> 
+<div class="form-group row">
+  <label for="external-id" class="col-xs-4 col-form-label">Unit ID</label>
+  <div class="col-xs-8">
+    <input class="form-control" type="text" value="" id="id_unit" disabled>
   </div>
 </div>
 <div class="form-group row">

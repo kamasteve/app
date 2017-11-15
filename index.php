@@ -1,54 +1,34 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <?php
 ob_start();
 session_start();
 ?>
-
 <head>
     
     <meta charset="utf-8">
     <title>Digital Landlord</title>
   
-
     <!-- The styles -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-
     <!-- SB Admin CSS - Include with every page -->
     <link href="css/sb-admin.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
-
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
     <!-- The fav icon -->
   
-
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     
-
     <!-- Core CSS - Include with every page -->
   
-
-
-
-
 <body>
-
 <body  class="image-responsive" >
-
 <style type="text/css">
 	 	
 	
@@ -58,16 +38,12 @@ session_start();
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
 	<div class="row-fluid" id="marketing-spots">
     <div class="span4">
         <!-- Advert #1 -->
-
-
 <!--/row-->
-
     
 	
 	<div class="container" >
@@ -81,72 +57,50 @@ include ('database_connection.php');
 if (isset($_POST['button'])) {
     // Initialize a session:
     $error = array();//this aaray will store all error messages
-
     if (empty($_POST['username'])) {//if the email supplied is empty 
         $error[] = 'You forgot to enter  your username';
     } else {
-
-
         
             $username = $_POST['username'];
         } 
-
-
     
-
-
     if (empty($_POST['password'])) {
         $error[] = 'Please Enter Your Password ';
     } else {
         $password = $_POST['password'];
     }
-
-
        if (empty($error))//if the array is empty , it means no error found
     { 
-
        
-
         $query_check_credentials = "select * from register where username='$username' and password='$password' ";
    
         
-
         $result_check_credentials = mysqli_query($con, $query_check_credentials);
         if(!$result_check_credentials){//If the QUery Failed 
             echo 'Query Failed ';
         }
-
         if (@mysqli_num_rows($result_check_credentials) == 1)//if Query is successfull 
         { // A match was made.
-
            
-
-
             $_SESSION = mysqli_fetch_array($result_check_credentials, MYSQLI_ASSOC);//Assign the result of this query to SESSION Global Variable
            
-            header("Location: profile.php");
+            header("Location: main.php");
           
-
         }else
         { 
             
             $msg_error= 'Either Your Account is inactive or Email address /Password is Incorrect';
         }
-
     }  else {
         
         
-
 echo '<div class="errormsgbox"> <ol>';
         foreach ($error as $key => $values) {
             
             echo '	<li>'.$values.'</li>';
-
-
        
         }
         echo '</ol></div>';
-
     }
     
     
@@ -156,12 +110,9 @@ echo '<div class="errormsgbox"> <ol>';
     }
     /// var_dump($error);
     mysqli_close($con);
-
  // End of the main Submit conditional.
-
 }
 ?>
-
             
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
@@ -196,17 +147,13 @@ echo '<div class="errormsgbox"> <ol>';
 	
 	</div>
 			
-
 </div><!--/fluid-row-->
-
 </div>
 </body><!--/.fluid-container-->
 <?php  //include ('includes/footer.php'); 
 ?>
 <!-- external javascript -->
-
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <!-- library for cookie management -->
 <script src="js/jquery.cookie.js"></script>
 <!-- calender plugin -->
@@ -214,7 +161,6 @@ echo '<div class="errormsgbox"> <ol>';
 <script src='bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
 <!-- data table plugin -->
 <script src='js/jquery.dataTables.min.js'></script>
-
 <!-- select or dropdown enhancer -->
 <script src="bower_components/chosen/chosen.jquery.min.js"></script>
 <!-- plugin for gallery image view -->
@@ -237,7 +183,4 @@ echo '<div class="errormsgbox"> <ol>';
 <script src="js/jquery.history.js"></script>
 <!-- application script for Charisma demo -->
 <script src="js/charisma.js"></script>
-
-
-
 </html>

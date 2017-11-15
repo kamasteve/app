@@ -1,4 +1,20 @@
 <?php include ('includes/header.php');
+$result1 = mysqli_query($con,"SELECT * FROM company_data");
+if($result1) {
+	while ($row = mysqli_fetch_assoc($result1)) {
+		$name = $row['company_name']; // customer name
+		$Adress1 = $row['address_1']; // last name
+		$Adress = $row['adress_2']; // Nationality
+		$email = $row['email']; // customer email
+		$phone = $row['phone']; // Phone Number
+		$zip = $row['zip']; // Username
+		$country= $row['country'];
+		$tax = $row['tax_info'];
+		$code = $row['code'];
+		$website = $row['website'];
+		$reg_no = $row['reg_no'];
+		}
+		}
 $result = mysqli_query($con,"SELECT * FROM register WHERE username ='$_id'");
 while($row = mysqli_fetch_array($result)):
 $pageid=1;
@@ -6,7 +22,9 @@ $pageid=1;
 
 <div class="ch-container">
 	<div class="row">
- <?php include ('includes/left_sidebar.php');  ?>
+ <?php include ('includes/left_sidebar.php'); 
+
+ ?>
  <div id="content" class="col-md-10">
  
     <div class="box col-md-12">
@@ -79,7 +97,7 @@ $pageid=1;
           <div class="col-sm-6">
             <div class="row mgbt-xs-0">
               <label class="col-xs-5 control-label">Company:</label>
-              <div class="col-xs-7 controls">Basketball, Web, Design, etc.</div>
+              <div class="col-xs-7 controls"><?php echo $name; ?></div>
               <!-- col-sm-10 --> 
             </div>
           </div>
@@ -92,10 +110,11 @@ $pageid=1;
             <h3 class="mgbt-xs-15 font-semibold"><i class="fa fa-file-text-o mgr-10 profile-icon"></i>Billing Info</h3>
             <div class="content-list content-menu">
               <ul class="list-wrapper">
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_green"><i class="fa  fa-circle-o"></i></span> <span class="menu-text"> <a href="http://www.venmond.com/">Owner</a> at <a href="http://www.venmond.com/">Vendroid Ltd.</a> <span class="menu-info"><span class="menu-date"> March 2013 ~ Now</span></span> </span> </li>
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> <a href="http://www.venmond.com/">CEO</a> at <a href="http://www.venmond.com/">Mc. Dondon</a> <span class="menu-info"><span class="menu-date"> March 2011 ~ February 2013</span></span> </span> </li>
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> <a href="http://www.venmond.com/">Web Designer</a> at <a href="http://www.venmond.com/">Web Design Company Ltd.</a> <span class="menu-info"><span class="menu-date"> March 2010 ~ February 2011</span></span> </span> </li>
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> <a href="http://www.venmond.com/">Sales</a> at <a href="http://www.venmond.com/">Sales Company Ltd.</a> <span class="menu-info"><span class="menu-date"> March 2009 ~ February 2010</span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_green"><i class="fa  fa-circle-o"></i></span> <span class="menu-text"> Company</a> Adress  <span class="menu-info"><span class="menu-date"><?php echo $Adress ?></span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Mobile</a> Number</a> <span class="menu-info"><span class="menu-date"><?php echo $phone ?></span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Location </a> </a> <span class="menu-info"><span class="menu-date"> <?php echo $Adress1 ?></span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Email</a> <span class="menu-info"><span class="menu-date"> <?php echo $email?></span></span> </span> </li>
+				<li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Website </a> <span class="menu-info"><span class="menu-date"> <?php echo $website?></span></span> </span> </li>
               </ul>
             </div>
           </div>
@@ -103,10 +122,11 @@ $pageid=1;
             <h3 class="mgbt-xs-15 font-semibold"><i class="fa fa-trophy mgr-10 profile-icon"></i> Properties</h3>
             <div class="content-list content-menu">
               <ul class="list-wrapper">
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_green"><i class="fa  fa-circle-o"></i></span> <span class="menu-text"> Bachelor's degree, E-Commerce/Electronic Commerce at <a href="http://www.venmond.com/">UCLA</a> <span class="menu-info"><span class="menu-date"> August 2003 ~ July 2008</span></span> </span> </li>
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Student at <a href="http://www.venmond.com/">Web Design Education</a> <span class="menu-info"><span class="menu-date"> March 2006 ~ February 2007</span></span> </span> </li>                
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Student at <a href="http://www.venmond.com/">St. Louis High School</a> <span class="menu-info"><span class="menu-date"> August 2000 ~ July 2003 </span></span> </span> </li>
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Student at <a href="http://www.venmond.com/">St. Monica Junior High School</a> <span class="menu-info"><span class="menu-date"> August 1998 ~ July 2000</span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_green"><i class="fa  fa-circle-o"></i></span> <span class="menu-text"> Physical</a> Location  <span class="menu-info"><span class="menu-date"><?php echo $Adress1 ?></span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Postal</a> Code</a> <span class="menu-info"><span class="menu-date"><?php echo $code ?></span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Location </a> </a> <span class="menu-info"><span class="menu-date"> <?php echo $Adress1 ?></span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Email</a> <span class="menu-info"><span class="menu-date"> <?php echo $email?></span></span> </span> </li>
+				<li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text"> Website </a> <span class="menu-info"><span class="menu-date"> <?php echo $website?></span></span> </span> </li>
               </ul>
             </div>            
           </div>

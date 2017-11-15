@@ -107,7 +107,7 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 					'".$username."',
 					'".$period."',
 					'".$tenant_name."',
-					'".$invoice_number."'
+					'".$invoice_tenant."'
 					
 			    );
 			";

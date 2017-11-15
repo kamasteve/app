@@ -31,21 +31,9 @@ $(document).ready(function() {
         <div class="box-inner">
 	<div class="box-content row"> 
 		
-<ul class="nav nav-tabs">
-<li class="active"><a data-toggle="tab" href="#all">Apartments</a></li>
-<li><a data-toggle="tab" href="#leased">Leased</a></li>
- <li><a data-toggle="tab" href="#vacant">Vacant</a></li>
-</ul>
-<div class="tab-content">
-<div id="all" class="tab-pane fade in active">
- <div class="col-md-4"> 
-  </div>
-  <div class="col-md-4"> 
-  </div>
-  <div class="col-md-4"> 
-<!-- Button trigger modal -->
 
-  </div>
+<div class="tab-content">
+
   <div class="tablediv">
   
   <table id="example" class="display" cellspacing="0" width="100%">
