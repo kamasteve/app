@@ -2,6 +2,7 @@
 <?php 
 include_once('../database_connection.php');
 
+
 // show PHP errors
 
 
@@ -55,5 +56,7 @@ echo '<td colspan="2" align="center"  style="font-weight:bold" >7899</th>';
 echo "</tr>";
 echo "</tbody></table>";
 mysqli_close($con);
+
+exit;
 
 ?>

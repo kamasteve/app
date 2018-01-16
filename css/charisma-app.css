@@ -101,7 +101,27 @@ margin-bottom: 18px;
     width: 200px;
 
 }
+.button1{
+    background: -moz-linear-gradient(center top , #68B12F, #50911E) repeat scroll 0% 0% transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #509111 #509111 #5B992B;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    border-radius: 3px;
+    box-shadow: 0px 1px 0px 0px #9FD574 inset;
+    color: #FFF !important;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0px -1px 0px #396715;
+	height: 35px !important;
+    width: 10%;
 
+}
 .tentant_footer_cls .box-icon a{
 width:auto !important;
 height:35px !important;
@@ -140,7 +160,8 @@ text-align:center;
 .btn-limited{
 color: rgb(55, 160, 0);
 
-width:100px !important;
+width:80px !important;
+
 
 text-align:center;
 }

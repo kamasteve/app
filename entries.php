@@ -36,7 +36,7 @@ $(function () {
     $('#account_reports').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost:6060/app/reports/payment_summary.php";
+            var url = "http://localhost/app/reports/landlord_summary.php";
             $.ajax({
                 type: "POST",
                 url: url,
@@ -67,47 +67,104 @@ $(function () {
 		<div class="box-inner">
 			<div class="row">
 	
-     
+      <script>
+  $( function() {
+    $( "#datepicker1" ).datepicker();
+    $( "#format" ).on( "change", function() {
+      $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+    });
+  } );
+  </script>
+  
+ <form class="form-horizontal" action=""  id="account_reports" method="post">
+ <div class="form-group col-xs-5">
+		
+		<label class="control-label col-xs-4" for="fname">Select Property:</label>
+		<div class=" col-xs-8">
+	<?php
+    //Include database configuration file
+    
+    
+    //Get all country data
+    $query = $con->query("SELECT * FROM properties  ORDER BY property_id ASC");
+    
+    //Count total number of rows
+    $rowCount = $query->num_rows;
+    ?>
+	
+    <select class='form-control input-group' name="property1" id="property1">
+        <option value="">Select Property</option>
+        <?php
+        if($rowCount > 0){
+            while($row = $query->fetch_assoc()){ 
+                echo '<option value="'.$row['name'].'">'.$row['name'].'</option>';
+            }
+        }else{
+            echo '<option value="">Property not available</option>';
+        }
+        ?>
+    </select>
+	</div>
+	</div>
 
+<div class=" form-group col-xs-5">
+	<label class="control-label col-xs-4" for="fname">Select Period:</label>
+	<div class=" col-xs-8">
+			<select class='form-control' name="period" id="period" required>
+			<option value=''>Select Period</option>
+			<option value='January' >January</option>
+			<option value='February'>February</option>
+			<option value='March'>March</option>
+			<option value='April'>April</option>
+			<option value='May'>May</option>
+			<option value='June'>June</option>
+			<option value='July'>July</option>
+			<option value='August'>August</option>
+			<option value='September'>September</option>
+			<option value='October'>October</option>
+			<option value='November'>November</option>
+			<option value='December'>December</option>
+			<option value='December'>1st Quarter</option>
+			<option value='December'>2nd Quarter</option>
+			<option value='December'>3rd Quarter</option>
+			<option value='December'>4th Quarter</option>
+    </select>
+	</div>
+</div>
+<div class="form-group col-md-2 ">
+<label class="control-label col-xs-5" for="fname"></label>		
+		<div class="form-group ">
+			<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
+		<input class=" btn button  btn-default" type="submit" name="button" value='submit'>
+			</div>
+		</div>
+</div>
  
+     <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+    $( "#format" ).on( "change", function() {
+      $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+    });
+  } );
+  </script>
+		<script>
+		$("#btnExport").click(function (e) {
+    window.open('data:application/vnd.ms-excel,' + $('#example').html());
+    e.preventDefault();
+});
+		</script>
+	</form>	
 
 </div>
 </div>
-<div class="box-inner ">
+<div class="box-inner reports">
 
 <div class='messages' id="alert"> </div>
-<table id="example" class="display table-striped" cellspacing="0" width="100%">
-<thead>
-<tr>
- <th rowspan="2">Feb</th>
-  <th colspan="2">January</th>
-  <th colspan="2">Feb</th>
-  </tr>
-  <tr>
-  <th>Debit</th>
-  <th>Credt</th>
-  <th>Debit</th>
-  <th>Credit</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td>Income</td>
-  <td>600</td>
-  <td>900</td>
-  <td>987200</td>
-  <td>987200</td>
-  </tr>
-  <tr>
-  <td>Expense</td>
-  <td>600</td>
-  <td>900</td>
-  <td>987200</td>
-  <td>987200</td>
-  </tr>
-  </tbody>
-  </table>
 
+
+</div>
+</div>
 </div>
 </div>
 </div>

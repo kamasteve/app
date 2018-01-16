@@ -1,0 +1,15 @@
+ cmd_invoice.Parameters.Clear();
+            cmd_invoice.CommandText = "GET_IT_INVENTORY_REPORTS";
+
+            cmd_invoice.Parameters.Add(new OracleParameter("p_criteria", sCriteria));
+            cmd_invoice.Parameters.Add(new OracleParameter("p_name", x_SEARCH.Text));
+            cmd_invoice.Parameters.Add(new OracleParameter("p_from", x_FROM_DATE.Text));
+            cmd_invoice.Parameters.Add(new OracleParameter("p_to", x_TO_DATE.Text));
+            
+            cmd_invoice.Parameters.Add(new OracleParameter("pcur", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
+            da_invoice.Fill(dsGet);
+
+            ITEMS_LIST.DataSource = dsGet.Tables[0];
+            ITEMS_LIST.DataBind();
+            x_TOTAL_REQS.Text = dsGet.Tables[0].Rows.Count.ToString();
+        }

@@ -4,12 +4,10 @@ while($row = mysqli_fetch_array($sql)) {
 $owner_arr[]=$row;
 $pageid=107;
 }
-
 $sql1 = mysqli_query($con,"SELECT * FROM properties");
 while($row1 = mysqli_fetch_array($sql1)) {
 $pro_arr[]=$row1;
 }
-
 ?>
 <script type="text/javascript" src="js/my_js.js"></script>
 <script type="text/javascript">
@@ -67,10 +65,41 @@ $(function () {
         }
     })
 });
-
 </script>
 
-
+<script id="source" language="javascript" type="text/javascript">
+  $(function () 
+  {
+    //-----------------------------------------------------------------------
+    // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
+    //-----------------------------------------------------------------------
+    $.ajax({                                      
+      url: 'http://localhost/app/verify_payments.php',                  //the script to call to get data          
+      data: $(this).serialize(),                      //you can insert url argumnets here to pass to api.php
+                                       //for example "id=5&parent=6"
+      dataType: 'json',                //data format      
+      success: function(data)          //on recieve of reply
+      {
+              //get id
+      var row = rows[i];          
+      var id = row[0];
+      var invoice = row[1]; 
+	  var product = row[2];
+	  var qty = row[3];
+	  var price = row [4];
+	  var discount = row [5];
+	  var subtotal = row [6];
+	  //get name
+        //--------------------------------------------------------------------
+        // 3) Update html content
+        //--------------------------------------------------------------------
+        $('#output').html("<b>id: </b>"+id+"<b> invoice: </b>"+invoice); //Set output element html
+        //recommend reading up on jquery selectors they are awesome 
+        // http://api.jquery.com/category/selectors/
+      } 
+    });
+  }); 
+  </script> 
 <div class="ch-container">
 <div class="row">
 <?php include ('includes/left_sidebar.php');  ?>
@@ -81,9 +110,7 @@ $(function () {
         <div class="box-inner">
 		<div class="box-content row">
             
-
 <div class="row">
-
 <form class="form-horizontal" action="verify_payments.php" id="addpayments" method="post">
  
   <div class="form-group col-md-4">
@@ -97,18 +124,18 @@ $(function () {
 </div>
 </div>
 <div class="form-group col-md-2 ">
-
 		<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
 		<input class=" btn button  btn-default" type="submit" name="button" value='Search'>
 			</div>
 </div>
 </div>
 <div class="box-inner reports">
-
-<div class='messages' id="alert"> </div>
+<span id="spnVisual">
+</span>
+<div id="output">this element will be accessed by jquery and this text replaced</div>
 </form>
 </div>
-
+ 
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">
@@ -116,7 +143,6 @@ $(function () {
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal">Exit</button>
 </div>
-
 <div class="modal-body">
 <div class="form-group row">
   <label for="external-id" class="col-xs-4 col-form-label">Invoice Number</label>
@@ -160,7 +186,6 @@ $(function () {
       </select>
 </div>
 </div>
-
 <div class="form-group row">
   <label for="external-id" class="col-xs-4 col-form-label"> Payment Ref </label>
   <div class="col-xs-8">
@@ -168,13 +193,8 @@ $(function () {
   </div>
 </div>
 <input type="hidden" id="responsible" value="<?php echo  $_id; ?> "/>
-
-
-
 <button type="button" class=" btn-warning" data-dismiss="modal">Cancel</button>
 <button type="submit" class=" btn-success" data-dismiss="modal" id="update_record">PAY</button>
-
-
 </div>
 </div>
 </div>
@@ -216,7 +236,6 @@ $(function () {
     </select>
 	</div>
 </div>
-
 <div class="form-group col-md-6">
   
   <label class="control-label col-xs-4"  for="sel1">Rental Period:</label>
@@ -279,8 +298,6 @@ $(function () {
       </select>
 </div>
 </div>
-
-
 <div class="form-group col-md-6">
 <label class="control-label col-xs-4" for="fname">Payment Id:</label>
   <div class="col-xs-8">
@@ -294,9 +311,6 @@ $(function () {
   <input class="form-control" name="phone" type="text" placeholder="Phone Number" required>
 </div>
 </div>
-
-
-
  
 <div class="form-group col-md-6">
 <label class="control-label col-xs-4" for="fname">Ammount:</label>
@@ -312,39 +326,20 @@ $(function () {
 <div class="col-xs-8">
 <button type="submit" class="btn button btn-lng "   name='submit'>Save</button>
 </div>
-
 </div>
 </div>
-
 </form>
 -->	
 </div>
 </div>
 	
-
-
 </div>
     </div>
 </div>
-
-
-
-
     </div>
-
-
-
-
 </div>
-
-
-
 <!--/row-->
     <!-- content ends -->
     
        
-
-
-
-
 <?php  include ('includes/footer.php'); ?>

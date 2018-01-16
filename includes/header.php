@@ -12,6 +12,7 @@ header("location:index.php");
 }
  else{
  $_id=$_SESSION['username'];
+ $user_id=$_SESSION['role'];
  } 
  ?> 
 <!DOCTYPE html>
@@ -104,21 +105,17 @@ var base_url= 'http://www.hilleconomicgroup.com';
   <a class="navbar-brand" href="main.php"> <img alt="Techisoft Logo" src="img/techisoft.png" class="hidden-xs"/>
                 <span></span></a>
 <ul class=" nav navbar-nav ">
-    <li class="nav-item ">
-      <a class="nav-link" href="profile.php">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="invoice.php">Accounting</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="tenants1.php">Property Management</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="account_statement.php">Reports</a>
-    </li>
-	<li class="nav-item">
-      <a class="nav-link" href="#">Tenant portal</a>
-    </li>
+<?php
+$query = $con->query("SELECT * FROM parent_menu  ORDER BY menu_id ASC");
+				$rowCount = $query->num_rows;
+				if($rowCount > 0){
+            while($row = $query->fetch_assoc()){ 
+			echo '<li><a class="ajax-link" href="'.$row['url'].'"><i class="'.$row['menu_icon'].'"></i><span> '.$row['name'].'</span></a></li>';
+                //echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+            }
+				}
+			?>
+   
 	<li class=" pull-right dropdown">
       <a href="#" data-toggle="dropdown" ><i class="glyphicon glyphicon-user"></i> <?php echo $_id;?> <span class="caret"></span> </a> 
 	  <ul class="dropdown-menu" role="menu">

@@ -109,11 +109,31 @@ $(function () {
 </div>
 </div>
 <div class="form-group ">
-<label class="control-label col-xs-3" for="text">Role:</label>
- <div class="input-group  col-xs-5" id="invoice_due_text">
-  <input class="form-control" name="role" type="text" placeholder="Role" value="<?php echo $adress; ?>"required>
-  <span class="help-block" id="error"></span> 
-</div>
+	
+		<label class="control-label col-xs-3" for="fname">Select Property:</label>
+		<div class=" input-group  col-xs-5">
+	<?php
+    //Include database configuration file
+    
+    
+    //Get all country data
+    $query = $con->query("SELECT * FROM user_types  ORDER BY id ASC");
+    
+    //Count total number of rows
+    $rowCount = $query->num_rows;
+    ?>
+    <select class='form-control' name="role" id="role">
+        <option value="">Select Role</option>
+        <?php
+        if($rowCount > 0){
+            while($row = $query->fetch_assoc()){ 
+                echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+            }
+        }else{
+            echo '<option value="">Roles Not created</option>';
+        }
+        ?>
+    </select>
 </div>
  
  
