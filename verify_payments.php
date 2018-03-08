@@ -29,69 +29,30 @@ $house_number=$_REQUEST['unit'];
   //$query = $con->query("SELECT * FROM invoice_items WHERE invoice=1048 order by invoice desc");
   
   
-  $query ="SELECT * FROM invoice_items WHERE invoice='$invoice' order by invoice desc";
-
-  // execute query
-  $result = mysqli_query($con,$query) or die('Server error = '.mysqli_error($con));
-
-  // get number of rows
-  $rows = mysqli_num_rows($result);
-
-  // check if there are rows
-  if($rows>0){
-    // return Json
-    echo makeJsonResponse($result);
-  }
-
-  // close DB
-  mysqli_close($con);
-
-  // generates json response
-  function makeJsonResponse($my_result){
-  		// initialize array
-  		$arr=[];
-
-	    /* fetch associative array */
-	    while ($row = $my_result->fetch_assoc()) {
-	  			// push row to array
-    			array_push($arr,$row);
-		  }
-
-  		// return result
-  		return json_encode($arr);
-	}
+  //$query ="SELECT * FROM invoice_items WHERE invoice='$invoice' order by invoice desc";
   
-  
+  $result = mysqli_query($con,"SELECT * FROM invoice_items WHERE invoice='$invoice' order by invoice desc");
 
-
-//print '<input type="button" id="btnExport" value=" Export Table data into Excel " />';
-/**
-print '<table id="example" class="display table table-striped" cellspacing="0" width="100%">
+  print '<table id="statement" class="table table-bordered " cellspacing="0" width="100%">
  <thead>
  <tr>
-<th>Invoice</th>
-<th>Period</th>
-<th>Invoice Date</th>
-<th>Total</th>
-<th>Property</th>
-<th>Action</th>
+<th>Reference</th>
+<th>Date</th>
+<th>Credit</th>
+<th>Debit</th>
 </tr>
  </thead> <tbody>';
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>" . $row['invoice'] . "</td>";
-    echo "<td>" . $row['Period'] . "</td>";
-    echo "<td>" . $row['invoice_date'] . "</td>";
-    echo "<td>" . $row['total'] . "</td>";
-    echo "<td>" . $row['property'] . "</td>";
-	echo '<td> <a class="xyz btn " data-toggle="modal" data-target="#myModal" data-my-id="'.$row["invoice"].'">
-													<i class="glyphicon glyphicon-euro icon-white"></i>
-													Pay
-											</a></td>';
+    echo "<td id='col1'>" . $row['invoice'] . "</td>";
+    echo "<td>" . $row['product'] . "</td>";
+    echo "<td>" . $row['qty'] . "</td>";
+    echo "<td>" . $row['price'] . "</td>";
     echo "</tr>";
 }
 echo "</tbody></table>";
-**/
-//mysqli_close($con);
+mysqli_close($con);
+  
+ 
 
 ?>

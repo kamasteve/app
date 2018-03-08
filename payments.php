@@ -66,40 +66,7 @@ $(function () {
     })
 });
 </script>
-
-<script id="source" language="javascript" type="text/javascript">
-  $(function () 
-  {
-    //-----------------------------------------------------------------------
-    // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
-    //-----------------------------------------------------------------------
-    $.ajax({                                      
-      url: 'http://localhost/app/verify_payments.php',                  //the script to call to get data          
-      data: $(this).serialize(),                      //you can insert url argumnets here to pass to api.php
-                                       //for example "id=5&parent=6"
-      dataType: 'json',                //data format      
-      success: function(data)          //on recieve of reply
-      {
-              //get id
-      var row = rows[i];          
-      var id = row[0];
-      var invoice = row[1]; 
-	  var product = row[2];
-	  var qty = row[3];
-	  var price = row [4];
-	  var discount = row [5];
-	  var subtotal = row [6];
-	  //get name
-        //--------------------------------------------------------------------
-        // 3) Update html content
-        //--------------------------------------------------------------------
-        $('#output').html("<b>id: </b>"+id+"<b> invoice: </b>"+invoice); //Set output element html
-        //recommend reading up on jquery selectors they are awesome 
-        // http://api.jquery.com/category/selectors/
-      } 
-    });
-  }); 
-  </script> 
+ 
 <div class="ch-container">
 <div class="row">
 <?php include ('includes/left_sidebar.php');  ?>
@@ -130,10 +97,10 @@ $(function () {
 </div>
 </div>
 <div class="box-inner reports">
-<span id="spnVisual">
-</span>
-<div id="output">this element will be accessed by jquery and this text replaced</div>
-</form>
+
+<div class='messages' id="alert"> </div>
+
+
 </div>
  
 </div>

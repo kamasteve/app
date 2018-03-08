@@ -57,6 +57,4 @@ echo "</tr>";
 echo "</tbody></table>";
 mysqli_close($con);
 
-exit;
-
 ?>

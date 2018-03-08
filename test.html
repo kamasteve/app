@@ -1,0 +1,424 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UIAddIT.aspx.cs" Inherits="UIAddIT" %>
+
+<%--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">--%>
+<!DOCTYPE html>
+
+
+<%--<html xmlns="http://www.w3.org/1999/xhtml" >--%>
+<head runat="server">
+    <title>Relocate IT Network Assets</title>
+    <%--<link rel="stylesheet" type="text/css" href="css/Page.css"/>--%>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+   
+</head>
+<body>
+    <div class="box-inner select_location" >
+        <div class="" >
+    <form id="form1" runat="server">
+                
+                    
+                    <%--<table cellpadding="1" cellspacing="0" style="vertical-align: top; text-align: left; width: 624px; height: 395px;">--%>
+                     <div class="form-group col-md-6">
+                       <%-- <tr>
+                            <td colspan="2" style="height: 23px">
+                                <asp:Label ID="Label9" runat="server" CssClass="labelbold" Font-Bold="True" Width="75%">RELOCATE IT NETWORK ASSESTS</asp:Label></td>
+                            <td class="auto-style17">
+                            </td>
+                            <td style="width: 1px; height: 23px">
+                            </td>
+                            <td style="width: 31px; height: 23px; text-align: right">
+                                            <asp:ImageButton ID="btnClose" runat="server" ImageUrl="images/closewindow.gif"  /></td>
+                            <td style="width: 3px; height: 23px">
+                            </td>
+                        </tr>--%></div>
+                         <%--<div class="form-group col-md-6">
+                             
+                            
+        <asp:Label ID="lblErrorMsg" runat="server" CssClass="errortext" Width="525px"></asp:Label>
+                                
+                                            
+                        
+                        <tr>
+                            <td style="width: 86px; height: 23px">
+                                &nbsp;</td>
+                            <td style="width: 42px; height: 23px">
+                                &nbsp;</td>
+                            <td class="auto-style17">
+                                &nbsp;</td>
+                            <td style="width: 1px; height: 23px">
+                                
+                            <td style="height: 23px; width: 31px;">
+                                &nbsp;</td>
+                            <td style="height: 23px; width: 3px;">
+                            </td>
+                        </tr></div>--%>
+                      <%--  <tr>
+                            <td style="width: 86px; height: 23px">
+                                &nbsp;</td>
+                            <td style="width: 42px; height: 23px">
+                                &nbsp;</td>
+                            <td class="auto-style17">
+                                &nbsp;</td>
+                            <td style="width: 1px; height: 23px">
+                                &nbsp;</td>
+                            <td style="height: 23px; width: 31px;">
+                                &nbsp;</td>
+                            <td style="height: 23px; width: 3px;">
+                            </td>
+                        </tr>--%>
+     
+        <div id="my_container">
+
+    <asp:Label ID="lblErrorMsg" runat="server" CssClass="errortext"  Visible="False"></asp:Label>
+    <asp:Label ID="lblTitle" runat="server" Font-Bold="False"  Font-Names="Verdana" Font-Size="8pt" Font-Italic="True" Font-Underline="True">Relocation details</asp:Label></td>
+  <asp:TextBox ID="refno0" runat="server" CssClass="inputnoedit" Font-Bold="False"
+                                    Font-Names="Tahoma" Width="200px" ReadOnly="True" Visible="False"></asp:TextBox></td>                  
+<div class="form-group col-md-6">
+<asp:Label ID="Label14" runat="server"  class="control-label col-xs-4" Text="From(Station):" ></asp:Label>
+ <div class="input-group  col-xs-8" id="invoice_due_text">
+     <asp:DropDownList ID="cstation" class="form-control" runat="server" CssClass="form-control" Font-Bold="False" Font-Names="Verdana" OnSelectedIndexChanged="x_towns_SelectedIndexChanged" AutoPostBack="True">
+          </asp:DropDownList>
+</div> 
+</div>    
+ <div class="form-group col-md-6">
+     <asp:Label ID="Label16" runat="server" class="control-label col-xs-4" Text="Destination: " ></asp:Label>
+ <div class="input-group  col-xs-8" id="Div1">
+ <asp:DropDownList ID="x_towns" runat="server" class="form-control" CssClass="form-control" Font-Bold="False" Font-Names="Verdana" OnSelectedIndexChanged="x_towns_SelectedIndexChanged" AutoPostBack="True">
+                            </asp:DropDownList>
+ 
+</div> 
+</div> 
+ <div class="form-group col-md-6">
+     <asp:Label ID="Label17" runat="server" class="control-label col-xs-4" Text="Reason:" ></asp:Label>
+ <div class="input-group  col-xs-8" id="Div2">
+ <asp:TextBox ID="TextBox1" runat="server" class="form-control" TextMode="MultiLine" Font-Bold="False" Font-Names="Tahoma"></asp:TextBox>
+                           <%-- </asp:DropDownList>--%>
+ 
+</div> 
+</div> 
+                       
+                    <div class="form-group col-md-6">
+                        <tr>
+                            <td style="width: 86px; height: 23px">
+                                &nbsp;</td>
+                            <td style="width: 42px; height: 23px">
+                            </td>
+                            <td class="auto-style17">
+                                <asp:Label ID="Label29" runat="server" CssClass="label" Text="Zone:" Width="79px" Visible="False"></asp:Label></td>
+                            <td style="width: 1px; height: 23px">
+                                <asp:TextBox ID="refno" runat="server" CssClass="inputnoedit" Font-Bold="False"
+                                    Font-Names="Tahoma" Width="200px" ReadOnly="True" Visible="False"></asp:TextBox></td>
+                            <td style="width: 31px; height: 23px">
+                            </td>
+                            <td style="width: 3px; height: 23px">
+                            </td>
+                        </tr>
+                        </div>
+                    <div class="form-group col-md-6">
+                       
+                           <%-- <td style="width: 86px; height: 1px">
+                                <asp:Label ID="Label23" runat="server" CssClass="label" Text="Reason:" Width="79px"></asp:Label></td>
+                            <td style="width: 42px; height: 1px">
+                                <asp:TextBox ID="description" runat="server" CssClass="input" TextMode="MultiLine" Font-Bold="False" Font-Names="Tahoma" Width="200px"></asp:TextBox>
+                            </td>--%>
+                            <td class="auto-style18">
+                                <asp:TextBox ID="cofficer" runat="server" CssClass="inputnoedit" Font-Bold="False"
+                                    Font-Names="Tahoma" Width="200px" ReadOnly="True" Visible="False"></asp:TextBox></td>
+                            
+                            </div>
+           
+ 
+                            <div class="form-group col-md-6">
+
+                            
+                                <asp:ImageButton ID="btnbal" runat="server" OnClick="btnbal_Click" Visible="False"  ImageUrl="~/images/checkbal.png"/>
+                                
+                            </div>
+                        
+                    </div>
+                    <div class="row">
+                       
+                            <td style="width: 86px; height: 9px">
+                                <asp:Label ID="dept" runat="server" CssClass="input" Visible="False" Width="85px" Font-Bold="False" Font-Names="Verdana" Font-Size="X-Small"></asp:Label></td>
+                            <td style="width: 42px; height: 9px">
+                                <asp:ImageButton ID="btnsave" runat="server" ImageUrl="~/images/save.png" OnClick="btnsave_Click" Visible="False"  /></td>
+                            <td class="auto-style19">
+                                <asp:TextBox ID="x_RANGE0" runat="server" CssClass="inputnoedit" Font-Bold="False" Font-Names="Tahoma" Width="94px" ReadOnly="True"></asp:TextBox></td>
+                            <td style="width: 1px; height: 9px">
+                                </td>
+                            <td style="height: 9px; width: 31px;">
+                                <asp:Label ID="ffa" runat="server" CssClass="input" Font-Size="XX-Small" Visible="False"
+                                    Width="50px" Font-Bold="False" Font-Names="Verdana"></asp:Label></td>
+                            <td style="height: 9px; width: 3px;">
+                            </td>
+                        
+                            <td colspan="2" style="height: 20px">
+                                <asp:Label ID="Label12" runat="server" Font-Bold="False" Font-Italic="True" Font-Names="Verdana"
+                                    Font-Size="8pt" Font-Underline="True" Width="250px">Inventory Details</asp:Label></td>
+                            <td class="auto-style20">
+                                <asp:Label ID="vreg" runat="server" Font-Bold="False" Font-Size="XX-Small" ForeColor="Maroon"
+                                    Height="1px" Visible="False" Width="71px" CssClass="input" Font-Names="Verdana"></asp:Label></td>
+                            <td style="width: 1px; height: 20px;">
+                                <asp:Label ID="vmake" runat="server" CssClass="input" Visible="False" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small" Width="202px"></asp:Label></td>
+                            <td style="width: 31px; height: 20px;">
+                                <asp:Label ID="Label1" runat="server" CssClass="input" Font-Bold="False" Font-Names="Verdana"
+                                    Font-Size="XX-Small" Visible="False" Width="50px"></asp:Label></td>
+                            <td style="width: 3px; height: 20px;">
+                            </td>
+                        </div>
+ <div class="form-group col-md-6">
+  <asp:Label ID="Label18" runat="server" class="control-label col-xs-4" Text="Asset Category:" Width="114px"></asp:Label>
+  <div class="input-group col-xs-8" id="Div3">
+ <asp:DropDownList ID="x_category" runat="server" CssClass="form-control" AutoPostBack="True" 
+                                                OnSelectedIndexChanged="x_category_SelectedIndexChanged" Width="240px">
+                                            </asp:DropDownList>
+                           <%-- </asp:DropDownList>--%>
+ 
+</div> 
+</div> 
+<div class="form-group col-md-6">
+  <asp:Label ID="Label5" runat="server" class="control-label col-xs-4" Text="Asset Model:" Width="114px"></asp:Label>
+     
+ <div class="input-group  col-xs-8" id="Div4">
+ <asp:DropDownList ID="x_model" runat="server" CssClass="form-control" AutoPostBack="True" 
+                                                OnSelectedIndexChanged="x_model_SelectedIndexChanged" Width="240px">
+                                            </asp:DropDownList>
+</div> 
+</div> 
+         
+                                        
+                           <%--<%-- <td class="auto-style9">
+<%--                                            <asp:Label ID="Label5" runat="server" CssClass="label" Text="Asset Category:" Width="114px"></asp:Label></td>--%>
+                                        <%--<td class="auto-style2">
+                                            <asp:DropDownList ID="x_category" runat="server" AutoPostBack="True" CssClass="inputcmb"
+                                                OnSelectedIndexChanged="x_category_SelectedIndexChanged" Width="240px">
+                                            </asp:DropDownList></td>
+                            <td colspan="1" class="auto-style25">
+                                            <asp:Label ID="Label4" runat="server" CssClass="label" Text="Asset Model:" Width="97px"></asp:Label></td>
+                                        <td colspan="1" class="auto-style10">
+                                            &nbsp;<asp:DropDownList ID="x_model" runat="server" AutoPostBack="True" CssClass="inputcmb"
+                                                Width="204px" OnSelectedIndexChanged="x_model_SelectedIndexChanged" >
+                                            </asp:DropDownList></td>
+                                        
+                                    </tr>--%>
+                        <tr>
+                             <td style="width: 86px; height: 23px">
+                                <asp:Label ID="Label13" runat="server" CssClass="label" Text="Select Serial No.:" Width="79px"></asp:Label></td>
+                            <td style="width: 42px; height: 23px">
+                                <asp:DropDownList ID="serial_no" runat="server" CssClass="input" Font-Bold="False" Font-Names="Verdana" Width="240px" OnSelectedIndexChanged="x_towns_SelectedIndexChanged" AutoPostBack="True" Height="20px">
+                            </asp:DropDownList></td>
+                        </tr>
+                        
+                     
+                        <tr>
+                            
+                            <td class="auto-style11">
+                                <asp:Label ID="Label3" runat="server" CssClass="label" Text="SN. No.:" Width="79px"></asp:Label></td>
+                            <td class="auto-style12">
+                                <table>
+                                    
+                                    <tr>
+                                        
+                                        <td style="width: 100px">
+                                <asp:TextBox ID="pf" runat="server" CssClass="input" Width="224px" Font-Bold="False" Font-Names="Tahoma" MaxLength="21" Enabled="False" OnTextChanged="pf_TextChanged"></asp:TextBox></td>
+                                        <td style="width: 100px">
+                                            <asp:ImageButton ID="employeedetails" runat="server" ImageUrl="~/images/QueryPF.gif"  AlternateText="Find Pfno" OnClick="employeedetails_Click1" ToolTip="Click for details" Height="16px" Visible="False" Width="16px"/></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td class="auto-style25">
+                                <asp:Label ID="Label8" runat="server" CssClass="label" Text="Current Location:" Width="110px" Height="16px"></asp:Label></td>
+                            <td class="auto-style14">
+                                <table>
+                                    <tr>
+                                        <td style="width: 100px">
+                                <asp:TextBox ID="x_RANGE" runat="server" CssClass="inputnoedit" Font-Bold="False" Font-Names="Tahoma" Width="94px" ReadOnly="True"></asp:TextBox></td>
+                                        <td style="width: 100px">
+                                <asp:DropDownList ID="eopt" runat="server" AutoPostBack="True" CssClass="input" Font-Bold="False" Font-Names="Tahoma" Width="84px" OnSelectedIndexChanged="eopt_SelectedIndexChanged">
+                                    <asp:ListItem Selected="True" Value="A">A</asp:ListItem>
+                                    <asp:ListItem Value="B">B</asp:ListItem>
+                                </asp:DropDownList></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td class="auto-style15">
+                                <asp:Label ID="c" runat="server" CssClass="input" Font-Bold="False" Font-Names="Verdana"
+                                    Font-Size="XX-Small" Visible="False" Width="50px"></asp:Label></td>
+                            <td class="auto-style16">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 86px; height: 24px">
+                                <asp:Label ID="Label2" runat="server" CssClass="label" Text="Name:" Width="79px"></asp:Label></td>
+                            <td style="width: 42px; height: 24px">
+                                <asp:TextBox ID="ename" runat="server" CssClass="input" Font-Bold="False" Font-Names="Tahoma" Width="226px"></asp:TextBox></td>
+                            <td class="auto-style22">
+                                <asp:Label ID="Label10" runat="server" CssClass="label" Text="Staff Name:" Width="79px"></asp:Label></td>
+                            <td style="width: 1px; height: 24px">
+                                <asp:TextBox ID="erank" runat="server" CssClass="input" Font-Bold="False" Font-Names="Tahoma" Width="200px"></asp:TextBox></td>
+                            <td style="width: 31px; height: 24px;">
+                                <asp:Label ID="df" runat="server" Font-Size="XX-Small" Visible="False" Width="50px" CssClass="input" Font-Bold="False" Font-Names="Verdana" Height="1px"></asp:Label></td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style4">
+                                <asp:Label ID="Label15" runat="server" CssClass="label" Text="ID No.:" Width="79px"></asp:Label></td>
+                            <td class="auto-style5">
+                                <asp:TextBox ID="idno" runat="server" CssClass="input" Font-Bold="False" Font-Names="Tahoma" MaxLength="15" Width="226px" Enabled="False"></asp:TextBox></td>
+                            <td class="auto-style26">
+                                <asp:Label ID="Label11" runat="server" CssClass="label" Text="Current Location" Width="79px"></asp:Label></td>
+                            <td class="auto-style7">
+                                <asp:TextBox ID="bankaccount" runat="server" CssClass="input" Font-Bold="False" Font-Names="Tahoma" Width="200px"></asp:TextBox></td>
+                            <td class="auto-style8">
+                                <asp:Label ID="La1" runat="server" CssClass="input" Font-Size="XX-Small" Visible="False"
+                                    Width="50px" Font-Bold="False" Font-Names="Verdana"></asp:Label>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 86px; height: 18px;">
+                                <asp:Label ID="Label6" runat="server" CssClass="label" Text="Current Location" Width="108px"></asp:Label></td>
+                            <td style="width: 42px; height: 18px;">
+                                <asp:Label ID="bid" runat="server" CssClass="input" Width="229px" Font-Bold="False" Font-Names="Tahoma" Enabled="False" Height="17px"></asp:Label></td>
+                            <td class="auto-style23">
+                                <asp:Label ID="Label7" runat="server" CssClass="label" Text="Model" Width="79px"></asp:Label></td>
+                            <td style="width: 1px; height: 18px;">
+                                <asp:Label ID="ccode" runat="server" CssClass="input" Width="202px" Font-Bold="False" Font-Names="Tahoma"></asp:Label></td>
+                            <td style="width: 31px; height: 18px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 86px; height: 18px">
+                                <table style="width: 69px">
+                                    <tr>
+                                        <td style="width: 100px">
+                                <asp:Label ID="ffs" runat="server" CssClass="input" Font-Size="XX-Small" Visible="False"
+                                    Width="1px" Font-Bold="False" Font-Names="Verdana"></asp:Label>
+                                <asp:Label ID="vbal" runat="server" CssClass="input" Font-Size="XX-Small" Visible="False"
+                                    Width="1px" Font-Bold="False" Font-Names="Verdana"></asp:Label></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100px">
+                                </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100px">
+                                <asp:Label ID="status" runat="server" Font-Size="XX-Small" Visible="False" Width="56px" CssClass="input" Font-Bold="False" Font-Names="Verdana"></asp:Label></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100px">
+                                <asp:Label ID="eamt" runat="server" Visible="False" Width="56px" CssClass="input" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small" Height="1px"></asp:Label></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100px">
+                                <asp:Label ID="scal" runat="server" Font-Size="XX-Small" Visible="False" CssClass="input" Width="56px" Font-Bold="False" Font-Names="Verdana" Height="1px"></asp:Label></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td colspan="3" style="height: 18px">
+                               <asp:DataGrid ID="Datainpv" runat="server" Font-Size="XX-Small" Width="610px" Font-Names="Verdana" Height="30px">
+                                    <HeaderStyle BackColor="InactiveBorder" />
+                                </asp:DataGrid>
+                                </td>
+                            <td style="width: 31px; height: 18px">
+                                <table style="width: 55px">
+                                    <tr>
+                                        <td style="width: 100px">
+                                <asp:Label ID="staff1" runat="server" Font-Size="XX-Small" Visible="False" CssClass="input" Width="50px" Font-Bold="False" Font-Names="Verdana" Height="1px"></asp:Label></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100px">
+                                <asp:Label ID="cdate" runat="server" Font-Size="XX-Small" Visible="False" Width="50px" CssClass="input" Font-Bold="False" Font-Names="Verdana" Height="1px"></asp:Label></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100px; height: 4px">
+                                <asp:Label ID="ns" runat="server" CssClass="input" Visible="False" Width="50px" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small"></asp:Label></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100px">
+                                <asp:Label ID="z" runat="server" CssClass="input" Height="10px" Width="50px" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small" Visible="False"></asp:Label></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100px">
+                                <asp:Label ID="v" runat="server" CssClass="input" Visible="False" Width="50px" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small"></asp:Label></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="height: 12px">
+                                <hr style="width: 778px; height: 1px;" />
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 86px; height: 12px">
+                                <asp:Label ID="cdate2" runat="server" CssClass="input" Font-Bold="False" Font-Names="Verdana"
+                                    Font-Size="XX-Small" Visible="False" Width="50px"></asp:Label></td>
+                            <td style="width: 42px; height: 12px">
+                                    <asp:Label ID="escala" runat="server" CssClass="input" Font-Bold="False" Font-Size="XX-Small" Font-Names="Verdana" Width="194px" Visible="False"></asp:Label></td>
+                            <td class="auto-style24">
+                                <asp:ImageButton ID="btnaddstaff" runat="server" ImageUrl="~/images/save.gif"
+                                    OnClick="btnaddstaff_Click" Visible="False" /></td>
+                            <td style="width: 1px; height: 12px">
+                                <asp:Label ID="co" runat="server" CssClass="input" Font-Size="XX-Small" Font-Bold="False" Font-Names="Verdana" Visible="False"></asp:Label></td>
+                            <td style="height: 12px; width: 31px;">
+                                <asp:Label ID="bbid" runat="server" CssClass="input" Visible="False" Width="50px" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small" Height="1px"></asp:Label></td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: white;" colspan="5">
+                                <asp:GridView ID="Datainmedical" runat="server" AutoGenerateColumns="False"
+                                    CssClass="datagrid" DataKeyNames="STAFFNO" OnSelectedIndexChanged="Datainmedical_SelectedIndexChanged"
+                                    PageSize="40" Width="777px" Height="30px">
+                                    <PagerSettings FirstPageImageUrl="~/images/MoveFirst.gif" FirstPageText="" LastPageImageUrl="~/images/MoveLast.gif"
+                                        LastPageText="" Mode="NextPreviousFirstLast" NextPageImageUrl="~/images/MoveNext.gif"
+                                        Position="TopAndBottom" PreviousPageImageUrl="~/images/MovePrevious.gif" PreviousPageText="" />
+                                    <Columns>
+                                        <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/edit.gif" ShowSelectButton="True" />
+                                        <asp:BoundField DataField="STAFFNO" HeaderText="REFNO" />
+                                        <asp:BoundField DataField="PDREF" HeaderText="SNO" HtmlEncode="False" />
+                                        <asp:BoundField DataField="PFNO" HeaderText="Model" HtmlEncode="False" Visible="False" />
+                                        <asp:BoundField DataField="EMPSCALE" HeaderText="SCALE" HtmlEncode="False" visible ="False"/>
+                                        <asp:BoundField DataField="RANGE" HeaderText="Range" HtmlEncode="False" />
+                                        <asp:BoundField DataField="EMPRANK" HeaderText="Rank" HtmlEncode="False" />
+                                        <asp:BoundField DataField="BANK_ACC" HeaderText="Bank Acc." HtmlEncode="False" Visible="False" />
+                                        <asp:BoundField DataField="EMPNAME" HeaderText="Name" HtmlEncode="False" />
+                                        <asp:BoundField DataField="TOTAL" HeaderText="Total" HtmlEncode="False" Visible="False" />
+                                        
+                                    </Columns>
+                                    <SelectedRowStyle BackColor="Honeydew" BorderColor="Gray" BorderStyle="Solid" />
+                                    <PagerStyle BackColor="#EBE9E5" />
+                                    <HeaderStyle CssClass="datagridheader" />
+                                </asp:GridView>
+                                &nbsp;<asp:Label ID="regn" runat="server" CssClass="input" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small" Visible="False"></asp:Label>
+                                <asp:Label ID="vbno" runat="server" CssClass="input" Font-Size="XX-Small" ForeColor="#400040" Font-Bold="False" Font-Names="Verdana" Visible="False"></asp:Label>
+                                <asp:Label ID="vmodel" runat="server" CssClass="input" Font-Size="X-Small" Visible="False"
+                                    Width="64px" Font-Bold="False" Font-Names="Verdana"></asp:Label>
+                                <asp:DropDownList ID="branch" runat="server" CssClass="input" AutoPostBack="True" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small" Visible="False">
+                                    <asp:ListItem>select..</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:DropDownList ID="bank" runat="server" CssClass="input" AutoPostBack="True" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small" Visible="False">
+                                    <asp:ListItem>select..</asp:ListItem>
+                                </asp:DropDownList><asp:Label ID="TT" runat="server" Font-Size="XX-Small" Visible="False" CssClass="input" Width="18px" Font-Bold="False" Font-Names="Verdana" Height="1px"></asp:Label>
+                                <asp:Label ID="pfd" runat="server" Visible="False" Width="24px" CssClass="input" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small" Height="1px"></asp:Label>
+                                <asp:Label ID="PFNOA" runat="server" CssClass="input" Font-Bold="False" Font-Names="Verdana"
+                                    Font-Size="XX-Small" Height="1px" Visible="False" Width="24px"></asp:Label>&nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="height: 9px" valign="top">
+                                <hr style="width: 778px; height: 1px;" />
+                                &nbsp;</td>
+                        </tr>
+                    </table>
+                                <asp:Label ID="amount" runat="server" CssClass="input" Width="56px" Font-Bold="False" Font-Names="Verdana" Font-Size="XX-Small" Visible="False"></asp:Label>
+                    <asp:Label ID="total_amount" runat="server" CssClass="input" Font-Bold="False" Font-Names="Verdana"
+                        Font-Size="XX-Small" Width="24px" Visible="False"></asp:Label>
+                    <asp:Label ID="tax_amount" runat="server" CssClass="input" Font-Bold="False" Font-Names="Verdana"
+                        Font-Size="XX-Small" Width="24px" Visible="False"></asp:Label>&nbsp;
+                    <asp:TextBox ID="escale" runat="server" CssClass="inputnoedit" Font-Bold="False"
+                        Font-Names="Tahoma" ReadOnly="True" Visible="False" Width="94px"></asp:TextBox>
+                    <asp:TextBox ID="x_ZONE_ID" runat="server" Visible="False" Width="44px"></asp:TextBox></div>
+    </form>
+</body>
+</html>
