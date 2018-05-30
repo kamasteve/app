@@ -28,26 +28,7 @@
  </head>
  <body>
   <div class="container box">
-   <div class="row">
-<form class="form-horizontal" action="fetch.php" id="user_data" method="post">
- 
-  <div class="form-group col-md-4">
-<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
-  <input class="form-control" name="invoice" type="text" placeholder=" Invoice Number" >
-  </div>
-</div>
-<div class="form-group col-md-4">
-<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
-  <input class="form-control" name="unit" type="text" placeholder=" House Number" >
-</div>
-</div>
-<div class="form-group col-md-2 ">
-		<div class="col-xs-offset-3 col-xs-9 tentant_footer_cls">
-		<input class=" btn button  btn-default" type="submit" name="button" value='Search'>
-			</div>
-</div>
-</div>
-   
+   <h1 align="center">Live Add Edit Delete Datatables Records using PHP Ajax</h1>
    <br />
    <div class="table-responsive">
    <br />
@@ -59,9 +40,8 @@
     <table id="user_data" class="table table-bordered table-striped">
      <thead>
       <tr>
-       <th>Invoice</th>
-       <th>Product</th>
-	   <th>Ammount</th>
+       <th>Frist Name</th>
+       <th>Last Name</th>
        <th></th>
       </tr>
      </thead>
@@ -76,11 +56,8 @@
   
   fetch_data();
 
-function fetch_data(){
-  
-$('#addpayments').on('submit', function (e) 
-	
-   if (!e.isDefaultPrevented()) {
+  function fetch_data()
+  {
    var dataTable = $('#user_data').DataTable({
     "processing" : true,
     "serverSide" : true,
@@ -91,8 +68,7 @@ $('#addpayments').on('submit', function (e)
     }
    });
   }
-  });
- $(document).ready(function(){
+  
   function update_data(id, column_name, value)
   {
    $.ajax({
@@ -121,7 +97,6 @@ $('#addpayments').on('submit', function (e)
   $('#add').click(function(){
    var html = '<tr>';
    html += '<td contenteditable id="data1"></td>';
-   html += '<td contenteditable id="data3"></td>';
    html += '<td contenteditable id="data2"></td>';
    html += '<td><button type="button" name="insert" id="insert" class="btn btn-success btn-xs">Insert</button></td>';
    html += '</tr>';
@@ -129,10 +104,9 @@ $('#addpayments').on('submit', function (e)
   });
   
   $(document).on('click', '#insert', function(){
-   var subtotal = $('#data1').text();
-   var product = $('#data3').text();
-   var invoice = $('#data2').text();
-   if(subtotal != '' && invoice != '')
+   var first_name = $('#data1').text();
+   var last_name = $('#data2').text();
+   if(first_name != '' && last_name != '')
    {
     $.ajax({
      url:"insert.php",

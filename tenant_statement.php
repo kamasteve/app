@@ -63,23 +63,17 @@ $(function () {
         }
     })
 });
+$(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
 </script>
-<div class="jquery-script-center">
-<ul>
-<li><a href="http://www.jqueryscript.net/table/Editable-Tables-jQuery-Bootstrap-Bootstable/">Download This Plugin</a></li>
-<li><a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
-</ul>
-<div class="jquery-script-ads"><script type="text/javascript"><!--
-google_ad_client = "ca-pub-2783044520727903";
-/* jQuery_demo */
-google_ad_slot = "2780937993";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script></div>
+
+
 
 <div class="ch-container">
 	<div class="row">
@@ -161,12 +155,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
  
     
 	</form>	
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="bootstable.js"></script>
-<script>
- $('table').SetEditable();
-</script>
+
 </div>
 </div>
 

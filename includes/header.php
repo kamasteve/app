@@ -38,6 +38,7 @@ header("location:index.php");
 <link href="css/charisma-app.css" rel="stylesheet">
 
 <link href='css/new/style.css' rel='stylesheet'>
+<link href='css/priventive.css' rel='stylesheet'>
 <link href="css/dataTables.tableTools.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
 <link href="css/TableTools.css" rel="stylesheet">

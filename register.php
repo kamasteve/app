@@ -83,7 +83,6 @@ width:500px;
 	<?php
     //Include database configuration file
     
-    
     //Get all country data
     $query = $con->query("SELECT * FROM user_types  ORDER BY id ASC");
     

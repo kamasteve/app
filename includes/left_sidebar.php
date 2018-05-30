@@ -8,7 +8,7 @@ echo '<div class="sidebar-nav">';
 		echo '<ul class="nav nav-pills nav-stacked main-menu">';
 			echo '<li class="nav-header">Main</li>';
 			
-	
+	if ($pageid >100 && $pageid<=200){
 		$query = $con->query("SELECT * FROM menu_details where PARENT_MENU_ID='2' ORDER BY menu_id ASC");
 				$rowCount = $query->num_rows;
 				if($rowCount > 0){
@@ -19,7 +19,7 @@ echo '<div class="sidebar-nav">';
         }else{
             echo '<option value="">Roles Not created</option>';
         }
-	
+	}
 if ($pageid >200 && $pageid<=300){
 		
 	$query = $con->query("SELECT * FROM menu_details where PARENT_MENU_ID='3' ORDER BY menu_id ASC");

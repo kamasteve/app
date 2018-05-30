@@ -213,6 +213,35 @@ mysqli_close($con);
       </select>
 	</div>	
 	</div>
+	<div class="form-group row">
+
+		
+		<label class="control-label col-xs-4" for="fname">Select Property:</label>
+		<div class=" col-xs-8">
+	<?php
+    //Include database configuration file
+    
+    
+    //Get all country data
+    $query = $con->query("SELECT * FROM bank_accounts  ORDER BY id ASC");
+    
+    //Count total number of rows
+    $rowCount = $query->num_rows;
+    ?>
+    <select class='form-control ' name="property" id="property">
+        <option value="">Select Property</option>
+        <?php
+        if($rowCount > 0){
+            while($row = $query->fetch_assoc()){ 
+                echo '<option value="'.$row['bank_name'].'">'.$row['bank_name'].'</option>';
+            }
+        }else{
+            echo '<option value="">Property not available</option>';
+        }
+        ?>
+    </select>
+	</div>
+</div>
 	<input type="hidden" id="responsible" value="<?php echo  $_id; ?> "/>
 		<div class="form-group row">
   <label for="external-id" class="col-xs-4 col-form-label"> Payment Ref </label>

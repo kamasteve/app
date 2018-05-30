@@ -26,7 +26,10 @@ $result = mysqli_query($con,"SELECT ammount as debit,0 as credit , serial as Inv
 UNION
 SELECT 0 as debit, total*(-1) as credit, invoice as invoice_id , invoice_date as date FROM `invoices` WHERE tenant_id =$tenant_id
 order by date desc ");
-
+$result1 = mysqli_query($con,"SELECT ammount as debit,0 as credit , serial as Invoice_number,date FROM `rent_payments` WHERE tenant_id=$tenant_id
+UNION
+SELECT 0 as debit, total*(-1) as credit, invoice as invoice_id , invoice_date as date FROM `invoices` WHERE tenant_id =$tenant_id
+order by date desc ");
 
 print '<table id="statement" class="display " cellspacing="0" width="100%">
  <thead>
