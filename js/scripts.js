@@ -283,7 +283,7 @@ $(document).ready(function() {
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost/app/ajax/ajaxPayments.php',
+                url:'http://206.81.13.6/app/ajax/ajaxPayments.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -300,7 +300,7 @@ $(document).ready(function() {
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost/app/ajax/fetch_statement.php',
+                url:'http://206.81.13.6/app/ajax/fetch_statement.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -320,7 +320,7 @@ $(document).ready(function() {
             $.ajax({
                 type:'POST',
 				dataType: 'json',
-                url:'http://localhost/app/ajax/ajaxData.php',
+                url:'http://206.81.13.6/app/ajax/ajaxData.php',
                 data:'state_id='+stateID,
 			
 				success: function(html){
@@ -551,7 +551,7 @@ $(document).ready(function() {
 
 			$.ajax({
 
-				url:'http://localhost/app/ajax/createInvoice.php',
+				url:'http://206.81.13.6/app/ajax/createInvoice.php',
 				type: 'POST',
 				data: $("#create_invoice").serialize(),
 				dataType: 'json',

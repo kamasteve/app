@@ -40,7 +40,7 @@ $pageid=45;
     <div class="col-md-3 col-sm-3 col-xs-3">
         <a data-toggle="tooltip" title="Acounting." class="well top-block" href="invoice.php">
 		Accounts
-            <img alt="Add a New Apartment" src="images/properties.png" class="image-responsive"/>
+            <img alt="Add a New Apartment" src="images/Properties.png" class="image-responsive"/>
            
         </a>
     </div>
@@ -49,7 +49,7 @@ $pageid=45;
 	
         <a data-toggle="tooltip" title="4 new pro members." class="well top-block" href="account_statement.php">
 		 Reports
-            <img alt="Add a New Apartment" src="images/statements.png" class="image-responsive"/>
+            <img alt="Add a New Apartment" src="images/Statements.png" class="image-responsive"/>
 			
         </a>
     </div>
@@ -86,7 +86,7 @@ include("fusioncharts.php");
 
 $hostdb = "localhost"; // MySQl host
 $userdb = "root"; // MySQL username
-$passdb = ""; // MySQL password
+$passdb = "kamah4778"; // MySQL password
 $namedb = "hill_rental"; // MySQL database name
 
 // Establish a connection to the database

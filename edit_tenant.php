@@ -19,7 +19,7 @@ $(function () {
     $('#edit_tentant').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost/app/ajax/update_tenant.php";
+            var url = "http://206.81.13.6/app/ajax/update_tenant.php";
             $.ajax({
                 type: "POST",
                 url: url,

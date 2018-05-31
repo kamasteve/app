@@ -85,9 +85,9 @@ $(document).ready(function() {
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-$result = mysqli_query($con,"SELECT  invoice_date,invoice,t1.responsible,invoice_due_date,T1.status,total, name,tenant_name,((SELECT SUM(ammount) AS paid
+$result = mysqli_query($con,"SELECT  invoice_date,invoice,T1.responsible,invoice_due_date,T1.status,total, name,tenant_name,((SELECT SUM(ammount) AS paid
 FROM rent_payments
-WHERE serial= t1.invoice)-t1.total) as balance FROM invoices AS T1 INNER JOIN properties AS T2 on T1.property=T2.property_id ;");
+WHERE serial= T1.invoice)-T1.total) as balance FROM invoices AS T1 INNER JOIN properties AS T2 on T1.property=T2.property_id ;");
 while($row = mysqli_fetch_array($result)) {
 ?>
 
