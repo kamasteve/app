@@ -10,7 +10,7 @@ $(document).ready(function(){
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost/app/ajax/ajaxData.php',
+                url:'http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/ajaxData.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -42,7 +42,7 @@ $(function () {
     $('#new_tenant').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost/app/newtenants.php";
+            var url = "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/newtenants.php";
             $.ajax({
                 type: "POST",
                 url: url,

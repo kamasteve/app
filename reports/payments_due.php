@@ -22,8 +22,8 @@ $period= $_REQUEST['period'];
 //WHERE date between '$startdate' and '$enddate' order by date desc
 
 
-$result = mysqli_query($con,"SELECT * FROM `invoices` WHERE `invoice_due_date` <= curdate()");
-
+$result = mysqli_query($con,"SELECT * FROM `invoices` WHERE `invoice_due_date` <= curdate() AND STATUS='open'");  //SELECT SUM(total) FROM `invoices` WHERE `invoice_due_date` <= CURDATE() AND STATUS="open"
+$result1 = mysqli_query($con,"SELECT SUM(total) FROM `invoices` WHERE `invoice_due_date` <= CURDATE() AND STATUS='open'");
 
 print '<table id="example" class="display table table-striped" cellspacing="0" width="100%">
  <thead>

@@ -1,22 +1,19 @@
-<?php include ('includes/header.php');
-$sql = mysqli_query($con,"SELECT * FROM owner");
-while($row = mysqli_fetch_array($sql)) {
-$owner_arr[]=$row;
-$pageid=206;
-}
+<?php include ('includes/header.php'); 
+
 
 $sql1 = mysqli_query($con,"SELECT * FROM properties");
 while($row1 = mysqli_fetch_array($sql1)) {
 $pro_arr[]=$row1;
-}
 
+}
+$pageid=201;
 ?>
 <script type="text/javascript">
 $(function () {
     $('#add_landlord').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost/app/ajax/new_landlord.php";
+            var url = "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/new_landlord.php";
             $.ajax({
                 type: "POST",
                 url: url,

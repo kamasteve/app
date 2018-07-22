@@ -30,7 +30,7 @@ $('document').ready(function()
 				required : true,
 				validemail: true,
 				remote: {
-					url: "http://206.81.13.6/app/ajax/check-email.php",
+					url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/check-email.php",
 					type: "post",
 					data: {
 						email: function() {
@@ -88,7 +88,7 @@ $('document').ready(function()
 			   
 			   
 			   $.ajax({
-			   		url: 'http://206.81.13.6/app/signup.php',
+			   		url: 'http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/signup.php',
 			   		type: 'POST',
 			   		data: $('#new_user').serialize(),
 			   		dataType: 'json'

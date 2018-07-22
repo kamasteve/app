@@ -1,54 +1,29 @@
-<?php include ('header.php'); 
-include ('functions.php');
-$sql1 = mysqli_query($mysqli,"SELECT * FROM users");
+<?php include ('includes/header_reports.php'); 
+
+
+$sql1 = mysqli_query($con,"SELECT * FROM properties");
 while($row1 = mysqli_fetch_array($sql1)) {
 $pro_arr[]=$row1;
-$pageid=75;
+$pageid=308;
 }
+define('DATE_FORMAT', 'YYYY/MM/DD'); // DD/MM/YYYY or MM/DD/YYYY
 ?>
 <div class="ch-container">
 <div class="row">
- <?php include('left_sidebar.php');  ?>
+ <?php include('includes/left_sidebar.php');  ?>
 
  <div id="content" class="col-lg-10 col-sm-10">
  <div class="row">
     <div class="box col-md-12">
 <div class="box-inner">
 
-			
-			
-				<?php 
 
- $mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
-	// output any connection error
-	if ($mysqli->connect_error) {
-		die('Error : ('.$mysqli->connect_errno .') '. $mysqli->connect_error);
-	}
 
-	// the query
-    $query = "SELECT a.id,a.site_id,meter_number,username,photo_evidence,serial_number,date,current_reading,DATE,old_reading ,b.Sitename 
-FROM meter_numbers a, telkom_sites b
-WHERE
-a.site_id=b.Site_ID";
+		
 
-	// mysqli select query
-	$results = $mysqli->query($query);
+<table id="example" class="display nowrap" cellspacing="0" width="100%">
 
-	// mysqli select query
-	?>
 
-<table id="example" class="display" cellspacing="0" width="100%">
-
-<script type="text/javascript" language="javascript" class="init">
-$(document).ready(function() {
-	$('#example').DataTable( {
-	dom: 'T<"clear">lfrtip',
-	tableTools: {
-        "sSwfPath": "/swf/copy_csv_xls_pdf.swf"
-    }
-	} );
-} );
-</script>
 <thead>
 <tr>
 <th>ID</th>
@@ -59,58 +34,43 @@ $(document).ready(function() {
 <th>Meter Reading</th>
 <th>Previous Reading</th>
 <th>DATE</th>
-<th>Added By</th>
-<th>photo_evidence</th>
-<th>Edit</th>
 
 
  </tr>
 </thead>
 <tbody>
-<?php
-		while($row = $results->fetch_assoc()) {
+	<?php 
 
-			?>
+	if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+$result = mysqli_query($con,"SELECT a.id,a.site_id,meter_number,username,photo_evidence,serial_number,date,current_reading,DATE,old_reading  
+FROM meter_numbers a;");
+while($row = mysqli_fetch_array($result)) {
+
+	// mysqli select query
+	?>
 				<tr>
 				<?php $wishID = $row["id"]; ?>
 				 <?php $wishID = $row["id"]; ?>
 				    <td><?php echo $row["id"];?></td>
-					<td><?php echo $row["Sitename"];?></td>
+					<td><?php echo $row["meter_number"];?></td>
 				    <td><?php echo $row["site_id"];?></td>
 					<td> <?php echo $row['meter_number']; ?></td>
 					<td> <?php echo $row['serial_number']; ?> </td>
 				    <td><?php echo $row["current_reading"];?></td>
 					<td><?php echo $row["old_reading"];?></td>
 					<td><?php echo $row["date"];?></td>
-					<td><?php echo $row["username"];?></td> 
-					<td><?php echo  $row["photo_evidence"];?></td>
+					
 					
 				
-
-	<td>
-	<?php
-	echo '<a class=" btn  " data-toggle="modal" data-target="#modaledit" data-my-id="'.$row["id"].'">
-													<span class="glyphicon glyphicon-edit" aria-hidden="true" ></span> Edit
-													
-											</a>'
-		
-		?>									
-	
-    </td>			   
-			
-				   
-	
-				    
-					
-	
-				
-			    
-			
 		        </tr>
-		<?php } ?>
+	<?php }
+mysqli_close($con);
+	?>	
 </tbody>
 </table>
-			
+	
 </div>
 </div>
 </div>

@@ -233,10 +233,10 @@ mysqli_close($con);
         <?php
         if($rowCount > 0){
             while($row = $query->fetch_assoc()){ 
-                echo '<option value="'.$row['bank_name'].'">'.$row['bank_name'].'</option>';
+                echo '<option value="'.$row['id'].'">'.$row['bank_name'].'</option>';
             }
         }else{
-            echo '<option value="">Property not available</option>';
+            echo '<option value="">No Bank Found</option>';
         }
         ?>
     </select>

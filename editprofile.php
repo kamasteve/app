@@ -23,7 +23,7 @@ $(function () {
     $('#update_profile').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost/app/ajax/update_profile.php";
+            var url = "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/update_profile.php";
             $.ajax({
                 type: "POST",
                 url: url,

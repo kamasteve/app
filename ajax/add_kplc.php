@@ -1,5 +1,5 @@
 <?php
-include_once('config.php');
+include_once('../includes/config.php');
     $region = $_REQUEST['property'];
 	$site_id = $_REQUEST['unit'];
 	$date = $_REQUEST['capture_date'];

@@ -40,7 +40,7 @@ $(function () {
     $('#new_request').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://206.81.13.6/app/ajax/new_request.php";
+            var url = "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/new_request.php";
             $.ajax({
                 type: "POST",
                 url: url,

@@ -1,14 +1,11 @@
-<?php include ('header.php'); 
-include ('functions.php');
-$sql1 = mysqli_query($mysqli,"SELECT * FROM users");
-while($row1 = mysqli_fetch_array($sql1)) {
-$pro_arr[]=$row1;
-$pageid=75;
-}
+<?php include ('includes/header.php'); 
+$pageid=205;
+define('DATE_FORMAT', 'YYYY/MM/DD'); // DD/MM/YYYY or MM/DD/YYYY
+
 ?>
 <div class="ch-container">
 <div class="row">
- <?php include('left_sidebar.php');  ?>
+ <?php include('includes/left_sidebar.php');  ?>
 
  <div id="content" class="col-lg-10 col-sm-10">
  <div class="row">
@@ -21,7 +18,7 @@ $(document).ready(function(){
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://localhost/O-Mapp/ajax/ajaxData.php',
+                url:'http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/ajaxDataall.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -39,7 +36,7 @@ $(document).ready(function(){
             $.ajax({
                 type:'POST',
 				dataType: 'json',
-                url:'http://localhost/O-Mapp/ajax/ajaxData.php',
+                url:'http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/ajaxDataall.php',
                 data:'state_id='+stateID,
                 success:function(html){
                     for(var i = 0; i < html.length; i++) {
@@ -100,19 +97,7 @@ $(document).ready(function(e){
 </script>		
 				<?php 
 
- $mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
-	// output any connection error
-	if ($mysqli->connect_error) {
-		die('Error : ('.$mysqli->connect_errno .') '. $mysqli->connect_error);
-	}
 
-	// the query
-    $query = "SELECT  * from users";
-
-	// mysqli select query
-	$results = $mysqli->query($query);
-
-	// mysqli select query
 	?>
 
 
@@ -122,27 +107,27 @@ $(document).ready(function(e){
 <form enctype="multipart/form-data" id="fupForm" >
   <div class="form-group" >
          <div class='statusMsg alert '> </div>
-	<div class="form-group col-md-6">
+	
+<div class="form-group col-md-6">
 		
-		<label class="control-label col-xs-4" for="fname">Select Region:</label>
-		<div class=" input-group col-xs-8">
+		<label class="control-label col-xs-4" for="fname">Select Property:</label>
+		<div class="input-group   col-xs-8">
 	<?php
     //Include database configuration file
     
     
     //Get all country data
-    $query = $mysqli->query("SELECT * FROM regions  ORDER BY id ASC");
+    $query = $con->query("SELECT * FROM properties  ORDER BY property_id ASC");
     
     //Count total number of rows
     $rowCount = $query->num_rows;
     ?>
-
-    <select class='form-control' name="property" id="property">
-        <option value="">Select Region</option>
+    <select class="form-control col-xs-8" name="property" id="property">
+        <option value="">Select Property</option>
         <?php
         if($rowCount > 0){
             while($row = $query->fetch_assoc()){ 
-                echo '<option value="'.$row['unique_code'].'">'.$row['name'].'</option>';
+                echo '<option value="'.$row['property_id'].'">'.$row['name'].'</option>';
             }
         }else{
             echo '<option value="">Property not available</option>';
@@ -150,28 +135,28 @@ $(document).ready(function(e){
         ?>
     </select>
 	</div>
-	</div>
-	
-	
-<div class=" form-group  col-md-6">
-	<label class="control-label col-xs-4" for="fname">Select Site:</label>
+</div>
+	<div class="form-group col-md-6">
+	<label class="control-label col-xs-4" for="fname">Select Unit:</label>
 	<div class="input-group  col-xs-8">
-			<select class=' form-control' name="unit" id="state">
-        <option value="">Select Region first</option>
+			<select class='form-control' name="unit" id="state">
+        <option value="">Select Property first</option>
     </select>
 	</div>
 </div>
+	
+
 <div class="form-group col-md-6">
 <label class="control-label col-xs-4" for="text">Meter Number:</label>
  <div class="input-group  col-xs-8" id="invoice_due_text">
-  <input class="form-control" name="meter_number" type="text" placeholder="Meter Number" value="" id='meter_number' readonly>
+  <input class="form-control" name="meter_number" type="text" placeholder="Meter Number" value="" id='meter_number' >
   <span class="help-block" id="error"></span> 
 </div>
 </div>
 <div class="form-group col-md-6">
 <label class="control-label col-xs-4" for="text">Serial Number:</label>
  <div class="input-group  col-xs-8" id="invoice_due_text">
-  <input class="form-control" name="serial_number" type="text" placeholder="Serial Number" value="" id='serial_number' readonly>
+  <input class="form-control" name="serial_number" type="text" placeholder="Serial Number" value="" id='serial_number' >
   <span class="help-block" id="error"></span> 
 </div>
 </div>
