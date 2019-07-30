@@ -33,7 +33,7 @@ $(function () {
     $('#addproperty').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/addproperty.php";
+            var url = "http://ec2-18-130-109-60.eu-west-2.compute.amazonaws.com/app/addproperty.php";
             $.ajax({
                 type: "POST",
                 url: url,

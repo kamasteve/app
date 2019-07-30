@@ -48,11 +48,13 @@ $results = $mysqli->query($query);
 		$results->free();
 
 		// close connection 
-		$mysqli->close();
+		//$mysqli->close();
 	}
 	
 }
 $receipt_id=getpropertyid();
+echo $receipt_id;
+$uniqueId= time().'-'.mt_rand();
 $query_fetchtenant = "SELECT tenant_id, fname,property, lname, CONCAT(fname,' ',lname)AS names,email,phone,property,adress FROM tenants WHERE tenant_id=$tenant_id";
 	//$date=date("Y-m-d H:i:s");
 if($result_fetch=mysqli_query($mysqli,$query_fetchtenant)){
@@ -69,7 +71,7 @@ if($result_fetch=mysqli_query($mysqli,$query_fetchtenant)){
 	   $property=$row["property"];
 	   
 }
-$query = "INSERT INTO rent_payments (type,last_name,first_name,payment_mode, serial,ammount,date,particulars,tenant_id,property,rental_period,house_number) VALUES ('$type','$lname','$fname','$mode','$id_','$amount','$date','$payment_ref','$tenant_id','$property','$period','$id_unit')";
+$query = "INSERT INTO rent_payments (type,last_name,first_name,payment_mode, serial,ammount,date,particulars,tenant_id,property,rental_period,house_number) VALUES ('$type','$lname','$fname','$mode','$id_','$amount','$date','$uniqueId','$tenant_id','$property','$period','$id_unit')";
 $query1 = "INSERT INTO accounts (debit,date,invoice_id,customercode,responsible) VALUES ('$amount','$date','$id_','$tenant_id','$responsible')";
   // execute query
   $result_rent_payments = mysqli_query($mysqli,$query) or die('Server error = '.mysqli_error($mysqli));
@@ -98,7 +100,7 @@ $query1 = "INSERT INTO accounts (debit,date,invoice_id,customercode,responsible)
 		//Set type
 		$invoice->setType($tenant_id);
 		//Set reference
-		$invoice->setReference($payment_ref);
+		$invoice->setReference($uniqueId);
 		//Set date
 		$invoice->setDate($date);
 		//Set due date
@@ -137,7 +139,7 @@ $query1 = "INSERT INTO accounts (debit,date,invoice_id,customercode,responsible)
 		if(ENABLE_VAT == true) {
 			$invoice->addTotal("TAX/VAT ".VAT_RATE."%",$invoice_vat);
 		}
-		$invoice->addTotal("Total Due",$item_subtotal,true);
+		$invoice->addTotal("Total Amount Paid",$item_subtotal,true);
 		//Add Badge
 		//$invoice->addBadge($invoice_status);
 		// Customer notes:
@@ -158,7 +160,7 @@ $query1 = "INSERT INTO accounts (debit,date,invoice_id,customercode,responsible)
 		print 'there has been an error in creating the invoice';
 		//print $email;
 	}
-	$invoice->render('receipts/'.$receipt_id.'.pdf','F');
+	$invoice->render('receipts/'.$uniqueId.'.pdf','F');
 
 		//$invoice->render('invoices/'.$invoice_number.'.pdf','F');
 	 		

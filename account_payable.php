@@ -28,7 +28,7 @@ $con = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
 	}
 
 	// the query
-    $query = "SELECT  property, unit,id,due_date,credit,status FROM expenses ";
+    $query = "SELECT  *  FROM meter_numbers ";
 
 	// mysqli select query
 	$results = $con->query($query);
@@ -56,29 +56,15 @@ $con = @mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD,
 			?>
 			<?php $wishID = $row["id"]; ?>
 				<tr>
-				 <td> <?php echo$row["id"]; ?></td>
-					<td> <?php echo$row["property"]; ?></td>
-					<td><?php echo $row["unit"];?></td>
-				    <td><?php echo $row["credit"];?></td>
-					<td><?php echo $row["due_date"];?></td>
-					<?php if($row['status'] == "0"){
-					print '<td><span class="label label-info">Open</span></td>';
-				} elseif ($row['status'] == "1"){
-					print '<td><span class="label label-success">Closed</span></td>';
-				}elseif ($row['status'] == "2"){
-					print '<td><span class="label label-danger">Canceled</span></td>';
-				}
-				?>
-
-			
-	
-	
-				    
+				 
+					<td> <?php echo$row["site_id"]; ?></td>
+					<td><?php echo $row["meter_number"];?></td>
+				    <td><?php echo $row["serial_number"];?></td>
+					<td><?php echo $row["current_reading"];?></td>
+					<td><?php echo $row["date"];?></td>
 					
-	
-				
-			    
-			
+					<td><?php echo $row["old_reading"];?></td>
+
 		        </tr>
 		<?php } ?>
 </tbody>

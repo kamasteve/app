@@ -26,6 +26,7 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	$invoice_due_date = $_POST['invoice_due_date'];
 	$invoice_date = $_POST['invoice_date']; // invoice date
 	$property = $_POST['property'];
+	$names = $_POST['fname'];
 	$unit = $_POST['unit']; 
 	$invoice_subtotal = $_POST['invoice_subtotal']; // invoice sub-total
 	$invoice_shipping = $_POST['invoice_shipping']; // invoice shipping amount
@@ -34,6 +35,8 @@ $errorMessage = 'There was an error while submitting the form. Please try again 
 	$invoice_total = $_POST['invoice_total']; // invoice total
 	$invoice_notes = $_POST['invoice_notes']; // Invoice notes
 	$username=$_POST['responsible'];
+	$current = $_POST['current']; // Invoice notes
+	$previous=$_POST['previous'];
 	$period=$_POST['period'];
 	$query_fetchtenant = "SELECT tenant_id, CONCAT(fname,' ',lname)AS names,email,phone,adress FROM tenants WHERE unit='$unit'";
 	$date=date("Y-m-d H:i:s");
@@ -180,11 +183,11 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		//Set due date
 		$invoice->setDue($invoice_due_date);
 		//Set from
-		$invoice->setFrom(array(COMPANY_NAME,COMPANY_ADDRESS_1,COMPANY_ADDRESS_2,COMPANY_COUNTY,COMPANY_POSTCODE,COMPANY_NUMBER,COMPANY_VAT));
+		$invoice->setFrom(array(COMPANY_NAME,COMPANY_ADDRESS_1,COMPANY_ADDRESS_2));
 		//Set to
-		$invoice->setTo(array($tenant_names,$email,$adress,$property,"Phone: ".$phone));
+		$invoice->setTo(array($names,$previous,$current));
 		//Ship to
-		$invoice->shipTo(array($tenant_names,$email,$adress,$property,$phone,$property,''));
+		$invoice->shipTo(array($names,$previous,$current));
 		//Add items
 		// invoice product items
 		foreach($_POST['invoice_product'] as $key => $value) {
@@ -217,13 +220,13 @@ $query_additems = "INSERT INTO invoice_items(invoice,product,qty,price,discount,
 		//$invoice->addBadge($invoice_status);
 		// Customer notes:
 		if(!empty($invoice_notes)) {
-			$invoice->addTitle("Cusatomer Notes");
+			$invoice->addTitle("Customer Notes");
 			$invoice->addParagraph($invoice_notes);
 		
 		//Add Title
 		$invoice->addTitle("Payment information");
 		//Add Paragraph
-		$invoice->addParagraph(PAYMENT_DETAILS);
+		//$invoice->addParagraph(PAYMENT_DETAILS);
 		//Set footer note
 		$invoice->setFooternote(FOOTER_NOTE);
 		//Render the PDF

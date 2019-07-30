@@ -8,10 +8,11 @@ $(document).ready(function() {
     if (typeof $(this).data('my-id') !== 'undefined') {
       my_id = $(this).data('my-id');
     }
-	//http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com
+	//http://ec2-18-130-109-60.eu-west-2.compute.amazonaws.com
+	//http://ec2-18-130-109-60.eu-west-2.compute.amazonaws.com
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/fetch_record.php",  
+        url: "/app/fetch_record.php",  
         type: "POST",
         dataType: 'json',
         data: {
@@ -50,7 +51,7 @@ $(document).ready(function() {
     var id_unit=$("#id_unit").val();
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/update_record.php",
+        url: "/app/update_record.php",
         type: "POST",
         data: {
            id_:id_,
@@ -82,7 +83,7 @@ $(document).ready(function() {
   
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/new_expense.php",
+        url: "/app/ajax/new_expense.php",
         type: "POST",
         data: {
            id_:id_,
@@ -111,7 +112,7 @@ $(document).ready(function() {
     var role=$("#role").val();
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/update_profile.php",
+        url: "/app/ajax/update_profile.php",
         type: "POST",
         data: {
            username:id_,
@@ -140,7 +141,7 @@ $(document).ready(function() {
     var role=$("#role").val();
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/update_unit.php",
+        url: "/app/ajax/update_unit.php",
         type: "POST",
         data: {
            id:id_,
@@ -169,7 +170,7 @@ $(document).ready(function() {
     var tenant_id=$("#tenant_id").val();
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/delete_record.php",
+        url: "/app/ajax/delete_record.php",
         type: "POST",
         data: {
            id_:id_,
@@ -198,7 +199,7 @@ $(document).ready(function() {
     var tenant_id=$("#tenant_id").val();
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/delete_user.php",
+        url: "/app/ajax/delete_user.php",
         type: "POST",
         data: {
            id_:id_,
@@ -219,7 +220,7 @@ $(document).ready(function() {
     $('#add_unit_edit').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/add_unit.php";
+            var url = "/app/ajax/add_unit.php";
             $.ajax({
                 type: "POST",
                 url: url,
@@ -251,7 +252,7 @@ $(document).ready(function() {
 	
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/fetch_expense.php",
+        url: "/app/ajax/fetch_expense.php",
         type: "POST",
         dataType: 'json',
         data: {
@@ -284,7 +285,7 @@ $(document).ready(function() {
 	
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/fetch_request.php",
+        url: "/app/ajax/fetch_request.php",
         type: "POST",
         dataType: 'json',
         data: {
@@ -316,7 +317,7 @@ $(document).ready(function() {
 	
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/fetch_user.php",
+        url: "/app/ajax/fetch_user.php",
         type: "POST",
         dataType: 'json',
         data: {
@@ -350,7 +351,7 @@ $(document).ready(function() {
     var tenant_id=$("#tenant_id").val();
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/delete_expense.php",
+        url: "/app/ajax/delete_expense.php",
         type: "POST",
         data: {
            id_:id_,
@@ -378,7 +379,7 @@ $(document).ready(function() {
 	
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/fetch_expense.php",
+        url: "/app/ajax/fetch_expense.php",
         type: "POST",
         dataType: 'json',
         data: {
@@ -410,7 +411,7 @@ $(document).ready(function() {
 	
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/fetch_unit.php",
+        url: "/app/ajax/fetch_unit.php",
         type: "POST",
         dataType: 'json',
         data: {
@@ -444,7 +445,7 @@ $(document).ready(function() {
     var property=$("#property").val();
 
     $.ajax({
-        url: "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/payexpense.php",
+        url: "/app/ajax/payexpense.php",
         type: "POST",
         data: {
            id_:id_,

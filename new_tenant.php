@@ -10,7 +10,7 @@ $(document).ready(function(){
         if(countryID){
             $.ajax({
                 type:'POST',
-                url:'http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/ajax/ajaxData.php',
+                url:'http://ec2-18-130-109-60.eu-west-2.compute.amazonaws.com/app/ajax/ajaxData.php',
                 data:'property_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
@@ -38,11 +38,53 @@ $(document).ready(function(){
         }
     });
 });
+
+$(document).ready(function(e){
+    $("#fupForm").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'newtenants.php',
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(msg){
+                $('.statusMsg').html('');
+                if(msg == 'ok'){
+                    $('#fupForm')[0].reset();
+                    $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
+                }else{
+                    $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
+                }
+                $('#fupForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            }
+        });
+    });
+    
+    //file type validation
+    $("#file").change(function() {
+        var file = this.files[0];
+        var imagefile = file.type;
+        var match= ["image/jpeg","image/png","image/jpg"];
+        if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
+            alert('Please select a valid image file (JPEG/JPG/PNG).');
+            $("#file").val('');
+            return false;
+        }
+    });
+});
+
 $(function () {
     $('#new_tenant').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://ec2-18-130-16-81.eu-west-2.compute.amazonaws.com/app/newtenants.php";
+            var url = "http://ec2-18-130-109-60.eu-west-2.compute.amazonaws.com/app/newtenants.php";
             $.ajax({
                 type: "POST",
                 url: url,
@@ -74,9 +116,10 @@ $(function () {
     <div class="box col-md-12">
         <div class="box-inner">
 		<div class="box-content row ">
-		<form class="form-horizontal" id="new_tenant" action="newtenants.php"  method="post">
-		<div class='messages alert '> </div>
-		<div class="row">
+		<form enctype="multipart/form-data" class="form-horizontal tentant_cls" id="fupForm" >
+		 <div class="form-group" >
+         <div class='statusMsg alert '> </div>
+	
 		
 		
   		<div class="form-group col-xs-6">
@@ -215,29 +258,17 @@ echo "</select>";
 				                </span>
 				            </div>
 </div>
-<div class="form-group col-md-6">
-<label class="control-label col-xs-4" for="fname">Upload File:</label>
- 
-   <div class="input-group  col-xs-7" id="invoice_due_date">
-				            
-	<div class="input-group image-preview">
-                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                <span class="input-group-btn">
-                    <!-- image-preview-clear button -->
-                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span> Clear
-                    </button>
-                    <!-- image-preview-input -->
-                    <div class="btn btn-default image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
-                    </div>
-                </span>
-            </div>
+<div class="form-group col-md-6 ">
+<label class="control-label col-xs-4" for="text">Lease Agrement:</label>
+ <div class="input-group  col-xs-8" id="invoice_due_text">
+       <input id="image" name="image" type="file" class="file" multiple 
+        data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload..." required>
+  <span class="help-block" id="error"></span> 
+</div>
+</div>
 <div class="col-md-6">
 <label class="control-label col-xs-4" for="fname"> </label>
-<button type="submit" class="button btn-default "   name='submit'>Save</button>
+<input type="submit" name="submit" class="btn btn-danger submitBtn" value="SAVE"/>
 </div>
 
 </div>

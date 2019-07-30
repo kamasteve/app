@@ -36,7 +36,7 @@ $(function () {
     $('#account_reports').on('submit', function (e) {
         if (!e.isDefaultPrevented()) {
 			
-            var url = "http://localhost/app/reports/payment_summary.php";
+            var url = "http://ec2-18-130-109-60.eu-west-2.compute.amazonaws.com/app/reports/payment_summary.php";
             $.ajax({
                 type: "POST",
                 url: url,

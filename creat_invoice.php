@@ -94,13 +94,13 @@ $pageid=101;
 <div class=" form-group col-xs-6">
   <label for="external-id" class="col-xs-4 col-form-label">Tenant ID</label>
   <div class="col-xs-8">
-     <input class="form-control" type="text" value="" id="tenant_id"  name="tenant_id" readonly>
+     <input class="form-control" type="text" value="" id="tenant_id"  name="tenant_id" >
   </div>
 </div>
 <div class=" form-group col-xs-6">
   <label for="external-id" class="col-xs-4 col-form-label">Tenant Name</label>
   <div class="col-xs-8">
-     <input class="form-control" type="text" value="" id="fname" name="fname" readonly>
+     <input class="form-control" type="text" value="" id="fname" name="fname" >
   </div>
 </div>
 			
@@ -137,6 +137,18 @@ $pageid=101;
 			<option value='December'>4th Quarter</option>
     </select>
 	</div>
+</div>
+<div class=" form-group col-xs-6">
+  <label for="external-id" class="col-xs-4 col-form-label">Previous Reading</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="previous" name="previous" >
+  </div>
+</div>
+<div class=" form-group col-xs-6">
+  <label for="external-id" class="col-xs-4 col-form-label">Current Reading</label>
+  <div class="col-xs-8">
+     <input class="form-control" type="text" value="" id="current" name="current" >
+  </div>
 </div>
 			</div>
 			<!-- / end client details section -->
@@ -316,7 +328,7 @@ $pageid=101;
  </div>
  </div>
  </div>
- 
+
  
  
  

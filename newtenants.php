@@ -19,6 +19,18 @@ $gender=$_POST['tax_details'];
 $address = $_POST['address'];
 $bank = $_POST['bank'];
 $acountnumber = $_POST['acountnumber'];
+$image = $_FILES['image']['name'];
+	$file_basename = substr($image, 0, strripos($image, '.')); // get file extention
+$file_ext = substr($image, strripos($image, '.'));
+if ($_FILES["image"]["error"] > 0)
+  {
+  echo "Error: " . $_FILES["image"]["error"] . "<br>";
+  }
+else
+  {
+  move_uploaded_file($_FILES["image"]["tmp_name"],
+      "leases/" . $_FILES["image"]["name"]);
+  }
 
 $query_insert_user = "INSERT INTO tenants(property,unit,fname,lname,phone,idnumber,email,tax_id ,adress,bank,acountnumber)VALUES('$pname','$unit','$fname','$lname','$phone','$idnumber', '$email','$gender','$address','$bank','$acountnumber')";
 
@@ -74,6 +86,6 @@ if ($uploadOk == 0) {
             }
 			else{
 				
-				echo"tenant added sucessfully";
+				echo "ok";
 			}
    ?>

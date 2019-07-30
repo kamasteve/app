@@ -19,15 +19,15 @@ define('DATABASE_PASS', 'kamah4778');
 define('COMPANY_LOGO', '../images/logo.png');
 define('COMPANY_LOGO_WIDTH', '356');
 define('COMPANY_LOGO_HEIGHT', '95');
-define('COMPANY_NAME','Techisoft Property Managers');
-define('COMPANY_ADDRESS_1','66 Kanjatta');
-define('COMPANY_ADDRESS_2','Unit 5C, Office 14');
-define('COMPANY_ADDRESS_3','Camdem');
-define('COMPANY_COUNTY','Nairobi');
-define('COMPANY_POSTCODE','E17 8EE');
+define('COMPANY_NAME','KILIMANI CREST MANAGEMENT');
+define('COMPANY_ADDRESS_1','DENIS PRITT ROAD');
+define('COMPANY_ADDRESS_2','KILIMANI');
+define('COMPANY_ADDRESS_3','NaIROBI');
+define('COMPANY_COUNTY','');
+define('COMPANY_POSTCODE','');
 
-define('COMPANY_NUMBER','Company No: 48486468'); // Company registration number
-define('COMPANY_VAT', 'Company VAT: 468546846'); // Company TAX/VAT number
+//define('COMPANY_NUMBER','Company No: 48486468'); // Company registration number
+//define('COMPANY_VAT', 'Company VAT: 468546846'); // Company TAX/VAT number
 
 // EMAIL DETAILS
 define('EMAIL_FROM', 'sales@domain.com'); // Email address invoice emails will be sent from
@@ -48,7 +48,7 @@ define('ENABLE_VAT', true); // Enable TAX/VAT
 define('VAT_INCLUDED', false); // Is VAT included or excluded?
 define('VAT_RATE', '0'); // This is the percentage value
 
-define('PAYMENT_DETAILS', 'Techisoft Solutions Ltd<br>Sort Code: 00-00-00<br>Account Number: 12345678'); // Payment information
+define('PAYMENT_DETAILS', 'KILIMANI CREST MANAGEMENT'); // Payment information
 define('FOOTER_NOTE', 'http://www.techisoft.co.ke/');
 
 // CONNECT TO THE DATABASE
